@@ -145,4 +145,33 @@ This app allows you to input your closet items to help assist you with future sh
 **Screen: Loggin**
 | Type | Description | Code Example |
 | --- | --- | --- |
-| Create/POST | signing up user | [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser * user, NSError *  error) {<br>if (error != nil) {<br>NSLog(@"User log in failed: %@", error.localizedDescription);<br>} else {<br>NSLog(@"User logged in successfully");<br>[self performSegueWithIdentifier:@"loginSegue" sender:nil];}}]; |
+| Create/POST | signing up user | [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {<br>if (error != nil) {<br>NSLog(@"Error: %@", error.localizedDescription);<br>} else {<br>NSLog(@"User registered successfully");<br>[self performSegueWithIdentifier:@"loginSegue" sender:nil];}}]; |
+| Read/Get | logging user | [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser * user, NSError *  error) {<br>if (error != nil) {<br>NSLog(@"User log in failed: %@", error.localizedDescription);<br>} else {<br>NSLog(@"User logged in successfully");<br>[self performSegueWithIdentifier:@"loginSegue" sender:nil];}}]; |
+
+**Screen: Home**
+| Type | Description | Code Example |
+| --- | --- | --- |
+| Read/GET | get latest 5-10 items from closet | PFQuery *query = [PFQuery queryWithClassName:@"Item"];<br>[query findObjectsInBackgroundWithBlock:^(NSArray *items, NSError *error) {<br>if (items != nil) {<br>self.items = items;<br>[self.tableView reloadData];<br>} else {<br>NSLog(@"%@", error.localizedDescription);}}]; |
+| Read/GET | get latest 5-10 favorited outfits | PFQuery *query = [PFQuery queryWithClassName:@"Item"];<br>//add some kind of search ability to get the favorited outfits<br>[query findObjectsInBackgroundWithBlock:^(NSArray *items, NSError *error) {<br>if (items != nil) {<br>self.items = items;<br>[self.tableView reloadData];<br>} else {<br>NSLog(@"%@", error.localizedDescription);}}]; |
+
+**Screen: Closet**
+| Type | Description | Code Example |
+| --- | --- | --- |
+| Read/GET | get all items based on filter options | PFQuery *query = [PFQuery queryWithClassName:@"Item"];<br>//add some kind of search ability to get the items based on filters<br>[query findObjectsInBackgroundWithBlock:^(NSArray *items, NSError *error) {<br>if (items != nil) {<br>self.items = items;<br>[self.tableView reloadData];<br>} else {<br>NSLog(@"%@", error.localizedDescription);}}]; |
+
+**Screen: New Item**
+| Type | Description | Code Example |
+| --- | --- | --- |
+| Create/POST | add a new item to the database that the user creates | [Item itemUserImage:itemImage withCaption:self.captionTextView.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {<br>if(succeeded){<br>[self dismissViewControllerAnimated:YES completion:^{<br>[self.delegate didPost];}];<br>}else{<br>NSLog(@"Something went wrong with posting: %@", error.localizedDescription);<br>}}]; |
+
+**Screen: New Outfit**
+| Type | Description | Code Example |
+| --- | --- | --- |
+| Create/POST | add a new outfit to the database that the user creates | [Item itemUserImage:itemImage withCaption:self.captionTextView.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {<br>if(succeeded){<br>[self dismissViewControllerAnimated:YES completion:^{<br>[self.delegate didPost];}];<br>}else{<br>NSLog(@"Something went wrong with posting: %@", error.localizedDescription);<br>}}]; |
+| Update/PUT | update outfit based on if the user likes it | not sure about the code yet |
+
+**Screen: Profile**
+| Type | Description | Code Example |
+| --- | --- | --- |
+| Read/GET | gets user's information to load | not sure about the code yet |
+| Update/PUT | update user's information | not sure about the code yet |
