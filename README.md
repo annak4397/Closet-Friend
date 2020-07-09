@@ -101,7 +101,46 @@ This app allows you to input your closet items to help assist you with future sh
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+**Model: User**
+| Property	| Type |	Description |
+| --- | --- | --- |
+| objectID | String | unique id for the user (default field) |
+| profileImage |	File	| users choosen profile image |
+| username | String | user's username |
+| name | String | user's name |
+| password | String | user's password |
+| createdAt	| DateTime | date when post is created (default field) |
+| updatedAt	| DateTime | date when post is last updated (default field) |
+
+**Model: Item**
+| Property	| Type |	Description |
+| --- | --- | --- |
+| objectId | String | unique id for the item (default field) |
+| author	| Pointer to User |	item creator |
+| image |	File	| image that user addes to the item |
+| description |	String |	short description of the item by author |
+| season | String | season for which the user categorizes that item |
+| size | Stiring | size lable for that item |
+| itemType | String | what category this item falls under |
+| price | Number | cost of the item at time of purchase |
+| numberOfTimesWorn | Number | times the user has pressed the wear button |
+| pricePerWear | Number | price divided by number of times worn |
+| createdAt	| DateTime | date when post is created (default field) |
+| updatedAt	| DateTime | date when post is last updated (default field) |
+
+**Model: Outfit**
+| Property	| Type |	Description |
+| --- | --- | --- |
+| objectId | String | unique id for the item (default field) |
+| author	| Pointer to User |	outfit created for the particular creator |
+| items |	Array	| items that are a part of this outfit |
+| season | String | season for this outfit |
+| price | Number | cost of the all the items in the outfit |
+| season | String | season for this outfit |
+| liked | Boolean | field to deternin if a user liked this generated outfit |
+| createdAt	| DateTime | date when post is created (default field) |
+| updatedAt	| DateTime | date when post is last updated (default field) |
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
