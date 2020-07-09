@@ -142,10 +142,7 @@ This app allows you to input your closet items to help assist you with future sh
 | updatedAt	| DateTime | date when post is last updated (default field) |
 
 ### Networking
-- [Add list of network requests by screen ]
 **Screen: Loggin**
 | Type | Description | Code Example |
 | --- | --- | --- |
 | Create/POST | signing up user | [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser * user, NSError *  error) {<br>if (error != nil) {<br>NSLog(@"User log in failed: %@", error.localizedDescription);<br>} else {<br>NSLog(@"User logged in successfully");<br>[self performSegueWithIdentifier:@"loginSegue" sender:nil];}}]; |
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
