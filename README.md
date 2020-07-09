@@ -146,14 +146,6 @@ This app allows you to input your closet items to help assist you with future sh
 **Screen: Loggin**
 | Type | Description | Code Example |
 | --- | --- | --- |
-| Create/POST | signing up user | [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser * user, NSError *  error) {
-        if (error != nil) {
-            NSLog(@"User log in failed: %@", error.localizedDescription);
-        } else {
-            NSLog(@"User logged in successfully");
-            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
-            // display view controller that needs to shown after successful login
-        }
-    }]; |
+| Create/POST | signing up user | [PFUser logInWithUsernameInBackground:email password:password block:^(PFUser * user, NSError *  error) {<br>if (error != nil) {<br>NSLog(@"User log in failed: %@", error.localizedDescription);<br>} else {<br>NSLog(@"User logged in successfully");<br>[self performSegueWithIdentifier:@"loginSegue" sender:nil];}}]; |
 - [Create basic snippets for each Parse network request]
 - [OPTIONAL: List endpoints if using existing API such as Yelp]
