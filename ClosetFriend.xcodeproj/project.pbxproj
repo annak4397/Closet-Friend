@@ -21,6 +21,7 @@
 		D060141A24BCD456009CC4BD /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = D060141924BCD456009CC4BD /* Item.m */; };
 		D060142024BCF781009CC4BD /* Outfit.m in Sources */ = {isa = PBXBuildFile; fileRef = D060141F24BCF781009CC4BD /* Outfit.m */; };
 		D060142324BCFC04009CC4BD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060142224BCFC04009CC4BD /* LoginViewController.m */; };
+		D060142624BD048C009CC4BD /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060142524BD048C009CC4BD /* MainPageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,8 @@
 		D060141F24BCF781009CC4BD /* Outfit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Outfit.m; sourceTree = "<group>"; };
 		D060142124BCFC04009CC4BD /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		D060142224BCFC04009CC4BD /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		D060142424BD048C009CC4BD /* MainPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
+		D060142524BD048C009CC4BD /* MainPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainPageViewController.m; sourceTree = "<group>"; };
 		F90E74C26AD52AD3216C23FF /* Pods-ClosetFriend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosetFriend.release.xcconfig"; path = "Target Support Files/Pods-ClosetFriend/Pods-ClosetFriend.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,6 +210,8 @@
 			children = (
 				D060142124BCFC04009CC4BD /* LoginViewController.h */,
 				D060142224BCFC04009CC4BD /* LoginViewController.m */,
+				D060142424BD048C009CC4BD /* MainPageViewController.h */,
+				D060142524BD048C009CC4BD /* MainPageViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -453,6 +458,7 @@
 				D060141A24BCD456009CC4BD /* Item.m in Sources */,
 				D06013DF24BCC4BF009CC4BD /* AppDelegate.m in Sources */,
 				D060142324BCFC04009CC4BD /* LoginViewController.m in Sources */,
+				D060142624BD048C009CC4BD /* MainPageViewController.m in Sources */,
 				D06013F024BCC4BF009CC4BD /* main.m in Sources */,
 				D06013E224BCC4BF009CC4BD /* SceneDelegate.m in Sources */,
 			);
