@@ -12,7 +12,6 @@
 		CF5B18A219F7BE06D98E63A7 /* Pods_ClosetFriend_ClosetFriendUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A14958D921D207E942A0AD2 /* Pods_ClosetFriend_ClosetFriendUITests.framework */; };
 		D06013DF24BCC4BF009CC4BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D06013DE24BCC4BF009CC4BD /* AppDelegate.m */; };
 		D06013E224BCC4BF009CC4BD /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D06013E124BCC4BF009CC4BD /* SceneDelegate.m */; };
-		D06013E524BCC4BF009CC4BD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D06013E424BCC4BF009CC4BD /* ViewController.m */; };
 		D06013E824BCC4BF009CC4BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D06013E624BCC4BF009CC4BD /* Main.storyboard */; };
 		D06013EA24BCC4BF009CC4BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D06013E924BCC4BF009CC4BD /* Assets.xcassets */; };
 		D06013ED24BCC4BF009CC4BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D06013EB24BCC4BF009CC4BD /* LaunchScreen.storyboard */; };
@@ -21,6 +20,7 @@
 		D060140524BCC4BF009CC4BD /* ClosetFriendUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D060140424BCC4BF009CC4BD /* ClosetFriendUITests.m */; };
 		D060141A24BCD456009CC4BD /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = D060141924BCD456009CC4BD /* Item.m */; };
 		D060142024BCF781009CC4BD /* Outfit.m in Sources */ = {isa = PBXBuildFile; fileRef = D060141F24BCF781009CC4BD /* Outfit.m */; };
+		D060142324BCFC04009CC4BD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060142224BCFC04009CC4BD /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +54,6 @@
 		D06013DE24BCC4BF009CC4BD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D06013E024BCC4BF009CC4BD /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		D06013E124BCC4BF009CC4BD /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		D06013E324BCC4BF009CC4BD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D06013E424BCC4BF009CC4BD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D06013E724BCC4BF009CC4BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D06013E924BCC4BF009CC4BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D06013EC24BCC4BF009CC4BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -71,6 +69,8 @@
 		D060141924BCD456009CC4BD /* Item.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		D060141E24BCF781009CC4BD /* Outfit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Outfit.h; sourceTree = "<group>"; };
 		D060141F24BCF781009CC4BD /* Outfit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Outfit.m; sourceTree = "<group>"; };
+		D060142124BCFC04009CC4BD /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		D060142224BCFC04009CC4BD /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F90E74C26AD52AD3216C23FF /* Pods-ClosetFriend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosetFriend.release.xcconfig"; path = "Target Support Files/Pods-ClosetFriend/Pods-ClosetFriend.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,8 +157,6 @@
 				D06013DE24BCC4BF009CC4BD /* AppDelegate.m */,
 				D06013E024BCC4BF009CC4BD /* SceneDelegate.h */,
 				D06013E124BCC4BF009CC4BD /* SceneDelegate.m */,
-				D06013E324BCC4BF009CC4BD /* ViewController.h */,
-				D06013E424BCC4BF009CC4BD /* ViewController.m */,
 				D06013E624BCC4BF009CC4BD /* Main.storyboard */,
 				D06013E924BCC4BF009CC4BD /* Assets.xcassets */,
 				D06013EB24BCC4BF009CC4BD /* LaunchScreen.storyboard */,
@@ -207,6 +205,8 @@
 		D060141724BCD190009CC4BD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D060142124BCFC04009CC4BD /* LoginViewController.h */,
+				D060142224BCFC04009CC4BD /* LoginViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -451,8 +451,8 @@
 			files = (
 				D060142024BCF781009CC4BD /* Outfit.m in Sources */,
 				D060141A24BCD456009CC4BD /* Item.m in Sources */,
-				D06013E524BCC4BF009CC4BD /* ViewController.m in Sources */,
 				D06013DF24BCC4BF009CC4BD /* AppDelegate.m in Sources */,
+				D060142324BCFC04009CC4BD /* LoginViewController.m in Sources */,
 				D06013F024BCC4BF009CC4BD /* main.m in Sources */,
 				D06013E224BCC4BF009CC4BD /* SceneDelegate.m in Sources */,
 			);

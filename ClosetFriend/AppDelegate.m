@@ -8,8 +8,6 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
-// get rid of this after testing
-#import "Outfit.h"
 
 @interface AppDelegate ()
 
