@@ -10,8 +10,21 @@
 #import <Parse/Parse.h>
 #import "SceneDelegate.h"
 #import "LoginViewController.h"
+#import "ItemCollectionViewCell.h"
+#import "Item.h"
+#import "OutfitCollectionViewCell.h"
+#import "Outfit.h";
 
-@interface MainPageViewController ()
+@interface MainPageViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UICollectionView *itemCollectionView;
+@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *itemsCollectionViewFlowLayout;
+@property (strong, nonatomic) NSArray *itemsArray;
+
+@property (weak, nonatomic) IBOutlet UICollectionView *outfitCollectionView;
+@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *outfitCollectionViewFlowLayout;
+@property (strong, nonatomic) NSArray *outfitsArray;
+
 - (IBAction)onLogoutButtonTap:(id)sender;
 
 @end
@@ -21,6 +34,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.itemCollectionView.dataSource = self;
+    self.itemCollectionView.delegate = self;
+    
+    self.outfitCollectionView.dataSource = self;
+    self.outfitCollectionView.delegate = self;
+    
+    [self.itemsCollectionViewFlowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    
+    CGFloat cellHeight = self.itemCollectionView.frame.size.height;
+    CGFloat cellWidth = cellHeight;
+    self.itemsCollectionViewFlowLayout.itemSize = CGSizeMake(cellWidth, cellHeight);
+    self.itemsCollectionViewFlowLayout.minimumLineSpacing = 0;
+    self.itemsCollectionViewFlowLayout.minimumInteritemSpacing = 0;
+    
+    self.outfitCollectionViewFlowLayout.itemSize = CGSizeMake(cellWidth, cellHeight);
+    self.outfitCollectionViewFlowLayout.minimumLineSpacing = 0;
+    self.outfitCollectionViewFlowLayout.minimumInteritemSpacing = 0;
+    
+    [self loadItems];
 }
 
 /*
@@ -33,6 +66,34 @@
 }
 */
 
+- (void) loadItems{
+    PFQuery *itemQuery = [PFQuery queryWithClassName:@"Item"];
+    [itemQuery orderByDescending:@"createdAt"];
+    itemQuery.limit = 10;
+    [itemQuery findObjectsInBackgroundWithBlock:^(NSArray *items, NSError *error) {
+        if (items != nil) {
+            self.itemsArray = items;
+            //[self.loadingActivity stopAnimating];
+            [self.itemCollectionView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+    
+    PFQuery *outfitQuery = [PFQuery queryWithClassName:@"Outfit"];
+    [outfitQuery orderByDescending:@"createdAt"];
+    outfitQuery.limit = 10;
+    [outfitQuery findObjectsInBackgroundWithBlock:^(NSArray *outfits, NSError *error) {
+        if (outfits != nil) {
+            self.outfitsArray = outfits;
+            //[self.loadingActivity stopAnimating];
+            [self.outfitCollectionView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
 - (IBAction)onLogoutButtonTap:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         if(error){
@@ -44,5 +105,29 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     myDelegate.window.rootViewController = loginViewController;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    if(collectionView == self.itemCollectionView){
+        return self.itemsArray.count;
+    }
+    return self.outfitsArray.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    if(collectionView == self.itemCollectionView){
+        ItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"itemCell" forIndexPath:indexPath];
+        Item *item = self.itemsArray[indexPath.row];
+        [cell setCellItem:item];
+
+        return cell;
+    }
+    else{
+        OutfitCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"outfitCell" forIndexPath:indexPath];
+        Outfit *outfit = self.outfitsArray[indexPath.row];
+        [cell setCellOutfit:outfit];
+
+        return cell;
+    }
 }
 @end
