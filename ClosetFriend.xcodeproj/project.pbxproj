@@ -24,6 +24,10 @@
 		D060142624BD048C009CC4BD /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060142524BD048C009CC4BD /* MainPageViewController.m */; };
 		D060142924BD0CAD009CC4BD /* ItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D060142824BD0CAD009CC4BD /* ItemCollectionViewCell.m */; };
 		D060142C24BD1861009CC4BD /* OutfitCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D060142B24BD1861009CC4BD /* OutfitCollectionViewCell.m */; };
+		D060142F24BD23A1009CC4BD /* ClosetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060142E24BD23A1009CC4BD /* ClosetViewController.m */; };
+		D060143224BD2555009CC4BD /* FavoriteOutfitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060143124BD2555009CC4BD /* FavoriteOutfitViewController.m */; };
+		D060143524BD2801009CC4BD /* ClosetCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D060143424BD2801009CC4BD /* ClosetCollectionViewCell.m */; };
+		D060143824BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D060143724BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +84,14 @@
 		D060142824BD0CAD009CC4BD /* ItemCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemCollectionViewCell.m; sourceTree = "<group>"; };
 		D060142A24BD1860009CC4BD /* OutfitCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutfitCollectionViewCell.h; sourceTree = "<group>"; };
 		D060142B24BD1861009CC4BD /* OutfitCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutfitCollectionViewCell.m; sourceTree = "<group>"; };
+		D060142D24BD23A1009CC4BD /* ClosetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClosetViewController.h; sourceTree = "<group>"; };
+		D060142E24BD23A1009CC4BD /* ClosetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClosetViewController.m; sourceTree = "<group>"; };
+		D060143024BD2555009CC4BD /* FavoriteOutfitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoriteOutfitViewController.h; sourceTree = "<group>"; };
+		D060143124BD2555009CC4BD /* FavoriteOutfitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoriteOutfitViewController.m; sourceTree = "<group>"; };
+		D060143324BD2801009CC4BD /* ClosetCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClosetCollectionViewCell.h; sourceTree = "<group>"; };
+		D060143424BD2801009CC4BD /* ClosetCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClosetCollectionViewCell.m; sourceTree = "<group>"; };
+		D060143624BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoriteOutfitCollectionViewCell.h; sourceTree = "<group>"; };
+		D060143724BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoriteOutfitCollectionViewCell.m; sourceTree = "<group>"; };
 		F90E74C26AD52AD3216C23FF /* Pods-ClosetFriend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosetFriend.release.xcconfig"; path = "Target Support Files/Pods-ClosetFriend/Pods-ClosetFriend.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,6 +212,10 @@
 				D060142824BD0CAD009CC4BD /* ItemCollectionViewCell.m */,
 				D060142A24BD1860009CC4BD /* OutfitCollectionViewCell.h */,
 				D060142B24BD1861009CC4BD /* OutfitCollectionViewCell.m */,
+				D060143324BD2801009CC4BD /* ClosetCollectionViewCell.h */,
+				D060143424BD2801009CC4BD /* ClosetCollectionViewCell.m */,
+				D060143624BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.h */,
+				D060143724BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -222,6 +238,10 @@
 				D060142224BCFC04009CC4BD /* LoginViewController.m */,
 				D060142424BD048C009CC4BD /* MainPageViewController.h */,
 				D060142524BD048C009CC4BD /* MainPageViewController.m */,
+				D060142D24BD23A1009CC4BD /* ClosetViewController.h */,
+				D060142E24BD23A1009CC4BD /* ClosetViewController.m */,
+				D060143024BD2555009CC4BD /* FavoriteOutfitViewController.h */,
+				D060143124BD2555009CC4BD /* FavoriteOutfitViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -464,7 +484,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D060142F24BD23A1009CC4BD /* ClosetViewController.m in Sources */,
 				D060142024BCF781009CC4BD /* Outfit.m in Sources */,
+				D060143524BD2801009CC4BD /* ClosetCollectionViewCell.m in Sources */,
+				D060143224BD2555009CC4BD /* FavoriteOutfitViewController.m in Sources */,
 				D060142924BD0CAD009CC4BD /* ItemCollectionViewCell.m in Sources */,
 				D060141A24BCD456009CC4BD /* Item.m in Sources */,
 				D06013DF24BCC4BF009CC4BD /* AppDelegate.m in Sources */,
@@ -473,6 +496,7 @@
 				D06013F024BCC4BF009CC4BD /* main.m in Sources */,
 				D060142C24BD1861009CC4BD /* OutfitCollectionViewCell.m in Sources */,
 				D06013E224BCC4BF009CC4BD /* SceneDelegate.m in Sources */,
+				D060143824BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
