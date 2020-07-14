@@ -10,7 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol NewItemViewControllerDelegate
+
+- (void)didCreateNewItem;
+
+@end
+
 @interface NewItemViewController : UIViewController
+
+@property (nonatomic, weak) id<NewItemViewControllerDelegate> delegate;
 
 @end
 

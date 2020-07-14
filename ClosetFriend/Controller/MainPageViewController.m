@@ -16,8 +16,9 @@
 #import "Outfit.h";
 #import "ItemDetailViewController.h"
 #import "OutfitDetailViewController.h"
+#import "NewItemViewController.h"
 
-@interface MainPageViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface MainPageViewController () <UICollectionViewDelegate, UICollectionViewDataSource, NewItemViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *itemCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *itemsCollectionViewFlowLayout;
@@ -143,5 +144,9 @@
 
         return cell;
     }
+}
+
+- (void) didCreateNewItem{
+    [self loadItems];
 }
 @end

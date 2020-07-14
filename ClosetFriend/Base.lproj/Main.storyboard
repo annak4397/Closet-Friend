@@ -65,7 +65,7 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="86.383928571428569"/>
         </scene>
-        <!--New Item View Controller-->
+        <!--Add New Item-->
         <scene sceneID="70a-Pe-Vx3">
             <objects>
                 <viewController id="8tp-BR-QJC" customClass="NewItemViewController" sceneMemberID="viewController">
@@ -73,18 +73,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create new item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BmR-9y-WRG">
-                                <rect key="frame" x="145" y="164" width="125" height="21"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R4y-VS-55f" customClass="PFImageView">
+                                <rect key="frame" x="20" y="73" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHt-wa-eiJ">
+                                <rect key="frame" x="59" y="231" width="72" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add photo"/>
+                                <connections>
+                                    <action selector="onAddPhotoButtonTap:" destination="8tp-BR-QJC" eventType="touchUpInside" id="a13-kq-NWp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="lPI-OW-JNx"/>
                     </view>
-                    <navigationItem key="navigationItem" id="W87-GJ-xIR">
+                    <navigationItem key="navigationItem" title="Add New Item" id="W87-GJ-xIR">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="6PI-fL-fyb">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3Bn-21-NUN">
                                 <rect key="frame" x="302" y="13" width="92" height="30"/>
@@ -96,6 +101,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="itemImageView" destination="R4y-VS-55f" id="Zk9-1l-iUm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezf-Bz-f5Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -136,7 +144,7 @@
         <!--Main Page View Controller-->
         <scene sceneID="H4R-xG-A4S">
             <objects>
-                <viewController id="v7d-XE-4YO" customClass="MainPageViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainPageController" id="v7d-XE-4YO" customClass="MainPageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kxy-mE-AaL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -587,7 +595,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Mg5-IR-BE0"/>
-        <segue reference="QW3-b9-938"/>
+        <segue reference="bkB-wj-Tri"/>
         <segue reference="m06-Us-e8n"/>
     </inferredMetricsTieBreakers>
     <resources>

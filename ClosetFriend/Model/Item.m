@@ -38,6 +38,13 @@
     [newPost saveInBackgroundWithBlock: completion];*/
 }
 
++ (void) postItemWithImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock _Nullable)completion{
+    Item *newItem = [Item new];
+    newItem.image = [self getPFFileFromImage:image];
+    
+    [newItem saveInBackgroundWithBlock: completion];
+}
+
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
  
     // check if image is not nil
