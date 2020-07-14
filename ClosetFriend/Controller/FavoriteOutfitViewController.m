@@ -9,6 +9,7 @@
 #import "FavoriteOutfitViewController.h"
 #import "FavoriteOutfitCollectionViewCell.h"
 #import "Outfit.h"
+#import "OutfitDetailViewController.h"
 
 @interface FavoriteOutfitViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *outfitCollectionView;
@@ -32,15 +33,20 @@
     [self loadFavoriteOutfits];
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"outfitDetailSegue"]) {
+        UICollectionViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.outfitCollectionView indexPathForCell:tappedCell];
+        Outfit *tappedOutfit = self.outfitsArray[indexPath.row];
+        OutfitDetailViewController *detailController = [segue destinationViewController];
+        detailController.passedOutfit = tappedOutfit;
+    }
 }
-*/
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.outfitsArray.count;

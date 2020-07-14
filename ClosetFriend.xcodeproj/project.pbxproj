@@ -30,6 +30,7 @@
 		D060143824BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D060143724BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.m */; };
 		D060143B24BE1359009CC4BD /* NewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060143A24BE1359009CC4BD /* NewItemViewController.m */; };
 		D060143E24BE1A40009CC4BD /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060143D24BE1A40009CC4BD /* ItemDetailViewController.m */; };
+		D060144124BE2291009CC4BD /* OutfitDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060144024BE2291009CC4BD /* OutfitDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,8 @@
 		D060143A24BE1359009CC4BD /* NewItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewItemViewController.m; sourceTree = "<group>"; };
 		D060143C24BE1A40009CC4BD /* ItemDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemDetailViewController.h; sourceTree = "<group>"; };
 		D060143D24BE1A40009CC4BD /* ItemDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemDetailViewController.m; sourceTree = "<group>"; };
+		D060143F24BE2291009CC4BD /* OutfitDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutfitDetailViewController.h; sourceTree = "<group>"; };
+		D060144024BE2291009CC4BD /* OutfitDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutfitDetailViewController.m; sourceTree = "<group>"; };
 		F90E74C26AD52AD3216C23FF /* Pods-ClosetFriend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosetFriend.release.xcconfig"; path = "Target Support Files/Pods-ClosetFriend/Pods-ClosetFriend.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -252,6 +255,8 @@
 				D060143A24BE1359009CC4BD /* NewItemViewController.m */,
 				D060143C24BE1A40009CC4BD /* ItemDetailViewController.h */,
 				D060143D24BE1A40009CC4BD /* ItemDetailViewController.m */,
+				D060143F24BE2291009CC4BD /* OutfitDetailViewController.h */,
+				D060144024BE2291009CC4BD /* OutfitDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -498,6 +503,7 @@
 				D060142024BCF781009CC4BD /* Outfit.m in Sources */,
 				D060143524BD2801009CC4BD /* ClosetCollectionViewCell.m in Sources */,
 				D060143224BD2555009CC4BD /* FavoriteOutfitViewController.m in Sources */,
+				D060144124BE2291009CC4BD /* OutfitDetailViewController.m in Sources */,
 				D060143E24BE1A40009CC4BD /* ItemDetailViewController.m in Sources */,
 				D060143B24BE1359009CC4BD /* NewItemViewController.m in Sources */,
 				D060142924BD0CAD009CC4BD /* ItemCollectionViewCell.m in Sources */,

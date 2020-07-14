@@ -15,6 +15,7 @@
 #import "OutfitCollectionViewCell.h"
 #import "Outfit.h";
 #import "ItemDetailViewController.h"
+#import "OutfitDetailViewController.h"
 
 @interface MainPageViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -69,6 +70,13 @@
         Item *tappedItem = self.itemsArray[indexPath.row];
         ItemDetailViewController *detailController = [segue destinationViewController];
         detailController.itemPassed = tappedItem;
+    }
+    else if([[segue identifier] isEqualToString:@"outfitDetailSegue"]) {
+        UICollectionViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.outfitCollectionView indexPathForCell:tappedCell];
+        Outfit *tappedOutfit = self.outfitsArray[indexPath.row];
+        OutfitDetailViewController *detailController = [segue destinationViewController];
+        detailController.passedOutfit = tappedOutfit;
     }
 }
 

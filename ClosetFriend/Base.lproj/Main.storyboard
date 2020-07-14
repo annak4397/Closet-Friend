@@ -219,6 +219,7 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="outfitImage" destination="H9T-So-h36" id="jl8-IY-Rgv"/>
+                                            <segue destination="ZFY-OJ-Lwb" kind="show" identifier="outfitDetailSegue" id="bkB-wj-Tri"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -363,7 +364,32 @@
             </objects>
             <point key="canvasLocation" x="4143.4782608695659" y="-632.14285714285711"/>
         </scene>
-        <!--Favorite Outfit View Controller-->
+        <!--Outfit Detail View Controller-->
+        <scene sceneID="zmC-r2-4wV">
+            <objects>
+                <viewController id="ZFY-OJ-Lwb" customClass="OutfitDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="w10-vK-Wda">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Outfit detail page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6I-lF-lFC">
+                                <rect key="frame" x="141" y="186" width="133" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="U1O-Rj-hyG"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TNW-EZ-hsO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5b0-L1-Jft" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5051" y="-633"/>
+        </scene>
+        <!--Favorite Outfits-->
         <scene sceneID="rzk-eZ-cTJ">
             <objects>
                 <viewController id="SqV-Bq-n4m" customClass="FavoriteOutfitViewController" sceneMemberID="viewController">
@@ -397,6 +423,7 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="outfitImage" destination="MdB-jW-dr9" id="gnT-yt-Tax"/>
+                                            <segue destination="ZFY-OJ-Lwb" kind="show" identifier="outfitDetailSegue" id="QW3-b9-938"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -405,7 +432,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="BYS-j5-Jd2"/>
                     </view>
-                    <navigationItem key="navigationItem" id="7LS-FJ-kjq"/>
+                    <navigationItem key="navigationItem" title="Favorite Outfits" id="7LS-FJ-kjq"/>
                     <connections>
                         <outlet property="favoriteOutfitViewFlow" destination="xfq-r4-Zut" id="0dw-QZ-R8X"/>
                         <outlet property="outfitCollectionView" destination="wvk-2i-9eA" id="kGI-9v-IJ1"/>
@@ -560,6 +587,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Mg5-IR-BE0"/>
+        <segue reference="QW3-b9-938"/>
         <segue reference="m06-Us-e8n"/>
     </inferredMetricsTieBreakers>
     <resources>
