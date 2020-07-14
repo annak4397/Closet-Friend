@@ -9,6 +9,7 @@
 #import "ClosetViewController.h"
 #import "Item.h"
 #import "ClosetCollectionViewCell.h"
+#import "ItemDetailViewController.h"
 
 @interface ClosetViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *itemCollectionView;
@@ -60,14 +61,19 @@
     }];
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"itemDetailSegue"]) {
+        UICollectionViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.itemCollectionView indexPathForCell:tappedCell];
+        Item *tappedItem = self.itemsArray[indexPath.row];
+        ItemDetailViewController *detailController = [segue destinationViewController];
+        detailController.itemPassed = tappedItem;
+    }
 }
-*/
 
 @end
