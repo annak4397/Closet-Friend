@@ -22,8 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *itemTypeTextField;
 - (IBAction)onSaveButtonTap:(id)sender;
 - (IBAction)onAddPhotoButtonTap:(id)sender;
-- (IBAction)beginEditingType:(id)sender;
-- (IBAction)beginEditingSeason:(id)sender;
+- (IBAction)beginEditingSelectionFields:(id)sender;
 
 @property (strong, nonatomic) NSArray *itemTypes;
 @property (strong, nonatomic) NSArray *seasons;
@@ -63,11 +62,7 @@
     }
 }
 
-- (IBAction)beginEditingSeason:(id)sender {
-    [self performSegueWithIdentifier:@"selectionScreenSegue" sender:sender];
-}
-
-- (IBAction)beginEditingType:(id)sender {
+- (IBAction)beginEditingSelectionFields:(id)sender {
     [self performSegueWithIdentifier:@"selectionScreenSegue" sender:sender];
 }
 
@@ -89,7 +84,8 @@
 - (IBAction)onSaveButtonTap:(id)sender {
     //add saving functionlity
     UIImage *itemImage = [self resizeImage:self.itemImageView.image withSize:CGSizeMake(414, 414)];
-    [Item postItemWithImage:itemImage withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    NSNumber *priceNumb = @([self.priceTextView.text floatValue]);
+    [Item postItemWithImage:itemImage withDescription:self.descriptionTextView.text withSeason:self.seasonTextField.text withSize:self.sizeTextView.text withType:self.itemTypeTextField.text withPrice:priceNumb withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded){
             NSLog(@"Item is created");
             
@@ -104,6 +100,22 @@
             NSLog(@"Something went wrong with saving item: %@", error.localizedDescription);
         }
     }];
+    
+    /*[Item postItemWithImage:itemImage withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if(succeeded){
+            NSLog(@"Item is created");
+            
+            SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+            myDelegate.window.rootViewController = navigationController;
+            
+            [self.delegate didCreateNewItem];
+        }
+        else{
+            NSLog(@"Something went wrong with saving item: %@", error.localizedDescription);
+        }
+    }];*/
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {

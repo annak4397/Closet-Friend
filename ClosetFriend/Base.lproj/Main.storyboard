@@ -91,9 +91,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="onSaveButtonTap:" destination="8tp-BR-QJC" eventType="editingDidEnd" id="Ssr-E2-F5J"/>
-                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Size of item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KFD-ai-rnh">
                                 <rect key="frame" x="20" y="322" width="374" height="34"/>
@@ -113,7 +110,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="beginEditingType:" destination="8tp-BR-QJC" eventType="editingDidBegin" id="uWk-H6-wCU"/>
+                                    <action selector="beginEditingSelectionFields:" destination="8tp-BR-QJC" eventType="editingDidBegin" id="9LP-NG-iaQ"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Season" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fm8-pp-a01">
@@ -122,7 +119,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="beginEditingSeason:" destination="8tp-BR-QJC" eventType="editingDidBegin" id="94D-n2-J9P"/>
+                                    <action selector="beginEditingSelectionFields:" destination="8tp-BR-QJC" eventType="editingDidBegin" id="ZFf-HT-QKu"/>
                                 </connections>
                             </textField>
                         </subviews>

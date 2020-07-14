@@ -17,7 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PFUser *author;
 @property (nonatomic, strong) PFFileObject *image;
 @property (nonatomic, strong) NSString *description;
-@property (nonatomic, strong) NSArray *seasons;
+//make array as stretch
+@property (nonatomic, strong) NSString *seasons;
 @property (nonatomic, strong) NSString *size;
 @property (nonatomic, strong) NSString *type;
 @property (nonatomic, strong) NSNumber *price;
@@ -25,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber *pricePerWear;
 
 + (void) postItem: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion;
-+ (void) postItemWithImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock _Nullable)completion;
++ (void) postItemWithImage: ( UIImage * _Nullable )image withDescription: (NSString *)description withSeason: (NSString *)season withSize: (NSString *)size withType: (NSString *)type withPrice: (NSNumber *)price withCompletion: (PFBooleanResultBlock _Nullable)completion;
 @end
 
 NS_ASSUME_NONNULL_END
