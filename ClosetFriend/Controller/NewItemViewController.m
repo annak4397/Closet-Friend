@@ -9,13 +9,24 @@
 #import "NewItemViewController.h"
 #import "SceneDelegate.h"
 #import "MainPageViewController.h"
+#import "SelectorToolViewController.h"
 #import "Item.h"
 @import Parse;
 
 @interface NewItemViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *descriptionTextView;
+@property (weak, nonatomic) IBOutlet UITextField *sizeTextView;
+@property (weak, nonatomic) IBOutlet UITextField *priceTextView;
 @property (weak, nonatomic) IBOutlet PFImageView *itemImageView;
+@property (weak, nonatomic) IBOutlet UITextField *seasonTextField;
+@property (weak, nonatomic) IBOutlet UITextField *itemTypeTextField;
 - (IBAction)onSaveButtonTap:(id)sender;
 - (IBAction)onAddPhotoButtonTap:(id)sender;
+- (IBAction)beginEditingType:(id)sender;
+- (IBAction)beginEditingSeason:(id)sender;
+
+@property (strong, nonatomic) NSArray *itemTypes;
+@property (strong, nonatomic) NSArray *seasons;
 
 @end
 
@@ -27,17 +38,38 @@
     //MainPageController
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     self.delegate = [storyboard instantiateViewControllerWithIdentifier:@"MainPageController"];
+    
+    self.itemTypes = @[@"shirt", @"pants", @"shoes", @"skirt"];
+    self.seasons = @[@"Winter", @"Spring", @"Summer", @"Fall"];
+    
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"selectionScreenSegue"]) {
+        SelectorToolViewController *selectorController = [segue destinationViewController];
+        if(sender == self.itemTypeTextField){
+            selectorController.selectionItems = self.itemTypes;
+        }
+        else if(sender == self.seasonTextField)
+        {
+            selectorController.selectionItems = self.seasons;
+        }
+        selectorController.delegate = sender;
+    }
 }
-*/
+
+- (IBAction)beginEditingSeason:(id)sender {
+    [self performSegueWithIdentifier:@"selectionScreenSegue" sender:sender];
+}
+
+- (IBAction)beginEditingType:(id)sender {
+    [self performSegueWithIdentifier:@"selectionScreenSegue" sender:sender];
+}
 
 - (IBAction)onAddPhotoButtonTap:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
@@ -99,4 +131,17 @@
     
     return newImage;
 }
+/*
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return self.itemTypes.count;
+}
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    return self.itemTypes[row];
+}
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    self.itemTypeTextField.text = self.itemTypes[row];
+}*/
 @end

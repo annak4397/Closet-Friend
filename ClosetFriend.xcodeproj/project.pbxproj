@@ -31,6 +31,7 @@
 		D060143B24BE1359009CC4BD /* NewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060143A24BE1359009CC4BD /* NewItemViewController.m */; };
 		D060143E24BE1A40009CC4BD /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060143D24BE1A40009CC4BD /* ItemDetailViewController.m */; };
 		D060144124BE2291009CC4BD /* OutfitDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060144024BE2291009CC4BD /* OutfitDetailViewController.m */; };
+		D060144424BE511C009CC4BD /* SelectorToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060144324BE511C009CC4BD /* SelectorToolViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		D060143D24BE1A40009CC4BD /* ItemDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemDetailViewController.m; sourceTree = "<group>"; };
 		D060143F24BE2291009CC4BD /* OutfitDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutfitDetailViewController.h; sourceTree = "<group>"; };
 		D060144024BE2291009CC4BD /* OutfitDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutfitDetailViewController.m; sourceTree = "<group>"; };
+		D060144224BE511C009CC4BD /* SelectorToolViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectorToolViewController.h; sourceTree = "<group>"; };
+		D060144324BE511C009CC4BD /* SelectorToolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectorToolViewController.m; sourceTree = "<group>"; };
 		F90E74C26AD52AD3216C23FF /* Pods-ClosetFriend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosetFriend.release.xcconfig"; path = "Target Support Files/Pods-ClosetFriend/Pods-ClosetFriend.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -257,6 +260,8 @@
 				D060143D24BE1A40009CC4BD /* ItemDetailViewController.m */,
 				D060143F24BE2291009CC4BD /* OutfitDetailViewController.h */,
 				D060144024BE2291009CC4BD /* OutfitDetailViewController.m */,
+				D060144224BE511C009CC4BD /* SelectorToolViewController.h */,
+				D060144324BE511C009CC4BD /* SelectorToolViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -500,6 +505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D060142F24BD23A1009CC4BD /* ClosetViewController.m in Sources */,
+				D060144424BE511C009CC4BD /* SelectorToolViewController.m in Sources */,
 				D060142024BCF781009CC4BD /* Outfit.m in Sources */,
 				D060143524BD2801009CC4BD /* ClosetCollectionViewCell.m in Sources */,
 				D060143224BD2555009CC4BD /* FavoriteOutfitViewController.m in Sources */,
