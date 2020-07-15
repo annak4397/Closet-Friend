@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SelectorToolViewController : UIViewController
 @property (weak, nonatomic) NSArray *selectionItems;
 @property (weak, nonatomic) UITextField *delegate;
+@property double tabBarHeight;
 @end
 
 NS_ASSUME_NONNULL_END

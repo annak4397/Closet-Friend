@@ -58,7 +58,9 @@
         {
             selectorController.selectionItems = self.seasons;
         }
+        selectorController.tabBarHeight = self.tabBarController.tabBar.frame.size.height;
         selectorController.delegate = sender;
+        selectorController.modalPresentationStyle = UIModalPresentationCustom;
     }
 }
 

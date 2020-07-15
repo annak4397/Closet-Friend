@@ -7,10 +7,12 @@
 //
 
 #import "SelectorToolViewController.h"
+#import "SceneDelegate.h"
 
 @interface SelectorToolViewController () <UIPickerViewDelegate, UIPickerViewDataSource>
 @property (weak, nonatomic) IBOutlet UIPickerView *selectionPicker;
 - (IBAction)onDoneButtonTap:(id)sender;
+- (IBAction)onCancelButtonTap:(id)sender;
 @property (weak, nonatomic) NSString *selectedItem;
 @end
 
@@ -18,12 +20,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     self.selectionPicker.dataSource = self;
     self.selectionPicker.delegate = self;
     
     self.selectedItem = self.selectionItems[0];
 }
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+    double bottomPadding = myDelegate.window.safeAreaInsets.bottom;
+    [self.view setFrame:CGRectMake(self.view.frame.origin.x, 700 - self.tabBarHeight, self.view.frame.size.width, 200)];
+}
+
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;
 }
@@ -47,6 +58,11 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)onCancelButtonTap:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
+}
 
 - (IBAction)onDoneButtonTap:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{
