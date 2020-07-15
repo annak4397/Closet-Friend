@@ -11,6 +11,7 @@
 #import "MainPageViewController.h"
 #import "SelectorToolViewController.h"
 #import "Item.h"
+#import <QuartzCore/QuartzCore.h>
 @import Parse;
 
 @interface NewItemViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -18,12 +19,15 @@
 @property (weak, nonatomic) IBOutlet UITextField *sizeTextView;
 @property (weak, nonatomic) IBOutlet UITextField *priceTextView;
 @property (weak, nonatomic) IBOutlet PFImageView *itemImageView;
-@property (weak, nonatomic) IBOutlet UITextField *seasonTextField;
-@property (weak, nonatomic) IBOutlet UITextField *itemTypeTextField;
+@property (weak, nonatomic) IBOutlet UIButton *typeButton;
+@property (weak, nonatomic) IBOutlet UIButton *seasonButton;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *seasonLabel;
 - (IBAction)onSaveButtonTap:(id)sender;
 - (IBAction)onAddPhotoButtonTap:(id)sender;
 - (IBAction)beginEditingSelectionFields:(id)sender;
 - (IBAction)onCancelButtonTap:(id)sender;
+- (IBAction)onSelectButtonTap:(id)sender;
 
 @property (strong, nonatomic) NSArray *itemTypes;
 @property (strong, nonatomic) NSArray *seasons;
@@ -52,17 +56,22 @@
     // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"selectionScreenSegue"]) {
         SelectorToolViewController *selectorController = [segue destinationViewController];
-        if(sender == self.itemTypeTextField){
+        if(sender == self.typeButton){
             selectorController.selectionItems = self.itemTypes;
+            selectorController.delegate = self.typeLabel;
         }
-        else if(sender == self.seasonTextField)
+        else if(sender == self.seasonButton)
         {
             selectorController.selectionItems = self.seasons;
+            selectorController.delegate = self.seasonLabel;
         }
         selectorController.tabBarHeight = self.tabBarController.tabBar.frame.size.height;
-        selectorController.delegate = sender;
         selectorController.modalPresentationStyle = UIModalPresentationCustom;
     }
+}
+
+- (IBAction)onSelectButtonTap:(id)sender {
+    [self performSegueWithIdentifier:@"selectionScreenSegue" sender:sender];
 }
 
 - (IBAction)onCancelButtonTap:(id)sender {
@@ -114,7 +123,7 @@
     //add saving functionlity
     UIImage *itemImage = [self resizeImage:self.itemImageView.image withSize:CGSizeMake(414, 414)];
     NSNumber *priceNumb = @([self.priceTextView.text floatValue]);
-    [Item postItemWithImage:itemImage withDescription:self.descriptionTextView.text withSeason:self.seasonTextField.text withSize:self.sizeTextView.text withType:self.itemTypeTextField.text withPrice:priceNumb withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    [Item postItemWithImage:itemImage withDescription:self.descriptionTextView.text withSeason:self.seasonLabel.text withSize:self.sizeTextView.text withType:self.typeLabel.text withPrice:priceNumb withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded){
             NSLog(@"Item is created");
             

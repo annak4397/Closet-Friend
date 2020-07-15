@@ -66,6 +66,7 @@
 
 - (IBAction)onDoneButtonTap:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{
+        [self.delegate setTextColor:[UIColor blackColor]];
         self.delegate.text = self.selectedItem;
     }];
 }
