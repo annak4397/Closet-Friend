@@ -74,18 +74,40 @@
 }
 
 - (IBAction)onAddPhotoButtonTap:(id)sender {
+    
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Choose"
+               message:@"How would you like to add a photo?"
+        preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create a camera action
+        UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Camera"
+                                                            style:UIAlertActionStyleCancel
+                                                          handler:^(UIAlertAction * _Nonnull action) {
+                                                                 imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+                                                                [self presentViewController:imagePickerVC animated:YES completion:nil];
+                                                          }];
+        [alert addAction:cameraAction];
+
+        // create a photo libray action
+        UIAlertAction *photoLibraryAction = [UIAlertAction actionWithTitle:@"Photo Library"
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+                                                                 imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                                                                [self presentViewController:imagePickerVC animated:YES completion:nil];
+                                                         }];
+        [alert addAction:photoLibraryAction];
+        
+        [self presentViewController:alert animated:YES completion:^{}];
     }
     else {
         NSLog(@"Camera 🚫 available so we will use photo library instead");
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:imagePickerVC animated:YES completion:nil];
     }
-
-    [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
 - (IBAction)onSaveButtonTap:(id)sender {
