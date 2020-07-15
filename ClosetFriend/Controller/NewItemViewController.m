@@ -23,6 +23,7 @@
 - (IBAction)onSaveButtonTap:(id)sender;
 - (IBAction)onAddPhotoButtonTap:(id)sender;
 - (IBAction)beginEditingSelectionFields:(id)sender;
+- (IBAction)onCancelButtonTap:(id)sender;
 
 @property (strong, nonatomic) NSArray *itemTypes;
 @property (strong, nonatomic) NSArray *seasons;
@@ -64,6 +65,10 @@
     }
 }
 
+- (IBAction)onCancelButtonTap:(id)sender {
+    [self leaveScreen];
+}
+
 - (IBAction)beginEditingSelectionFields:(id)sender {
     [self performSegueWithIdentifier:@"selectionScreenSegue" sender:sender];
 }
@@ -91,10 +96,7 @@
         if(succeeded){
             NSLog(@"Item is created");
             
-            SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
-            myDelegate.window.rootViewController = navigationController;
+            [self leaveScreen];
             
             [self.delegate didCreateNewItem];
         }
@@ -102,24 +104,13 @@
             NSLog(@"Something went wrong with saving item: %@", error.localizedDescription);
         }
     }];
-    
-    /*[Item postItemWithImage:itemImage withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if(succeeded){
-            NSLog(@"Item is created");
-            
-            SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
-            myDelegate.window.rootViewController = navigationController;
-            
-            [self.delegate didCreateNewItem];
-        }
-        else{
-            NSLog(@"Something went wrong with saving item: %@", error.localizedDescription);
-        }
-    }];*/
 }
-
+- (void) leaveScreen{
+    SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
+    myDelegate.window.rootViewController = navigationController;
+}
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // Get the image captured by the UIImagePickerController
@@ -145,17 +136,4 @@
     
     return newImage;
 }
-/*
--(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    return 1;
-}
--(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return self.itemTypes.count;
-}
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    return self.itemTypes[row];
-}
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
-    self.itemTypeTextField.text = self.itemTypes[row];
-}*/
 @end
