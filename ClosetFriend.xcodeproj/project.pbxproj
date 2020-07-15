@@ -32,6 +32,7 @@
 		D060143E24BE1A40009CC4BD /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060143D24BE1A40009CC4BD /* ItemDetailViewController.m */; };
 		D060144124BE2291009CC4BD /* OutfitDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060144024BE2291009CC4BD /* OutfitDetailViewController.m */; };
 		D060144424BE511C009CC4BD /* SelectorToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060144324BE511C009CC4BD /* SelectorToolViewController.m */; };
+		D060144724BFABA3009CC4BD /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060144624BFABA3009CC4BD /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,8 @@
 		D060144024BE2291009CC4BD /* OutfitDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutfitDetailViewController.m; sourceTree = "<group>"; };
 		D060144224BE511C009CC4BD /* SelectorToolViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectorToolViewController.h; sourceTree = "<group>"; };
 		D060144324BE511C009CC4BD /* SelectorToolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectorToolViewController.m; sourceTree = "<group>"; };
+		D060144524BFABA3009CC4BD /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		D060144624BFABA3009CC4BD /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		F90E74C26AD52AD3216C23FF /* Pods-ClosetFriend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosetFriend.release.xcconfig"; path = "Target Support Files/Pods-ClosetFriend/Pods-ClosetFriend.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -262,6 +265,8 @@
 				D060144024BE2291009CC4BD /* OutfitDetailViewController.m */,
 				D060144224BE511C009CC4BD /* SelectorToolViewController.h */,
 				D060144324BE511C009CC4BD /* SelectorToolViewController.m */,
+				D060144524BFABA3009CC4BD /* ProfileViewController.h */,
+				D060144624BFABA3009CC4BD /* ProfileViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -514,6 +519,7 @@
 				D060143B24BE1359009CC4BD /* NewItemViewController.m in Sources */,
 				D060142924BD0CAD009CC4BD /* ItemCollectionViewCell.m in Sources */,
 				D060141A24BCD456009CC4BD /* Item.m in Sources */,
+				D060144724BFABA3009CC4BD /* ProfileViewController.m in Sources */,
 				D06013DF24BCC4BF009CC4BD /* AppDelegate.m in Sources */,
 				D060142324BCFC04009CC4BD /* LoginViewController.m in Sources */,
 				D060142624BD048C009CC4BD /* MainPageViewController.m in Sources */,
