@@ -42,7 +42,7 @@
     
     Item *newItem = [Item new];
     newItem.image = [self getPFFileFromImage:image];
-    newItem.description = description;
+    newItem[@"description"] = description;
     newItem.seasons = season;
     newItem.type = type;
     newItem.author = [PFUser currentUser];
