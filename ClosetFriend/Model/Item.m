@@ -38,7 +38,7 @@
     [newPost saveInBackgroundWithBlock: completion];*/
 }
 
-+ (void) postItemWithImage: ( UIImage * _Nullable )image withDescription: (NSString *)description withSeason: (NSString *)season withSize: (NSString *)size withType: (NSString *)type withPrice: (NSNumber *)price withCompletion: (PFBooleanResultBlock _Nullable)completion{
++ (void) postItemWithImage: ( UIImage * _Nullable )image withDescription: (NSString *)description withSeason: (NSString *)season withSize: (NSString *)size withType: (NSString *)type withPrice: (int)price withCompletion: (PFBooleanResultBlock _Nullable)completion{
     
     Item *newItem = [Item new];
     newItem.image = [self getPFFileFromImage:image];
@@ -48,7 +48,7 @@
     newItem.author = [PFUser currentUser];
     newItem.size = size;
     newItem.price = price;
-    newItem.numberOfTimesWorn = @(0);
+    newItem.numberOfTimesWorn = 0;
     newItem.pricePerWear = price;
     
     [newItem saveInBackgroundWithBlock: completion];

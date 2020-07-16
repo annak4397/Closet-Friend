@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *timesWornLabel;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *seasonLabel;
+- (IBAction)onPlusButtonTap:(id)sender;
 
 @end
 
@@ -26,13 +27,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self loadScreen];
+}
+
+- (void)loadScreen{
     self.itemImage.file = self.itemPassed.image;
     [self.itemImage loadInBackground];
     self.descriptionLabel.text = self.itemPassed[@"description"];
     self.sizeLabel.text = self.itemPassed.size;
-    self.priceLabel.text = [NSString stringWithFormat:@"%@", self.itemPassed.price];
-    self.pricePerWearLabel.text = [NSString stringWithFormat:@"%@", self.itemPassed.pricePerWear];
-    self.timesWornLabel.text = [NSString stringWithFormat:@"%@", self.itemPassed.numberOfTimesWorn];
+    self.priceLabel.text = [NSString stringWithFormat:@"%d", self.itemPassed.price];
+    self.pricePerWearLabel.text = [NSString stringWithFormat:@"%d", self.itemPassed.pricePerWear];
+    self.timesWornLabel.text = [NSString stringWithFormat:@"%d", self.itemPassed.numberOfTimesWorn];
     self.typeLabel.text = self.itemPassed.type;
     self.seasonLabel.text = self.itemPassed.seasons;
 }
@@ -47,4 +52,17 @@
 }
 */
 
+- (IBAction)onPlusButtonTap:(id)sender {
+    self.itemPassed.numberOfTimesWorn += 1;
+    self.itemPassed.pricePerWear = self.itemPassed.price / self.itemPassed.numberOfTimesWorn;
+    [self.itemPassed saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error){
+            NSLog(@"there was an error: %@", error.localizedDescription);
+        }
+        else{
+            NSLog(@"updated item");
+            [self loadScreen];
+        }
+    }];
+}
 @end

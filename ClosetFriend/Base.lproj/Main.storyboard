@@ -740,6 +740,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xUx-Tf-D5x">
+                                        <rect key="frame" x="290" y="418" width="20" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="plus.circle" catalog="system"/>
+                                        <connections>
+                                            <action selector="onPlusButtonTap:" destination="JDE-d5-ifW" eventType="touchUpInside" id="DQe-rr-9nb"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Shj-Ae-DaP"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="zpu-T3-DgI"/>
@@ -893,6 +901,7 @@
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="square.grid.2x2.fill" catalog="system" width="128" height="114"/>
         <image name="tag" catalog="system" width="128" height="116"/>
         <image name="tag.fill" catalog="system" width="128" height="116"/>

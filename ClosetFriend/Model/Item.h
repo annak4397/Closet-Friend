@@ -21,12 +21,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *seasons;
 @property (nonatomic, strong) NSString *size;
 @property (nonatomic, strong) NSString *type;
-@property (nonatomic, strong) NSNumber *price;
-@property (nonatomic, strong) NSNumber *numberOfTimesWorn;
-@property (nonatomic, strong) NSNumber *pricePerWear;
+@property int price;
+@property int numberOfTimesWorn;
+@property int pricePerWear;
 
 + (void) postItem: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion;
-+ (void) postItemWithImage: ( UIImage * _Nullable )image withDescription: (NSString *)description withSeason: (NSString *)season withSize: (NSString *)size withType: (NSString *)type withPrice: (NSNumber *)price withCompletion: (PFBooleanResultBlock _Nullable)completion;
++ (void) postItemWithImage: ( UIImage * _Nullable )image withDescription: (NSString *)description withSeason: (NSString *)season withSize: (NSString *)size withType: (NSString *)type withPrice: (int)price withCompletion: (PFBooleanResultBlock _Nullable)completion;
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image;
 @end
 
