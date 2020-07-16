@@ -122,8 +122,8 @@
 - (IBAction)onSaveButtonTap:(id)sender {
     //add saving functionlity
     UIImage *itemImage = [self resizeImage:self.itemImageView.image withSize:CGSizeMake(414, 414)];
-    NSNumber *priceNumb = @([self.priceTextView.text floatValue]);
-    [Item postItemWithImage:itemImage withDescription:self.descriptionTextView.text withSeason:self.seasonLabel.text withSize:self.sizeTextView.text withType:self.typeLabel.text withPrice:priceNumb withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    int priceInt = [self.priceTextView.text intValue];
+    [Item postItemWithImage:itemImage withDescription:self.descriptionTextView.text withSeason:self.seasonLabel.text withSize:self.sizeTextView.text withType:self.typeLabel.text withPrice:priceInt withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded){
             NSLog(@"Item is created");
             

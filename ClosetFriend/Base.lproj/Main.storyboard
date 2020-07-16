@@ -288,6 +288,29 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Generate"/>
+                                <connections>
+                                    <action selector="onGenerateButtonTap:" destination="GlY-0q-BDU" eventType="touchUpInside" id="nPA-vw-gbt"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q32-pV-skB" customClass="PFImageView">
+                                <rect key="frame" x="87" y="545" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lrv-pU-zHZ">
+                                <rect key="frame" x="87" y="218" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yeR-Ba-CrQ">
+                                <rect key="frame" x="87" y="370" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PL3-N2-Wnj">
+                                <rect key="frame" x="184" y="507" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create"/>
+                                <connections>
+                                    <action selector="onCreateButtonTap:" destination="GlY-0q-BDU" eventType="touchUpInside" id="cww-zl-b8K"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -295,7 +318,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Generate New Outfit" id="pZ2-cM-EIw"/>
                     <connections>
+                        <outlet property="outfitImageView" destination="q32-pV-skB" id="72N-Ro-vPr"/>
                         <outlet property="seasonLabel" destination="QEN-Gi-xdb" id="dTL-nE-ZEL"/>
+                        <outlet property="testImage" destination="lrv-pU-zHZ" id="pOt-D5-oIc"/>
+                        <outlet property="testImage2" destination="yeR-Ba-CrQ" id="JqK-Zs-NFp"/>
                         <segue destination="F5y-qI-DFs" kind="presentation" identifier="selectionScreenSegue" id="Ojf-cS-rBN"/>
                     </connections>
                 </viewController>
