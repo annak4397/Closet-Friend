@@ -33,6 +33,7 @@
 		D060144124BE2291009CC4BD /* OutfitDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060144024BE2291009CC4BD /* OutfitDetailViewController.m */; };
 		D060144424BE511C009CC4BD /* SelectorToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060144324BE511C009CC4BD /* SelectorToolViewController.m */; };
 		D060144724BFABA3009CC4BD /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060144624BFABA3009CC4BD /* ProfileViewController.m */; };
+		D060144A24C0CE47009CC4BD /* NewOutfitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060144924C0CE47009CC4BD /* NewOutfitViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,8 @@
 		D060144324BE511C009CC4BD /* SelectorToolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectorToolViewController.m; sourceTree = "<group>"; };
 		D060144524BFABA3009CC4BD /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		D060144624BFABA3009CC4BD /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		D060144824C0CE47009CC4BD /* NewOutfitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewOutfitViewController.h; sourceTree = "<group>"; };
+		D060144924C0CE47009CC4BD /* NewOutfitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewOutfitViewController.m; sourceTree = "<group>"; };
 		F90E74C26AD52AD3216C23FF /* Pods-ClosetFriend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosetFriend.release.xcconfig"; path = "Target Support Files/Pods-ClosetFriend/Pods-ClosetFriend.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -267,6 +270,8 @@
 				D060144324BE511C009CC4BD /* SelectorToolViewController.m */,
 				D060144524BFABA3009CC4BD /* ProfileViewController.h */,
 				D060144624BFABA3009CC4BD /* ProfileViewController.m */,
+				D060144824C0CE47009CC4BD /* NewOutfitViewController.h */,
+				D060144924C0CE47009CC4BD /* NewOutfitViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -527,6 +532,7 @@
 				D060142C24BD1861009CC4BD /* OutfitCollectionViewCell.m in Sources */,
 				D06013E224BCC4BF009CC4BD /* SceneDelegate.m in Sources */,
 				D060143824BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.m in Sources */,
+				D060144A24C0CE47009CC4BD /* NewOutfitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

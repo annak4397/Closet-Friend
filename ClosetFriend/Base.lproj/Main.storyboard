@@ -243,6 +243,7 @@
                         <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="1Qh-me-d42"/>
                     </view>
+                    <navigationItem key="navigationItem" id="nXN-KN-vFU"/>
                     <size key="freeformSize" width="414" height="200"/>
                     <connections>
                         <outlet property="selectionPicker" destination="CS1-Ta-1wu" id="AGa-ok-Wwf"/>
@@ -252,17 +253,51 @@
             </objects>
             <point key="canvasLocation" x="4028.985507246377" y="85.714285714285708"/>
         </scene>
-        <!--View Controller-->
+        <!--Generate New Outfit-->
         <scene sceneID="vPd-cV-d3j">
             <objects>
-                <viewController id="GlY-0q-BDU" sceneMemberID="viewController">
+                <viewController id="GlY-0q-BDU" customClass="NewOutfitViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vo1-Ec-UUC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Season:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daX-yz-otm">
+                                <rect key="frame" x="20" y="87" width="62" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choosen Season" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEN-Gi-xdb">
+                                <rect key="frame" x="90" y="87" width="130" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omH-Uk-Dev">
+                                <rect key="frame" x="335" y="87" width="42" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="select"/>
+                                <connections>
+                                    <action selector="onSelectButtonTap:" destination="GlY-0q-BDU" eventType="touchUpInside" id="NHW-vd-itr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbW-TK-Nru">
+                                <rect key="frame" x="164" y="154" width="88" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Generate"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="2ZO-oL-nEv"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pZ2-cM-EIw"/>
+                    <navigationItem key="navigationItem" title="Generate New Outfit" id="pZ2-cM-EIw"/>
+                    <connections>
+                        <outlet property="seasonLabel" destination="QEN-Gi-xdb" id="dTL-nE-ZEL"/>
+                        <segue destination="F5y-qI-DFs" kind="presentation" identifier="selectionScreenSegue" id="Ojf-cS-rBN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TiD-o1-sbb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -894,6 +929,7 @@
         <segue reference="Mg5-IR-BE0"/>
         <segue reference="bkB-wj-Tri"/>
         <segue reference="m06-Us-e8n"/>
+        <segue reference="Ojf-cS-rBN"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="house.fill" catalog="system" width="128" height="106"/>
