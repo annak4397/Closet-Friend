@@ -7,6 +7,7 @@
 //
 
 #import "Outfit.h"
+#import "Item.h"
 
 @implementation Outfit
 
@@ -15,6 +16,7 @@
 @dynamic price;
 @dynamic season;
 @dynamic likedByUsers;
+@dynamic image;
 
 + (nonnull NSString *)parseClassName {
     return @"Outfit";
@@ -31,6 +33,19 @@
     newPost.commentCount = @(0);
     
     [newPost saveInBackgroundWithBlock: completion];*/
+}
+
++ (void) postOutfit: ( UIImage * _Nullable )image withItems: (NSArray *)items withSeason: (NSString *)season withPrice: (int)price withCompletion: (PFBooleanResultBlock  _Nullable)completion {
+    
+    Outfit *newOutfit = [Outfit new];
+    
+    newOutfit.image = [Item getPFFileFromImage:image];
+    newOutfit.season = season;
+    newOutfit.price = price;
+    newOutfit.author = [PFUser currentUser];
+
+    
+    [newOutfit saveInBackgroundWithBlock: completion];
 }
 
 @end

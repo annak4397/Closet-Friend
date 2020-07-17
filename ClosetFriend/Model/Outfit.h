@@ -15,12 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) PFUser *author;
 @property (nonatomic, strong) NSArray *items;
-@property (nonatomic, strong) NSNumber *price;
+@property int price;
 @property (nonatomic, strong) NSString *season;
 @property (nonatomic, strong) NSArray *likedByUsers;
+@property (nonatomic, strong) PFFileObject *image;
 
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion;
-
++ (void) postOutfit: ( UIImage * _Nullable )image withItems: (NSArray *)items withSeason: (NSString *)season withPrice: (int)price withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 @end
 
 NS_ASSUME_NONNULL_END

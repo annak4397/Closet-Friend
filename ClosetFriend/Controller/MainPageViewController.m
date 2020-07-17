@@ -17,8 +17,9 @@
 #import "ItemDetailViewController.h"
 #import "OutfitDetailViewController.h"
 #import "NewItemViewController.h"
+#import "NewOutfitViewController.h"
 
-@interface MainPageViewController () <UICollectionViewDelegate, UICollectionViewDataSource, NewItemViewControllerDelegate>
+@interface MainPageViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *itemCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *itemsCollectionViewFlowLayout;
@@ -45,6 +46,7 @@
     self.outfitCollectionView.delegate = self;
     
     [self.itemsCollectionViewFlowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    [self.outfitCollectionViewFlowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     
     CGFloat cellHeight = self.itemCollectionView.frame.size.height;
     CGFloat cellWidth = cellHeight;
@@ -55,8 +57,9 @@
     self.outfitCollectionViewFlowLayout.itemSize = CGSizeMake(cellWidth, cellHeight);
     self.outfitCollectionViewFlowLayout.minimumLineSpacing = 0;
     self.outfitCollectionViewFlowLayout.minimumInteritemSpacing = 0;
-    
-    [self loadItems];
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [self loadData];
 }
 
 #pragma mark - Navigation
@@ -81,7 +84,7 @@
     }
 }
 
-- (void) loadItems{
+- (void) loadData{
     PFQuery *itemQuery = [PFQuery queryWithClassName:@"Item"];
     [itemQuery orderByDescending:@"createdAt"];
     itemQuery.limit = 10;
@@ -144,9 +147,5 @@
 
         return cell;
     }
-}
-
-- (void) didCreateNewItem{
-    [self loadItems];
 }
 @end

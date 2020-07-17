@@ -9,6 +9,7 @@
 #import "NewOutfitViewController.h"
 #import "SelectorToolViewController.h"
 #import "Item.h"
+#import "Outfit.h"
 @import Parse;
 
 @interface NewOutfitViewController ()
@@ -17,8 +18,6 @@
 - (IBAction)onGenerateButtonTap:(id)sender;
 @property (strong, nonatomic) NSArray *seasons;
 @property (weak, nonatomic) IBOutlet PFImageView *outfitImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *testImage;
-@property (weak, nonatomic) IBOutlet UIImageView *testImage2;
 @property (strong, nonatomic) NSArray *itemsInOutfit;
 @property (strong, nonatomic) NSMutableArray *imagesFromItems;
 - (IBAction)onCreateButtonTap:(id)sender;
@@ -32,22 +31,7 @@
     // Do any additional setup after loading the view.
     self.seasons = @[@"Winter", @"Spring", @"Summer", @"Fall"];
     [self setItemsInOutfit];
-    /*UIImage *image1 = self.testImage.image;
-    UIImage *image2 = self.testImage2.image;
-
-    CGSize size = CGSizeMake(image1.size.width, image1.size.height + image2.size.height);
-
-    UIGraphicsBeginImageContext(size);
-
-    [image1 drawInRect:CGRectMake(0,0,size.width, image1.size.height)];
-    [image2 drawInRect:CGRectMake(0,image1.size.height,size.width, image2.size.height)];
-
-    UIImage *finalImage = UIGraphicsGetImageFromCurrentImageContext();
-
-    UIGraphicsEndImageContext();
-
-    //set finalImage to IBOulet UIImageView
-    self.outfitImageView.image = finalImage;*/
+    self.imagesFromItems = [[NSMutableArray alloc] init];
 }
 
 #pragma mark - Navigation
@@ -71,7 +55,7 @@
         if(data){
             NSLog(@"got the data");
             UIImage *image = [UIImage imageWithData:data];
-            self.testImage.image = image;
+            [self.imagesFromItems insertObject:image atIndex:0];
         }
         if(error){
             NSLog(@"there was an error %@", error.localizedDescription);
@@ -81,24 +65,12 @@
         if(data){
             NSLog(@"got the data");
             UIImage *image = [UIImage imageWithData:data];
-            self.testImage2.image = image;
+            [self.imagesFromItems insertObject:image atIndex:0];
         }
         if(error){
             NSLog(@"there was an error %@", error.localizedDescription);
         }
     }];
-    
-    //will remove this later when i figure out how to handle the asyncness of data calls
-    //self.outfitImageView.image = [self imageByCombiningImage:self.testImage.image withImage:self.testImage2.image];
-    
-    //self.testImage.file = self.itemsInOutfit[0][@"image"];
-    //self.testImage2.file = self.itemsInOutfit[1][@"image"];
-    
-    /*[self.itemImage loadInBackground];
-    
-    self.imagesFromItems = [[NSMutableArray alloc] init];
-    [self getImagesFromItems:self.itemsInOutfit withImages:self.imagesFromItems];
-    self.outfitImageView.image = [self imageByCombiningImage:self.imagesFromItems[0] withImage:self.imagesFromItems[1]];*/
 }
 
 - (void)setItemsInOutfit{
@@ -120,7 +92,6 @@
         //UIImage *image = [[UIImage alloc] init];
         [item[@"image"] getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
             if(data){
-                NSLog(@"got the data");
                 UIImage *image = [UIImage imageWithData:data];
                 [images insertObject:image atIndex:0];
             }
@@ -155,6 +126,20 @@
     [self performSegueWithIdentifier:@"selectionScreenSegue" sender:sender];
 }
 - (IBAction)onCreateButtonTap:(id)sender {
-    self.outfitImageView.image = [self imageByCombiningImage:self.testImage.image withImage:self.testImage2.image];
+    self.outfitImageView.image = [self imageByCombiningImage:self.imagesFromItems[0] withImage:self.imagesFromItems[1]];
+    
+    int totalPrice = 0;
+    for (Item *currentItem in self.itemsInOutfit){
+        totalPrice += currentItem.price;
+    }
+    
+    [Outfit postOutfit:self.outfitImageView.image withItems:self.itemsInOutfit withSeason:self.seasonLabel.text withPrice:totalPrice withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error){
+            NSLog(@"soemthing went wrong: %@", error.localizedDescription);
+        }
+        else{
+            NSLog(@"Saved outfit!");
+        }
+    }];
 }
 @end

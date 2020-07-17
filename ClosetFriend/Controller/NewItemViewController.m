@@ -39,9 +39,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //MainPageController
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    self.delegate = [storyboard instantiateViewControllerWithIdentifier:@"MainPageController"];
     
     self.itemTypes = @[@"shirt", @"pants", @"shoes", @"skirt"];
     self.seasons = @[@"Winter", @"Spring", @"Summer", @"Fall"];
@@ -128,8 +125,6 @@
             NSLog(@"Item is created");
             
             [self leaveScreen];
-            
-            [self.delegate didCreateNewItem];
         }
         else{
             NSLog(@"Something went wrong with saving item: %@", error.localizedDescription);
