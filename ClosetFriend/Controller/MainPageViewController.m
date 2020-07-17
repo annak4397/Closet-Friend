@@ -101,6 +101,7 @@
     PFQuery *outfitQuery = [PFQuery queryWithClassName:@"Outfit"];
     [outfitQuery orderByDescending:@"createdAt"];
     outfitQuery.limit = 10;
+    [outfitQuery whereKey:@"liked" equalTo:@(1)];
     [outfitQuery findObjectsInBackgroundWithBlock:^(NSArray *outfits, NSError *error) {
         if (outfits != nil) {
             self.outfitsArray = outfits;

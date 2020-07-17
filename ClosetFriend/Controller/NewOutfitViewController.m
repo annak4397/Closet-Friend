@@ -21,6 +21,9 @@
 @property (strong, nonatomic) NSArray *itemsInOutfit;
 @property (strong, nonatomic) NSMutableArray *imagesFromItems;
 - (IBAction)onCreateButtonTap:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *bookmarkButton;
+- (IBAction)onBookmarkButtonTap:(id)sender;
+@property (weak, nonatomic) Outfit *generatedOutfit;
 
 @end
 
@@ -32,6 +35,15 @@
     self.seasons = @[@"Winter", @"Spring", @"Summer", @"Fall"];
     [self setItemsInOutfit];
     self.imagesFromItems = [[NSMutableArray alloc] init];
+    [self clearScreen];
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [self clearScreen];
+}
+-(void)clearScreen{
+    self.seasonLabel.text = @"Select a season";
+    self.outfitImageView.image = NULL;
+    self.bookmarkButton.hidden = YES;
 }
 
 #pragma mark - Navigation
@@ -127,7 +139,7 @@
 }
 - (IBAction)onCreateButtonTap:(id)sender {
     self.outfitImageView.image = [self imageByCombiningImage:self.imagesFromItems[0] withImage:self.imagesFromItems[1]];
-    
+    self.bookmarkButton.hidden = NO;
     int totalPrice = 0;
     for (Item *currentItem in self.itemsInOutfit){
         totalPrice += currentItem.price;
@@ -141,5 +153,29 @@
             NSLog(@"Saved outfit!");
         }
     }];
+}
+- (IBAction)onBookmarkButtonTap:(id)sender {
+    self.bookmarkButton.selected = YES;
+    
+    PFQuery *outfitQuery = [PFQuery queryWithClassName:@"Outfit"];
+    [outfitQuery orderByDescending:@"createdAt"];
+    outfitQuery.limit = 1;
+    [outfitQuery findObjectsInBackgroundWithBlock:^(NSArray *outfits, NSError *error) {
+        if (outfits != nil) {
+            self.generatedOutfit = outfits[0];
+            self.generatedOutfit.liked = YES;
+            [self.generatedOutfit saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if(succeeded){
+                    NSLog(@"favotired outfit");
+                }
+                else{
+                    NSLog(@"error :%@", error.localizedDescription);
+                }
+            }];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+    
 }
 @end

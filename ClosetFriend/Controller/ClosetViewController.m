@@ -49,7 +49,6 @@
 - (void) loadItems{
     PFQuery *itemQuery = [PFQuery queryWithClassName:@"Item"];
     [itemQuery orderByDescending:@"createdAt"];
-    itemQuery.limit = 10;
     [itemQuery findObjectsInBackgroundWithBlock:^(NSArray *items, NSError *error) {
         if (items != nil) {
             self.itemsArray = items;
