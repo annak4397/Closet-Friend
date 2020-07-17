@@ -43,6 +43,7 @@
     newOutfit.season = season;
     newOutfit.price = price;
     newOutfit.author = [PFUser currentUser];
+    newOutfit.items = items;
 
     
     [newOutfit saveInBackgroundWithBlock: completion];

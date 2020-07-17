@@ -102,6 +102,7 @@
     [outfitQuery orderByDescending:@"createdAt"];
     outfitQuery.limit = 10;
     [outfitQuery whereKey:@"liked" equalTo:@(1)];
+    [outfitQuery includeKey:@"items"];
     [outfitQuery findObjectsInBackgroundWithBlock:^(NSArray *outfits, NSError *error) {
         if (outfits != nil) {
             self.outfitsArray = outfits;

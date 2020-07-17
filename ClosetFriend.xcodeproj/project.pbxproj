@@ -34,6 +34,7 @@
 		D060144424BE511C009CC4BD /* SelectorToolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060144324BE511C009CC4BD /* SelectorToolViewController.m */; };
 		D060144724BFABA3009CC4BD /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060144624BFABA3009CC4BD /* ProfileViewController.m */; };
 		D060144A24C0CE47009CC4BD /* NewOutfitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060144924C0CE47009CC4BD /* NewOutfitViewController.m */; };
+		D063609124C258F400633E47 /* ItemInOutfitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D063609024C258F400633E47 /* ItemInOutfitTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,8 @@
 		D060144624BFABA3009CC4BD /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		D060144824C0CE47009CC4BD /* NewOutfitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewOutfitViewController.h; sourceTree = "<group>"; };
 		D060144924C0CE47009CC4BD /* NewOutfitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewOutfitViewController.m; sourceTree = "<group>"; };
+		D063608F24C258F400633E47 /* ItemInOutfitTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemInOutfitTableViewCell.h; sourceTree = "<group>"; };
+		D063609024C258F400633E47 /* ItemInOutfitTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemInOutfitTableViewCell.m; sourceTree = "<group>"; };
 		F90E74C26AD52AD3216C23FF /* Pods-ClosetFriend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosetFriend.release.xcconfig"; path = "Target Support Files/Pods-ClosetFriend/Pods-ClosetFriend.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -234,6 +237,8 @@
 				D060143424BD2801009CC4BD /* ClosetCollectionViewCell.m */,
 				D060143624BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.h */,
 				D060143724BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.m */,
+				D063608F24C258F400633E47 /* ItemInOutfitTableViewCell.h */,
+				D063609024C258F400633E47 /* ItemInOutfitTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -528,6 +533,7 @@
 				D06013DF24BCC4BF009CC4BD /* AppDelegate.m in Sources */,
 				D060142324BCFC04009CC4BD /* LoginViewController.m in Sources */,
 				D060142624BD048C009CC4BD /* MainPageViewController.m in Sources */,
+				D063609124C258F400633E47 /* ItemInOutfitTableViewCell.m in Sources */,
 				D06013F024BCC4BF009CC4BD /* main.m in Sources */,
 				D060142C24BD1861009CC4BD /* OutfitCollectionViewCell.m in Sources */,
 				D06013E224BCC4BF009CC4BD /* SceneDelegate.m in Sources */,
