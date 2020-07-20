@@ -66,8 +66,11 @@
 
 - (IBAction)onDoneButtonTap:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{
-        [self.delegate setTextColor:[UIColor blackColor]];
-        self.delegate.text = self.selectedItem;
+        [self.label setTextColor:[UIColor blackColor]];
+        self.label.text = self.selectedItem;
+        if(self.delegate != nil){
+            [self.delegate didSelectSeason];
+        }
     }];
 }
 @end

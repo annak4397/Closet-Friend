@@ -10,10 +10,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol SelectViewControllerDelegate
+
+- (void)didSelectSeason;
+
+@end
+
 @interface SelectorToolViewController : UIViewController
 @property (weak, nonatomic) NSArray *selectionItems;
-@property (weak, nonatomic) UILabel *delegate;
+@property (weak, nonatomic) UILabel *label;
 @property double tabBarHeight;
+@property (nonatomic, weak) id<SelectViewControllerDelegate> delegate;
+
 @end
 
 NS_ASSUME_NONNULL_END

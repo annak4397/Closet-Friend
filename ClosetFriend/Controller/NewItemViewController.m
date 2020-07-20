@@ -55,12 +55,12 @@
         SelectorToolViewController *selectorController = [segue destinationViewController];
         if(sender == self.typeButton){
             selectorController.selectionItems = self.itemTypes;
-            selectorController.delegate = self.typeLabel;
+            selectorController.label = self.typeLabel;
         }
         else if(sender == self.seasonButton)
         {
             selectorController.selectionItems = self.seasons;
-            selectorController.delegate = self.seasonLabel;
+            selectorController.label = self.seasonLabel;
         }
         selectorController.tabBarHeight = self.tabBarController.tabBar.frame.size.height;
         selectorController.modalPresentationStyle = UIModalPresentationCustom;
@@ -91,7 +91,7 @@
         
         // create a camera action
         UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Camera"
-                                                            style:UIAlertActionStyleCancel
+                                                            style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * _Nonnull action) {
                                                                  imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
                                                                 [self presentViewController:imagePickerVC animated:YES completion:nil];
