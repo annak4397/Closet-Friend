@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SelectorToolViewController : UIViewController
 @property (weak, nonatomic) NSArray *selectionItems;
 @property (weak, nonatomic) UILabel *label;
+@property (weak, nonatomic) NSString *string;
 @property double tabBarHeight;
 @property (nonatomic, weak) id<SelectViewControllerDelegate> delegate;
 

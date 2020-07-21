@@ -374,7 +374,7 @@
         <scene sceneID="H4R-xG-A4S">
             <objects>
                 <viewController storyboardIdentifier="MainPageController" id="v7d-XE-4YO" customClass="MainPageViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Kxy-mE-AaL">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="mainPage" id="Kxy-mE-AaL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -554,7 +554,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Filter"/>
                                 <connections>
-                                    <segue destination="2uY-6X-0m6" kind="show" id="3Qj-hM-Fan"/>
+                                    <segue destination="2uY-6X-0m6" kind="show" identifier="filterSegue" id="3Qj-hM-Fan"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -568,34 +568,45 @@
             </objects>
             <point key="canvasLocation" x="3293" y="-632"/>
         </scene>
-        <!--View Controller-->
+        <!--Filter View Controller-->
         <scene sceneID="GIK-1f-PHQ">
             <objects>
-                <viewController id="2uY-6X-0m6" sceneMemberID="viewController">
+                <viewController id="2uY-6X-0m6" customClass="FilterViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="egw-WC-EFM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Filter Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDp-IJ-sFA">
-                                <rect key="frame" x="153" y="145" width="108" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sort by:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqj-an-BCs">
+                                <rect key="frame" x="20" y="95" width="61" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Newest to Oldest" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lK5-x2-ZHz">
+                                <rect key="frame" x="89" y="95" width="147" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bR-bt-gYA">
+                                <rect key="frame" x="261" y="90" width="42" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="select"/>
+                                <connections>
+                                    <action selector="selectButton:" destination="2uY-6X-0m6" eventType="touchUpInside" id="71o-Hf-k2b"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="euv-b3-5CS"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0XV-Pw-N5t">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="rsh-Tf-YF1">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="f4t-7u-Vpr">
-                                <rect key="frame" x="302" y="13" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Done"/>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="0XV-Pw-N5t"/>
+                    <connections>
+                        <outlet property="sortTypeLabel" destination="lK5-x2-ZHz" id="IQ0-2Z-uxW"/>
+                        <segue destination="F5y-qI-DFs" kind="presentation" identifier="selectionScreenSegue" id="Ssh-VI-qya"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ah-UP-vy5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -992,7 +1003,7 @@
         <!--Navigation Controller-->
         <scene sceneID="bmG-tZ-RgN">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V5q-Cg-4Ro" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="closetNavController" automaticallyAdjustsScrollViewInsets="NO" id="V5q-Cg-4Ro" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="square.grid.2x2.fill" catalog="system" id="hfN-Uw-4s8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1aL-ba-gRj">
@@ -1067,10 +1078,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FfG-HI-Wu6"/>
+        <segue reference="Gl6-Jt-ux2"/>
         <segue reference="bkB-wj-Tri"/>
-        <segue reference="m06-Us-e8n"/>
-        <segue reference="Ojf-cS-rBN"/>
+        <segue reference="hN0-IM-iSe"/>
+        <segue reference="Ssh-VI-qya"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bookmark" catalog="system" width="112" height="128"/>

@@ -10,11 +10,14 @@
 #import "Item.h"
 #import "ClosetCollectionViewCell.h"
 #import "ItemDetailViewController.h"
+#import "FilterViewController.h"
 
-@interface ClosetViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface ClosetViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, ClosetViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *itemCollectionView;
 @property (strong, nonatomic) NSArray *itemsArray;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *closetLayoutViewFlow;
+@property (strong, nonatomic) NSString *sortClosetBy;
+@property (strong, nonatomic) NSArray *sortTypes;
 
 @end
 
@@ -32,6 +35,10 @@
     self.closetLayoutViewFlow.minimumLineSpacing = 0;
     self.closetLayoutViewFlow.minimumInteritemSpacing = 0;
     
+    // if I keep the mini closet on the main page I will need to change this becuase it resets the filter preferences
+    self.sortTypes = @[@"Newest to oldest", @"Oldest to newest", @"Price high to low", @"Price low to high"];
+    self.sortClosetBy = self.sortTypes[0];
+    
     [self loadItems];
 }
 
@@ -47,12 +54,29 @@
     
 }
 - (void) loadItems{
+    [self filterCloset:self.sortClosetBy];
+}
+
+- (void)filterCloset:(NSString *)sortBY{
     PFQuery *itemQuery = [PFQuery queryWithClassName:@"Item"];
-    [itemQuery orderByDescending:@"createdAt"];
+    self.sortClosetBy = sortBY;
+    switch ([self.sortTypes indexOfObject:sortBY]) {
+        case 0:
+            [itemQuery orderByDescending:@"createdAt"];
+            break;
+        case 1:
+            [itemQuery orderByAscending:@"createdAt"];
+            break;
+        case 2:
+            [itemQuery orderByDescending:@"price"];
+            break;
+        case 3:
+            [itemQuery orderByAscending:@"price"];
+            break;
+    }
     [itemQuery findObjectsInBackgroundWithBlock:^(NSArray *items, NSError *error) {
         if (items != nil) {
             self.itemsArray = items;
-            //[self.loadingActivity stopAnimating];
             [self.itemCollectionView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
@@ -72,6 +96,10 @@
         Item *tappedItem = self.itemsArray[indexPath.row];
         ItemDetailViewController *detailController = [segue destinationViewController];
         detailController.itemPassed = tappedItem;
+    }
+    else if([[segue identifier] isEqualToString:@"filterSegue"]) {
+        FilterViewController *filterController = [segue destinationViewController];
+        filterController.delegate = self;
     }
 }
 

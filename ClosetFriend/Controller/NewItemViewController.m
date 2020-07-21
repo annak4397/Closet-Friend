@@ -40,8 +40,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.itemTypes = @[@"shirt", @"pants", @"shoes", @"skirt"];
-    self.seasons = @[@"Winter", @"Spring", @"Summer", @"Fall"];
+    self.itemTypes = @[@"Shirt", @"Jacket", @"Dress", @"Skirt", @"Pants", @"Shorts",  @"Shoes"];
+    self.seasons = @[@"Spring", @"Summer", @"Fall", @"Winter"];
     
 }
 

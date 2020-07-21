@@ -33,7 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.seasons = @[@"Winter", @"Spring", @"Summer", @"Fall"];
+    self.seasons = @[@"Spring", @"Summer", @"Fall", @"Winter"];
     self.group = dispatch_group_create();
     [self clearScreen];
 }
