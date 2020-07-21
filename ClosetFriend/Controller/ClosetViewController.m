@@ -36,7 +36,7 @@
     self.closetLayoutViewFlow.minimumInteritemSpacing = 0;
     
     // if I keep the mini closet on the main page I will need to change this becuase it resets the filter preferences
-    self.sortTypes = @[@"Newest to oldest", @"Oldest to newest", @"Price high to low", @"Price low to high"];
+    self.sortTypes = @[@"Newest to oldest", @"Oldest to newest", @"Price high to low", @"Price low to high", @"Times worn high to low", @"Times worn low to high"];
     self.sortClosetBy = self.sortTypes[0];
     
     [self loadItems];
@@ -72,6 +72,12 @@
             break;
         case 3:
             [itemQuery orderByAscending:@"price"];
+            break;
+        case 4:
+            [itemQuery orderByDescending:@"numberOfTimesWorn"];
+            break;
+        case 5:
+            [itemQuery orderByAscending:@"numberOfTimesWorn"];
             break;
     }
     [itemQuery findObjectsInBackgroundWithBlock:^(NSArray *items, NSError *error) {
