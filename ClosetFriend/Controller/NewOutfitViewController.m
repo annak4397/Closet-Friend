@@ -17,7 +17,7 @@
 - (IBAction)onSelectButtonTap:(id)sender;
 @property (strong, nonatomic) NSArray *seasons;
 @property (weak, nonatomic) IBOutlet PFImageView *outfitImageView;
-@property (strong, nonatomic) NSArray *itemsInOutfit;
+@property (strong, nonatomic) NSMutableArray *itemsInOutfit;
 @property (strong, nonatomic) NSMutableArray *imagesFromItems;
 - (IBAction)onCreateButtonTap:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *bookmarkButton;
@@ -25,7 +25,9 @@
 @property (weak, nonatomic) Outfit *generatedOutfit;
 @property (weak, nonatomic) IBOutlet UIButton *createButton;
 @property (strong, nonatomic) dispatch_group_t group;
+@property (strong, nonatomic) dispatch_group_t gettingItems;
 @property (strong, nonatomic) Outfit *outfitCreated;
+@property (strong, nonatomic) NSArray *allItems;
 
 @end
 
@@ -36,6 +38,7 @@
     // Do any additional setup after loading the view.
     self.seasons = @[@"Spring", @"Summer", @"Fall", @"Winter"];
     self.group = dispatch_group_create();
+    self.gettingItems = dispatch_group_create();
     [self clearScreen];
 }
 -(void)viewDidAppear:(BOOL)animated{
@@ -66,24 +69,93 @@
     }
 }
 - (void)didSelectSeason{
-    [self setItemsInOutfit];
-}
-
-// gets the items for the outfit in a spesific season
-- (void)setItemsInOutfit{
+    self.allItems = [[NSArray alloc] init];
+    self.outfitImageView.image = NULL;
+    self.bookmarkButton.hidden = YES;
+    self.createButton.hidden = YES;
+    // get all the items for that season
     PFQuery *itemQuery = [PFQuery queryWithClassName:@"Item"];
-    [itemQuery orderByDescending:@"createdAt"];
-    itemQuery.limit = 2;
+    [itemQuery whereKey:@"seasons" equalTo: self.seasonLabel.text];
     [itemQuery findObjectsInBackgroundWithBlock:^(NSArray *items, NSError *error) {
         if (items != nil) {
-            self.itemsInOutfit = items;
-            [self getImagesFromItems:self.itemsInOutfit];
-            dispatch_group_wait(self.group, 3);
-            self.createButton.hidden = NO;
+            self.allItems = items;
+            [self setItemsInOutfit];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+}
+
+// gets the items for the outfit in a spesific season
+- (void)setItemsInOutfit{
+    self.itemsInOutfit = [[NSMutableArray alloc] init];
+    // do i choose a dress?
+    int randomNumber = arc4random() % 2;
+    // yes dress
+    if(randomNumber == 1){
+        NSArray *dresses = [self getAllItemsOfType:@"Dress"];
+        randomNumber = arc4random() % dresses.count;
+        //[self.itemsInOutfit addObject:dresses[randomNumber]];
+        [self.itemsInOutfit insertObject:dresses[randomNumber] atIndex:self.itemsInOutfit.count];
+    }
+    // no choose an outfit with a shirt
+    else{
+        // choose if there will be a jacket
+        randomNumber = arc4random() % 2;
+        // if yes, add jacket
+        if(randomNumber == 1){
+            NSArray *jackets = [self getAllItemsOfType:@"Jacket"];
+            randomNumber = arc4random() % jackets.count;
+            //[self.itemsInOutfit addObject:jackets[randomNumber]];
+            [self.itemsInOutfit insertObject:jackets[randomNumber] atIndex:self.itemsInOutfit.count];
+        }
+        
+        // continue to shirt
+        NSArray *shirts = [self getAllItemsOfType:@"Shirt"];
+        randomNumber = arc4random() % shirts.count;
+        //[self.itemsInOutfit addObject:shirts[randomNumber]];
+        [self.itemsInOutfit insertObject:shirts[randomNumber] atIndex:self.itemsInOutfit.count];
+        
+        // choose bottom type
+        randomNumber = (arc4random() % 3);
+        NSString *typeOfBottom;
+        switch (randomNumber) {
+            case 0:
+                typeOfBottom = @"Skirt";
+                break;
+            case 1:
+                typeOfBottom = @"Pants";
+                break;
+            case 2:
+                typeOfBottom = @"Shorts";
+                break;
+        }
+        
+        // choose bottoms
+        NSArray *bottoms = [self getAllItemsOfType:typeOfBottom];
+        randomNumber = arc4random() % bottoms.count;
+        //[self.itemsInOutfit addObject:bottoms[randomNumber]];
+        [self.itemsInOutfit insertObject:bottoms[randomNumber] atIndex:self.itemsInOutfit.count];
+    }
+    // get shoes at the end
+    NSArray *shoes = [self getAllItemsOfType:@"Shoes"];
+    randomNumber = arc4random() % shoes.count;
+    //[self.itemsInOutfit addObject:shoes[randomNumber]];
+    [self.itemsInOutfit insertObject:shoes[randomNumber] atIndex:self.itemsInOutfit.count];
+    
+    [self getImagesFromItems:self.itemsInOutfit];
+    dispatch_group_wait(self.group, 3);
+    self.createButton.hidden = NO;
+}
+
+- (NSArray *) getAllItemsOfType: (NSString *) type{
+    NSMutableArray *itemsFound = [[NSMutableArray alloc] init];
+    for(Item *currentItem in self.allItems){
+        if([currentItem.type isEqualToString:type]){
+            [itemsFound addObject:currentItem];
+        }
+    }
+    return itemsFound;
 }
 
 // use this for multiple images

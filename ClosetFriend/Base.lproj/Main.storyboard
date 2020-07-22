@@ -275,7 +275,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q32-pV-skB" customClass="PFImageView">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q32-pV-skB" customClass="PFImageView">
                                 <rect key="frame" x="37" y="263" width="340" height="479"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1227,7 +1227,7 @@
         <segue reference="Gl6-Jt-ux2"/>
         <segue reference="bkB-wj-Tri"/>
         <segue reference="hN0-IM-iSe"/>
-        <segue reference="Ssh-VI-qya"/>
+        <segue reference="Ojf-cS-rBN"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bookmark" catalog="system" width="112" height="128"/>
