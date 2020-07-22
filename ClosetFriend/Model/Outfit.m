@@ -35,7 +35,7 @@
     [newPost saveInBackgroundWithBlock: completion];*/
 }
 
-+ (void) postOutfit: ( UIImage * _Nullable )image withItems: (NSArray *)items withSeason: (NSString *)season withPrice: (int)price withCompletion: (PFBooleanResultBlock  _Nullable)completion {
++ (Outfit *) postOutfit: ( UIImage * _Nullable )image withItems: (NSArray *)items withSeason: (NSString *)season withPrice: (int)price withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
     Outfit *newOutfit = [Outfit new];
     
@@ -47,6 +47,8 @@
 
     
     [newOutfit saveInBackgroundWithBlock: completion];
+    
+    return newOutfit;
 }
 
 @end

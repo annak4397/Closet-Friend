@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PFFileObject *image;
 
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion;
-+ (void) postOutfit: ( UIImage * _Nullable )image withItems: (NSArray *)items withSeason: (NSString *)season withPrice: (int)price withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (Outfit *) postOutfit: ( UIImage * _Nullable )image withItems: (NSArray *)items withSeason: (NSString *)season withPrice: (int)price withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 @end
 
 NS_ASSUME_NONNULL_END

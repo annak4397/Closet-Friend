@@ -25,6 +25,7 @@
 @property (weak, nonatomic) Outfit *generatedOutfit;
 @property (weak, nonatomic) IBOutlet UIButton *createButton;
 @property (strong, nonatomic) dispatch_group_t group;
+@property (strong, nonatomic) Outfit *outfitCreated;
 
 @end
 
@@ -142,7 +143,7 @@
         totalPrice += currentItem.price;
     }
     
-    [Outfit postOutfit:self.outfitImageView.image withItems:self.itemsInOutfit withSeason:self.seasonLabel.text withPrice:totalPrice withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+    self.outfitCreated = [Outfit postOutfit:self.outfitImageView.image withItems:self.itemsInOutfit withSeason:self.seasonLabel.text withPrice:totalPrice withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(error){
             NSLog(@"soemthing went wrong: %@", error.localizedDescription);
         }
@@ -155,26 +156,14 @@
 // favorite the outfit
 - (IBAction)onBookmarkButtonTap:(id)sender {
     self.bookmarkButton.selected = YES;
-    
-    PFQuery *outfitQuery = [PFQuery queryWithClassName:@"Outfit"];
-    [outfitQuery orderByDescending:@"createdAt"];
-    outfitQuery.limit = 1;
-    [outfitQuery findObjectsInBackgroundWithBlock:^(NSArray *outfits, NSError *error) {
-        if (outfits != nil) {
-            self.generatedOutfit = outfits[0];
-            self.generatedOutfit.liked = YES;
-            [self.generatedOutfit saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                if(succeeded){
-                    NSLog(@"favotired outfit");
-                }
-                else{
-                    NSLog(@"error :%@", error.localizedDescription);
-                }
-            }];
-        } else {
-            NSLog(@"%@", error.localizedDescription);
+    self.outfitCreated.liked = YES;
+    [self.outfitCreated saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(succeeded){
+            NSLog(@"favotired outfit");
+        }
+        else{
+            NSLog(@"error :%@", error.localizedDescription);
         }
     }];
-    
 }
 @end
