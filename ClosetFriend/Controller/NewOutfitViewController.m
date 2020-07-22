@@ -174,7 +174,7 @@
                 NSLog(@"there was an error %@", error.localizedDescription);
             }
         }];
-        [NSThread sleepForTimeInterval:.5f];
+        [NSThread sleepForTimeInterval:2.0f];
     }
 }
 
@@ -196,8 +196,8 @@
     height = 0;
     for(int i = 0; i < images.count; i++){
         UIImage *currentImage = images[i];
-        y = height;
-        height += currentImage.size.height;
+        y += height;
+        height = currentImage.size.height;
         width = size.width;
         [currentImage drawInRect:CGRectMake(0,y,width, height)];
     }

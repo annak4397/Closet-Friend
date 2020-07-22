@@ -855,7 +855,7 @@
                                         <state key="selected" image="bookmark.fill" catalog="system"/>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="147" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1du-fh-WFh">
-                                        <rect key="frame" x="0.0" y="437" width="414" height="349"/>
+                                        <rect key="frame" x="0.0" y="437" width="414" height="258"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
@@ -1263,7 +1263,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Gl6-Jt-ux2"/>
+        <segue reference="FfG-HI-Wu6"/>
         <segue reference="bkB-wj-Tri"/>
         <segue reference="hN0-IM-iSe"/>
         <segue reference="Ojf-cS-rBN"/>
