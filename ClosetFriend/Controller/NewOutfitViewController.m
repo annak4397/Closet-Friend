@@ -167,13 +167,14 @@
         [item[@"image"] getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
             if(data){
                 UIImage *image = [UIImage imageWithData:data];
-                [self.imagesFromItems insertObject:image atIndex:0];
+                [self.imagesFromItems insertObject:image atIndex:self.imagesFromItems.count];
                 dispatch_group_leave(self.group);
             }
             if(error){
                 NSLog(@"there was an error %@", error.localizedDescription);
             }
         }];
+        [NSThread sleepForTimeInterval:.5f];
     }
 }
 
