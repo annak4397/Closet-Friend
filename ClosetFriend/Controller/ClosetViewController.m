@@ -18,6 +18,10 @@
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *closetLayoutViewFlow;
 @property (strong, nonatomic) NSString *sortClosetBy;
 @property (strong, nonatomic) NSArray *sortTypes;
+@property (strong, nonatomic) NSArray *seasonTypes;
+@property (strong, nonatomic) NSArray *itemTypes;
+@property (strong, nonatomic) NSArray *seasonTypesSelected;
+@property (strong, nonatomic) NSArray *itemTypesSelected;
 
 @end
 
@@ -37,7 +41,11 @@
     
     // if I keep the mini closet on the main page I will need to change this becuase it resets the filter preferences
     self.sortTypes = @[@"Newest to oldest", @"Oldest to newest", @"Price high to low", @"Price low to high", @"Times worn high to low", @"Times worn low to high"];
+    self.itemTypes = @[@"Shirt", @"Jacket", @"Dress", @"Skirt", @"Pants", @"Shorts",  @"Shoes"];
+    self.seasonTypes = @[@"Spring", @"Summer", @"Fall", @"Winter"];
     self.sortClosetBy = self.sortTypes[0];
+    self.seasonTypesSelected = self.seasonTypes;
+    self.itemTypesSelected = self.itemTypes;
     
     [self loadItems];
 }
@@ -54,12 +62,19 @@
     
 }
 - (void) loadItems{
-    [self filterCloset:self.sortClosetBy];
+    [self filterCloset:self.sortClosetBy withSeasons:self.seasonTypesSelected withTypes:self.itemTypesSelected];
 }
 
-- (void)filterCloset:(NSString *)sortBY{
-    PFQuery *itemQuery = [PFQuery queryWithClassName:@"Item"];
+- (void)filterCloset:(NSString *)sortBY withSeasons: (NSArray *)seasons withTypes:(nonnull NSArray *)types{
     self.sortClosetBy = sortBY;
+    self.seasonTypesSelected = seasons;
+    self.itemTypesSelected = types;
+    
+    PFQuery *itemQuery = [PFQuery queryWithClassName:@"Item"];
+    
+    [itemQuery whereKey:@"seasons" containedIn:self.seasonTypesSelected];
+    [itemQuery whereKey:@"type" containedIn:self.itemTypesSelected];
+    
     switch ([self.sortTypes indexOfObject:sortBY]) {
         case 0:
             [itemQuery orderByDescending:@"createdAt"];

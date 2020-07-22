@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ClosetViewControllerDelegate
 
-- (void)filterCloset: (NSString *)sortBY;
+- (void)filterCloset: (NSString *)sortBY withSeasons: (NSArray *)seasons withTypes: (NSArray *) types;
 
 @end
 

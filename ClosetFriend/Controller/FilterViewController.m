@@ -14,6 +14,21 @@
 @property (weak, nonatomic) IBOutlet UILabel *sortTypeLabel;
 - (IBAction)selectButton:(id)sender;
 @property (strong, nonatomic) NSArray *sortTypes;
+@property (strong, nonatomic) NSArray *itemTypes;
+@property (strong, nonatomic) NSArray *seasonTypes;
+@property (weak, nonatomic) IBOutlet UISwitch *springSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *summerSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *fallSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *winterSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *shirtSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *jacketSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *dressSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *skirtSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *pantsSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *shortsSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *shoesSwitch;
+@property (strong, nonatomic) NSArray *seasonsSwitches;
+@property (strong, nonatomic) NSArray *typeSwitches;
 @end
 
 @implementation FilterViewController
@@ -22,6 +37,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.sortTypes = @[@"Newest to oldest", @"Oldest to newest", @"Price high to low", @"Price low to high", @"Times worn high to low", @"Times worn low to high"];;
+    self.itemTypes = @[@"Shirt", @"Jacket", @"Dress", @"Skirt", @"Pants", @"Shorts",  @"Shoes"];
+    self.seasonTypes = @[@"Spring", @"Summer", @"Fall", @"Winter"];
+    
+    self.seasonsSwitches = @[self.springSwitch, self.summerSwitch, self.fallSwitch, self.winterSwitch];
+    
+    self.typeSwitches = @[self.shirtSwitch, self.jacketSwitch, self.dressSwitch, self.skirtSwitch, self.pantsSwitch, self.shortsSwitch, self.shoesSwitch];
 }
 
 #pragma mark - Navigation
@@ -43,7 +64,23 @@
   [super viewWillDisappear:animated];
 
   if (self.isMovingFromParentViewController) {
-    [self.delegate filterCloset:self.sortTypeLabel.text];
+      NSMutableArray *selectedSeasons = [[NSMutableArray alloc] init];
+      for(int i = 0; i < self.seasonTypes.count; i++){
+          UISwitch *currentSwitch = self.seasonsSwitches[i];
+          if(currentSwitch.on){
+              [selectedSeasons addObject:self.seasonTypes[i]];
+          }
+      }
+      
+      NSMutableArray *selectedTypes = [[NSMutableArray alloc] init];
+      for(int i = 0; i < self.itemTypes.count; i++){
+          UISwitch *currentSwitch = self.typeSwitches[i];
+          if(currentSwitch.on){
+              [selectedTypes addObject:self.itemTypes[i]];
+          }
+      }
+      
+      [self.delegate filterCloset:self.sortTypeLabel.text withSeasons:selectedSeasons withTypes:selectedTypes];
   }
 }
 
