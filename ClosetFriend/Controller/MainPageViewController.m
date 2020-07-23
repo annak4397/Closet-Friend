@@ -115,6 +115,10 @@
 }
 
 - (IBAction)onLogoutButtonTap:(id)sender {
+    if([FBSDKAccessToken currentAccessToken]){
+        FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+        [login logOut];
+    }
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         if(error){
             NSLog(@"Some error occured during logout: %@", error.localizedDescription);
