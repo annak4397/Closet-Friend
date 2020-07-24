@@ -10,6 +10,8 @@
 #import "Item.h"
 #import "ItemInOutfitTableViewCell.h"
 #import "ItemDetailViewController.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 @import Parse;
 
 @interface OutfitDetailViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -29,8 +31,8 @@
     // Do any additional setup after loading the view.
     self.itemsTableView.dataSource = self;
     self.itemsTableView.delegate = self;
-    
     [self loadScreen];
+    [self setUpShare];
 }
 - (void)loadScreen{
     self.outfitImage.file = self.passedOutfit.image;
@@ -77,4 +79,16 @@
     return self.items.count;
 }
 
+- (void) setUpShare {
+    FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
+    photo.image = self.outfitImage.image;
+    photo.userGenerated = YES;
+    FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
+    content.photos = @[photo];
+    
+    FBSDKShareButton *shareButton = [[FBSDKShareButton alloc] init];
+    shareButton.shareContent = content;
+    shareButton.center = CGPointMake(self.priceLabel.layer.position.x + 210, self.priceLabel.layer.position.y + 95);
+    [self.view addSubview:shareButton];
+}
 @end
