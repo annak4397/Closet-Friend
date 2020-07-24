@@ -36,7 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.seasons = @[@"Spring", @"Summer", @"Fall", @"Winter"];
+    self.seasons = @[@"Spring", @"Summer", @"Fall", @"Winter", @"Any season"];
     self.group = dispatch_group_create();
     self.gettingItems = dispatch_group_create();
     [self clearScreen];
@@ -75,7 +75,9 @@
     self.createButton.hidden = YES;
     // get all the items for that season
     PFQuery *itemQuery = [PFQuery queryWithClassName:@"Item"];
-    [itemQuery whereKey:@"seasons" equalTo: self.seasonLabel.text];
+    if(![self.seasonLabel.text isEqualToString:@"Any season"]){
+        [itemQuery whereKey:@"seasons" equalTo: self.seasonLabel.text];
+    }
     [itemQuery findObjectsInBackgroundWithBlock:^(NSArray *items, NSError *error) {
         if (items != nil) {
             self.allItems = items;

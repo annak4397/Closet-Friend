@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="86.383928571428569"/>
+            <point key="canvasLocation" x="123" y="-230"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="lfc-m4-9dI">
@@ -143,7 +143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGi-EB-mVw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="123.18840579710145" y="734.59821428571422"/>
+            <point key="canvasLocation" x="123" y="436"/>
         </scene>
         <!--Add New Item-->
         <scene sceneID="70a-Pe-Vx3">
@@ -1343,7 +1343,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="xdd-Hb-4Gb"/>
+        <segue reference="0wX-Hc-0I8"/>
         <segue reference="FfG-HI-Wu6"/>
         <segue reference="bkB-wj-Tri"/>
         <segue reference="hN0-IM-iSe"/>
