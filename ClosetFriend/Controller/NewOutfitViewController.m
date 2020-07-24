@@ -40,6 +40,11 @@
     self.group = dispatch_group_create();
     self.gettingItems = dispatch_group_create();
     [self clearScreen];
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
+    tapGestureRecognizer.numberOfTapsRequired = 2;
+    [self.outfitImageView setUserInteractionEnabled:YES];
+    [self.outfitImageView addGestureRecognizer:tapGestureRecognizer];
 }
 -(void)viewDidAppear:(BOOL)animated{
     [self clearScreen];
@@ -240,5 +245,10 @@
             NSLog(@"error :%@", error.localizedDescription);
         }
     }];
+}
+- (IBAction)didTap:(UITapGestureRecognizer *)sender {
+    CGPoint location = [sender locationInView:self.view];
+    NSLog(@"did double tap");
+    [self onBookmarkButtonTap:nil];
 }
 @end
