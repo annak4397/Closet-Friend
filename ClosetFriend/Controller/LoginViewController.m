@@ -76,20 +76,6 @@
 }
 
 - (IBAction)onSignUpButtonTap:(id)sender {
-    PFUser *newUser = [PFUser user];
-       
-       // set user properties
-       newUser.username = self.usernameTextField.text;
-       newUser.password = self.passwordTextField.text;
-       
-       // call sign up function on the object
-       [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
-           if (error != nil) {
-               NSLog(@"Error: %@", error.localizedDescription);
-           } else {
-               NSLog(@"User registered successfully");
-               [self performSegueWithIdentifier:@"loginSegue" sender:nil];
-           }
-       }];
+    [self performSegueWithIdentifier:@"signUpSegue" sender:nil];
 }
 @end

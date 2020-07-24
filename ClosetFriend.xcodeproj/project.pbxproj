@@ -37,6 +37,7 @@
 		D063609124C258F400633E47 /* ItemInOutfitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D063609024C258F400633E47 /* ItemInOutfitTableViewCell.m */; };
 		D063609424C651FB00633E47 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = D063609324C651FB00633E47 /* Constants.m */; };
 		D063609724C78DA200633E47 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D063609624C78DA200633E47 /* FilterViewController.m */; };
+		D063609A24CA629C00633E47 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D063609924CA629C00633E47 /* SignUpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,8 @@
 		D063609324C651FB00633E47 /* Constants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		D063609524C78DA200633E47 /* FilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
 		D063609624C78DA200633E47 /* FilterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
+		D063609824CA629C00633E47 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		D063609924CA629C00633E47 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		DB04265B03E9DEC9CB3E285B /* Pods-ClosetFriendTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosetFriendTests.release.xcconfig"; path = "Target Support Files/Pods-ClosetFriendTests/Pods-ClosetFriendTests.release.xcconfig"; sourceTree = "<group>"; };
 		E34E5E33F02557EFEFF13867 /* Pods_ClosetFriend.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClosetFriend.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F60D1B5868E2701851E36305 /* Pods-ClosetFriend-ClosetFriendUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosetFriend-ClosetFriendUITests.release.xcconfig"; path = "Target Support Files/Pods-ClosetFriend-ClosetFriendUITests/Pods-ClosetFriend-ClosetFriendUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -267,6 +270,8 @@
 			children = (
 				D060142124BCFC04009CC4BD /* LoginViewController.h */,
 				D060142224BCFC04009CC4BD /* LoginViewController.m */,
+				D063609824CA629C00633E47 /* SignUpViewController.h */,
+				D063609924CA629C00633E47 /* SignUpViewController.m */,
 				D060142424BD048C009CC4BD /* MainPageViewController.h */,
 				D060142524BD048C009CC4BD /* MainPageViewController.m */,
 				D060142D24BD23A1009CC4BD /* ClosetViewController.h */,
@@ -547,6 +552,7 @@
 				D060142624BD048C009CC4BD /* MainPageViewController.m in Sources */,
 				D063609124C258F400633E47 /* ItemInOutfitTableViewCell.m in Sources */,
 				D06013F024BCC4BF009CC4BD /* main.m in Sources */,
+				D063609A24CA629C00633E47 /* SignUpViewController.m in Sources */,
 				D060142C24BD1861009CC4BD /* OutfitCollectionViewCell.m in Sources */,
 				D06013E224BCC4BF009CC4BD /* SceneDelegate.m in Sources */,
 				D060143824BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.m in Sources */,
