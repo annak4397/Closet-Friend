@@ -360,13 +360,6 @@
                                                     <action selector="onSelectButtonTap:" destination="GlY-0q-BDU" eventType="touchUpInside" id="NHW-vd-itr"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PL3-N2-Wnj">
-                                                <rect key="frame" x="184" y="60.5" width="46" height="30"/>
-                                                <state key="normal" title="Create"/>
-                                                <connections>
-                                                    <action selector="onCreateButtonTap:" destination="GlY-0q-BDU" eventType="touchUpInside" id="cww-zl-b8K"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SuL-Wo-opE">
                                                 <rect key="frame" x="373.5" y="64.5" width="20.5" height="22"/>
                                                 <state key="normal" image="heart" catalog="system"/>
@@ -388,20 +381,17 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="daX-yz-otm" firstAttribute="leading" secondItem="yIf-Yq-o19" secondAttribute="leading" constant="20" id="6gd-41-5lo"/>
-                                            <constraint firstItem="SuL-Wo-opE" firstAttribute="centerY" secondItem="PL3-N2-Wnj" secondAttribute="centerY" id="H2D-t9-G2O"/>
                                             <constraint firstItem="daX-yz-otm" firstAttribute="top" secondItem="yIf-Yq-o19" secondAttribute="top" constant="20" id="JJQ-cx-ndc"/>
                                             <constraint firstItem="omH-Uk-Dev" firstAttribute="centerY" secondItem="QEN-Gi-xdb" secondAttribute="centerY" id="Jvb-Dq-LaW"/>
                                             <constraint firstAttribute="trailing" secondItem="SuL-Wo-opE" secondAttribute="trailing" constant="20" id="KZA-PS-9rp"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="omH-Uk-Dev" secondAttribute="trailing" constant="20" id="Lic-2G-HOW"/>
-                                            <constraint firstItem="PL3-N2-Wnj" firstAttribute="top" secondItem="omH-Uk-Dev" secondAttribute="bottom" constant="15" id="PjG-XT-3of"/>
+                                            <constraint firstItem="q32-pV-skB" firstAttribute="top" secondItem="SuL-Wo-opE" secondAttribute="bottom" constant="12" id="OnW-JE-osD"/>
                                             <constraint firstItem="omH-Uk-Dev" firstAttribute="leading" secondItem="QEN-Gi-xdb" secondAttribute="trailing" constant="8" id="UFl-kU-4oi"/>
                                             <constraint firstItem="q32-pV-skB" firstAttribute="leading" secondItem="yIf-Yq-o19" secondAttribute="leading" id="UiF-vq-Ro1"/>
-                                            <constraint firstItem="PL3-N2-Wnj" firstAttribute="leading" secondItem="yIf-Yq-o19" secondAttribute="leading" constant="184" id="cPP-OC-IhC"/>
                                             <constraint firstAttribute="bottom" secondItem="q32-pV-skB" secondAttribute="bottom" id="ffW-lB-KEp"/>
                                             <constraint firstAttribute="trailing" secondItem="q32-pV-skB" secondAttribute="trailing" id="fuh-Cw-4ko"/>
-                                            <constraint firstItem="q32-pV-skB" firstAttribute="top" secondItem="PL3-N2-Wnj" secondAttribute="bottom" constant="8" id="pKb-zV-eDW"/>
-                                            <constraint firstAttribute="trailing" secondItem="PL3-N2-Wnj" secondAttribute="trailing" constant="184" id="seY-Kl-Bcx"/>
                                             <constraint firstItem="QEN-Gi-xdb" firstAttribute="leading" secondItem="daX-yz-otm" secondAttribute="trailing" constant="8" id="tV4-y0-PwQ"/>
+                                            <constraint firstItem="q32-pV-skB" firstAttribute="top" secondItem="yIf-Yq-o19" secondAttribute="top" constant="98.5" id="taz-7w-cqN"/>
                                             <constraint firstAttribute="height" constant="1000" id="wIS-Ie-Eta"/>
                                             <constraint firstItem="QEN-Gi-xdb" firstAttribute="centerY" secondItem="daX-yz-otm" secondAttribute="centerY" id="zto-J2-Ich"/>
                                         </constraints>
@@ -430,7 +420,6 @@
                     <navigationItem key="navigationItem" title="Generate New Outfit" id="pZ2-cM-EIw"/>
                     <connections>
                         <outlet property="bookmarkButton" destination="SuL-Wo-opE" id="q1I-bb-J4Z"/>
-                        <outlet property="createButton" destination="PL3-N2-Wnj" id="Pwr-Ke-jhu"/>
                         <outlet property="outfitImageView" destination="q32-pV-skB" id="72N-Ro-vPr"/>
                         <outlet property="seasonLabel" destination="QEN-Gi-xdb" id="dTL-nE-ZEL"/>
                         <segue destination="F5y-qI-DFs" kind="presentation" identifier="selectionScreenSegue" id="Ojf-cS-rBN"/>

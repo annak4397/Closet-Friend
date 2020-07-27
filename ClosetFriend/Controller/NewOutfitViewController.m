@@ -19,13 +19,13 @@
 @property (weak, nonatomic) IBOutlet PFImageView *outfitImageView;
 @property (strong, nonatomic) NSMutableArray *itemsInOutfit;
 @property (strong, nonatomic) NSMutableArray *imagesFromItems;
-- (IBAction)onCreateButtonTap:(id)sender;
+//- (IBAction)onCreateButtonTap:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *bookmarkButton;
 - (IBAction)onBookmarkButtonTap:(id)sender;
 @property (weak, nonatomic) Outfit *generatedOutfit;
-@property (weak, nonatomic) IBOutlet UIButton *createButton;
+//@property (weak, nonatomic) IBOutlet UIButton *createButton;
 @property (strong, nonatomic) dispatch_group_t group;
-@property (strong, nonatomic) dispatch_group_t gettingItems;
+@property (strong, nonatomic) dispatch_queue_t gettingItemImages;
 @property (strong, nonatomic) Outfit *outfitCreated;
 @property (strong, nonatomic) NSArray *allItems;
 
@@ -38,7 +38,8 @@
     // Do any additional setup after loading the view.
     self.seasons = @[@"Spring", @"Summer", @"Fall", @"Winter", @"Any season"];
     self.group = dispatch_group_create();
-    self.gettingItems = dispatch_group_create();
+    self.gettingItemImages = dispatch_queue_create("getImages", DISPATCH_QUEUE_SERIAL);
+
     [self clearScreen];
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
@@ -53,7 +54,7 @@
     self.seasonLabel.text = @"Select a season";
     self.outfitImageView.image = NULL;
     self.bookmarkButton.hidden = YES;
-    self.createButton.hidden = YES;
+    //self.createButton.hidden = YES;
 }
 
 #pragma mark - Navigation
@@ -77,7 +78,7 @@
     self.allItems = [[NSArray alloc] init];
     self.outfitImageView.image = NULL;
     self.bookmarkButton.hidden = YES;
-    self.createButton.hidden = YES;
+    //self.createButton.hidden = YES;
     // get all the items for that season
     PFQuery *itemQuery = [PFQuery queryWithClassName:@"Item"];
     if(![self.seasonLabel.text isEqualToString:@"Any season"]){
@@ -102,8 +103,7 @@
     if(randomNumber == 1){
         NSArray *dresses = [self getAllItemsOfType:@"Dress"];
         randomNumber = arc4random() % dresses.count;
-        //[self.itemsInOutfit addObject:dresses[randomNumber]];
-        [self.itemsInOutfit insertObject:dresses[randomNumber] atIndex:self.itemsInOutfit.count];
+        [self.itemsInOutfit addObject:dresses[randomNumber]];
     }
     // no choose an outfit with a shirt
     else{
@@ -113,15 +113,13 @@
         if(randomNumber == 1){
             NSArray *jackets = [self getAllItemsOfType:@"Jacket"];
             randomNumber = arc4random() % jackets.count;
-            //[self.itemsInOutfit addObject:jackets[randomNumber]];
-            [self.itemsInOutfit insertObject:jackets[randomNumber] atIndex:self.itemsInOutfit.count];
+            [self.itemsInOutfit addObject:jackets[randomNumber]];
         }
         
         // continue to shirt
         NSArray *shirts = [self getAllItemsOfType:@"Shirt"];
         randomNumber = arc4random() % shirts.count;
-        //[self.itemsInOutfit addObject:shirts[randomNumber]];
-        [self.itemsInOutfit insertObject:shirts[randomNumber] atIndex:self.itemsInOutfit.count];
+        [self.itemsInOutfit addObject:shirts[randomNumber]];
         
         // choose bottom type
         randomNumber = (arc4random() % 3);
@@ -141,18 +139,37 @@
         // choose bottoms
         NSArray *bottoms = [self getAllItemsOfType:typeOfBottom];
         randomNumber = arc4random() % bottoms.count;
-        //[self.itemsInOutfit addObject:bottoms[randomNumber]];
-        [self.itemsInOutfit insertObject:bottoms[randomNumber] atIndex:self.itemsInOutfit.count];
+        [self.itemsInOutfit addObject:bottoms[randomNumber]];
     }
     // get shoes at the end
     NSArray *shoes = [self getAllItemsOfType:@"Shoes"];
     randomNumber = arc4random() % shoes.count;
-    //[self.itemsInOutfit addObject:shoes[randomNumber]];
-    [self.itemsInOutfit insertObject:shoes[randomNumber] atIndex:self.itemsInOutfit.count];
-    
+    [self.itemsInOutfit addObject:shoes[randomNumber]];
     [self getImagesFromItems:self.itemsInOutfit];
-    dispatch_group_wait(self.group, 3);
-    self.createButton.hidden = NO;
+    
+    //wait until all images are recieved
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_group_wait(self.group, DISPATCH_TIME_FOREVER);
+        NSLog(@"got all the images");
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.outfitImageView.image = [self imageByCombiningImage:self.imagesFromItems];
+            self.bookmarkButton.hidden = NO;
+            int totalPrice = 0;
+            for (Item *currentItem in self.itemsInOutfit){
+                totalPrice += currentItem.price;
+            }
+            
+            self.outfitCreated = [Outfit postOutfit:self.outfitImageView.image withItems:self.itemsInOutfit withSeason:self.seasonLabel.text withPrice:totalPrice withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                if(error){
+                    NSLog(@"soemthing went wrong: %@", error.localizedDescription);
+                }
+                else{
+                    NSLog(@"Saved outfit!");
+                }
+            }];
+        });
+    });
 }
 
 - (NSArray *) getAllItemsOfType: (NSString *) type{
@@ -168,11 +185,11 @@
 // use this for multiple images
 -(void)getImagesFromItems:(NSArray *)items{
     self.imagesFromItems = [[NSMutableArray alloc] init];
-    
     for(Item* item in items){
         dispatch_group_enter(self.group);
         [item[@"image"] getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
             if(data){
+                NSLog(@"%@", item.type);
                 UIImage *image = [UIImage imageWithData:data];
                 [self.imagesFromItems insertObject:image atIndex:self.imagesFromItems.count];
                 dispatch_group_leave(self.group);
@@ -181,7 +198,7 @@
                 NSLog(@"there was an error %@", error.localizedDescription);
             }
         }];
-        [NSThread sleepForTimeInterval:2.0f];
+        [NSThread sleepForTimeInterval:.5f];
     }
 }
 
@@ -215,7 +232,7 @@
 }
 
 // make the outfit and save it
-- (IBAction)onCreateButtonTap:(id)sender {
+/*- (IBAction)onCreateButtonTap:(id)sender {
     self.outfitImageView.image = [self imageByCombiningImage:self.imagesFromItems];
     self.bookmarkButton.hidden = NO;
     int totalPrice = 0;
@@ -231,7 +248,7 @@
             NSLog(@"Saved outfit!");
         }
     }];
-}
+}*/
 
 // favorite the outfit
 - (IBAction)onBookmarkButtonTap:(id)sender {
