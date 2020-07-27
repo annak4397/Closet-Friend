@@ -235,16 +235,30 @@
 
 // favorite the outfit
 - (IBAction)onBookmarkButtonTap:(id)sender {
-    self.bookmarkButton.selected = YES;
-    self.outfitCreated.liked = YES;
-    [self.outfitCreated saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if(succeeded){
-            NSLog(@"favotired outfit");
-        }
-        else{
-            NSLog(@"error :%@", error.localizedDescription);
-        }
-    }];
+    if(self.bookmarkButton.selected == NO){
+        self.bookmarkButton.selected = YES;
+        self.outfitCreated.liked = YES;
+        [self.outfitCreated saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(succeeded){
+                NSLog(@"favorite outfit");
+            }
+            else{
+                NSLog(@"error :%@", error.localizedDescription);
+            }
+        }];
+    }
+    else{
+        self.bookmarkButton.selected = NO;
+        self.outfitCreated.liked = NO;
+        [self.outfitCreated saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(succeeded){
+                NSLog(@"un favorite outfit");
+            }
+            else{
+                NSLog(@"error :%@", error.localizedDescription);
+            }
+        }];
+    }
 }
 - (IBAction)didTap:(UITapGestureRecognizer *)sender {
     CGPoint location = [sender locationInView:self.view];

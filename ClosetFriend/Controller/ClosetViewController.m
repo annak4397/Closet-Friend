@@ -11,8 +11,9 @@
 #import "ClosetCollectionViewCell.h"
 #import "ItemDetailViewController.h"
 #import "FilterViewController.h"
+#import "NewItemViewController.h"
 
-@interface ClosetViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, ClosetViewControllerDelegate>
+@interface ClosetViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, ClosetViewControllerDelegate, NewItemControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *itemCollectionView;
 @property (strong, nonatomic) NSArray *itemsArray;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *closetLayoutViewFlow;
@@ -122,6 +123,15 @@
         FilterViewController *filterController = [segue destinationViewController];
         filterController.delegate = self;
     }
+    else if([[segue identifier] isEqualToString:@"newItemSegue"]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        NewItemViewController *newItemController = (NewItemViewController*)navigationController.topViewController;
+        newItemController.delegate = self;
+    }
+    
+}
+-(void) didAddNewItem{
+    [self loadItems];
 }
 
 @end

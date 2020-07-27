@@ -123,7 +123,7 @@
     [Item postItemWithImage:itemImage withDescription:self.descriptionTextView.text withSeason:self.seasonLabel.text withSize:self.sizeTextView.text withType:self.typeLabel.text withPrice:priceInt withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded){
             NSLog(@"Item is created");
-            
+            [self.delegate didAddNewItem];
             [self leaveScreen];
         }
         else{
@@ -132,10 +132,7 @@
     }];
 }
 - (void) leaveScreen{
-    SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"TabBarController"];
-    myDelegate.window.rootViewController = navigationController;
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
