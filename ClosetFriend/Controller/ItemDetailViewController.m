@@ -7,6 +7,7 @@
 //
 
 #import "ItemDetailViewController.h"
+#import "NewOutfitViewController.h"
 @import Parse;
 
 @interface ItemDetailViewController ()
@@ -42,15 +43,20 @@
     self.seasonLabel.text = self.itemPassed.seasons;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if([[segue identifier] isEqualToString:@"outfitCreationSegue"]) {
+        NewOutfitViewController *outfitController = [segue destinationViewController];
+        outfitController.itemPassed = self.itemPassed;
+    }
 }
-*/
+
 
 - (IBAction)onPlusButtonTap:(id)sender {
     self.itemPassed.numberOfTimesWorn += 1;

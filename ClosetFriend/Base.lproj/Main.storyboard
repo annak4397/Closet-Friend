@@ -1210,6 +1210,14 @@
                                             <action selector="onPlusButtonTap:" destination="JDE-d5-ifW" eventType="touchUpInside" id="DQe-rr-9nb"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YNN-dm-yh7">
+                                        <rect key="frame" x="97" y="537" width="220" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Generate an outfit with this item"/>
+                                        <connections>
+                                            <segue destination="GlY-0q-BDU" kind="show" identifier="outfitCreationSegue" id="3aB-2E-MDU"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="Shj-Ae-DaP"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="zpu-T3-DgI"/>
@@ -1356,6 +1364,7 @@
         <segue reference="0wX-Hc-0I8"/>
         <segue reference="Gl6-Jt-ux2"/>
         <segue reference="bkB-wj-Tri"/>
+        <segue reference="3aB-2E-MDU"/>
         <segue reference="Ojf-cS-rBN"/>
     </inferredMetricsTieBreakers>
     <resources>

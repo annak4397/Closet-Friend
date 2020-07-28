@@ -19,13 +19,10 @@
 @property (weak, nonatomic) IBOutlet PFImageView *outfitImageView;
 @property (strong, nonatomic) NSMutableArray *itemsInOutfit;
 @property (strong, nonatomic) NSMutableArray *imagesFromItems;
-//- (IBAction)onCreateButtonTap:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *bookmarkButton;
 - (IBAction)onBookmarkButtonTap:(id)sender;
 @property (weak, nonatomic) Outfit *generatedOutfit;
-//@property (weak, nonatomic) IBOutlet UIButton *createButton;
 @property (strong, nonatomic) dispatch_group_t group;
-@property (strong, nonatomic) dispatch_queue_t gettingItemImages;
 @property (strong, nonatomic) Outfit *outfitCreated;
 @property (strong, nonatomic) NSArray *allItems;
 
@@ -37,10 +34,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.seasons = @[@"Spring", @"Summer", @"Fall", @"Winter", @"Any season"];
-    self.group = dispatch_group_create();
-    self.gettingItemImages = dispatch_queue_create("getImages", DISPATCH_QUEUE_SERIAL);
 
     [self clearScreen];
+    
+    if(self.itemPassed != NULL){
+        [self queryFromAnItem: self.itemPassed];
+    }
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
     tapGestureRecognizer.numberOfTapsRequired = 2;
@@ -93,9 +92,187 @@
         }
     }];
 }
+- (void) queryFromAnItem: (Item *)itemGiven{
+    PFQuery *itemQuery = [PFQuery queryWithClassName:@"Item"];
+    [itemQuery whereKey:@"seasons" equalTo: itemGiven.seasons];
+    [itemQuery findObjectsInBackgroundWithBlock:^(NSArray *items, NSError *error) {
+        if (items != nil) {
+            self.allItems = items;
+            [self setItemsInOutfitFrom: itemGiven];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
+- (void) setItemsInOutfitFrom: (Item *) itemGiven{
+    self.group = dispatch_group_create();
+    [self getItemsFromAnItem: itemGiven];
+    [self getImagesFromItems:self.itemsInOutfit];
+    [self makeOutift];
+}
+
+-(void) getItemsFromAnItem: (Item *) itemGiven{
+    self.itemsInOutfit = [[NSMutableArray alloc] init];
+    int randomNumber = arc4random();
+    if([itemGiven.type isEqualToString:@"Shoes"]){
+        // choose a random outfit but add the shoes at the end
+        // do i choose a dress?
+        randomNumber = arc4random() % 2;
+        // yes dress
+        if(randomNumber == 1){
+            NSArray *dresses = [self getAllItemsOfType:@"Dress"];
+            randomNumber = arc4random() % dresses.count;
+            [self.itemsInOutfit addObject:dresses[randomNumber]];
+        }
+        // no choose an outfit with a shirt
+        else{
+            // choose if there will be a jacket
+            randomNumber = arc4random() % 2;
+            // if yes, add jacket
+            if(randomNumber == 1){
+                NSArray *jackets = [self getAllItemsOfType:@"Jacket"];
+                randomNumber = arc4random() % jackets.count;
+                [self.itemsInOutfit addObject:jackets[randomNumber]];
+            }
+            
+            // continue to shirt
+            NSArray *shirts = [self getAllItemsOfType:@"Shirt"];
+            randomNumber = arc4random() % shirts.count;
+            [self.itemsInOutfit addObject:shirts[randomNumber]];
+            
+            // choose bottom type
+            randomNumber = (arc4random() % 3);
+            NSString *typeOfBottom;
+            switch (randomNumber) {
+                case 0:
+                    typeOfBottom = @"Skirt";
+                    break;
+                case 1:
+                    typeOfBottom = @"Pants";
+                    break;
+                case 2:
+                    typeOfBottom = @"Shorts";
+                    break;
+            }
+            
+            // choose bottoms
+            NSArray *bottoms = [self getAllItemsOfType:typeOfBottom];
+            randomNumber = arc4random() % bottoms.count;
+            [self.itemsInOutfit addObject:bottoms[randomNumber]];
+        }
+        [self.itemsInOutfit addObject:itemGiven];
+    }
+    else if([itemGiven.type isEqualToString:@"Dress"]){
+        //just add item and shoes
+        [self.itemsInOutfit addObject:itemGiven];
+        
+        NSArray *shoes = [self getAllItemsOfType:@"Shoes"];
+        randomNumber = arc4random() % shoes.count;
+        [self.itemsInOutfit addObject:shoes[randomNumber]];
+    }
+    else if([itemGiven.type isEqualToString:@"Jacket"]){
+        //add jacket
+        [self.itemsInOutfit addObject:itemGiven];
+        
+        // continue to shirt
+        NSArray *shirts = [self getAllItemsOfType:@"Shirt"];
+        randomNumber = arc4random() % shirts.count;
+        [self.itemsInOutfit addObject:shirts[randomNumber]];
+        
+        // choose bottom type
+        randomNumber = (arc4random() % 3);
+        NSString *typeOfBottom;
+        switch (randomNumber) {
+            case 0:
+                typeOfBottom = @"Skirt";
+                break;
+            case 1:
+                typeOfBottom = @"Pants";
+                break;
+            case 2:
+                typeOfBottom = @"Shorts";
+                break;
+        }
+        
+        // choose bottoms
+        NSArray *bottoms = [self getAllItemsOfType:typeOfBottom];
+        randomNumber = arc4random() % bottoms.count;
+        [self.itemsInOutfit addObject:bottoms[randomNumber]];
+        
+        // get shoes at the end
+        NSArray *shoes = [self getAllItemsOfType:@"Shoes"];
+        randomNumber = arc4random() % shoes.count;
+        [self.itemsInOutfit addObject:shoes[randomNumber]];
+    }
+    else if([itemGiven.type isEqualToString:@"Shirt"]){
+        // choose if there will be a jacket
+        randomNumber = arc4random() % 2;
+        // if yes, add jacket
+        if(randomNumber == 1){
+            NSArray *jackets = [self getAllItemsOfType:@"Jacket"];
+            randomNumber = arc4random() % jackets.count;
+            [self.itemsInOutfit addObject:jackets[randomNumber]];
+        }
+        
+        //add the shirt
+        [self.itemsInOutfit addObject:itemGiven];
+        
+        // choose bottom type
+        randomNumber = (arc4random() % 3);
+        NSString *typeOfBottom;
+        switch (randomNumber) {
+            case 0:
+                typeOfBottom = @"Skirt";
+                break;
+            case 1:
+                typeOfBottom = @"Pants";
+                break;
+            case 2:
+                typeOfBottom = @"Shorts";
+                break;
+        }
+        
+        // choose bottoms
+        NSArray *bottoms = [self getAllItemsOfType:typeOfBottom];
+        randomNumber = arc4random() % bottoms.count;
+        [self.itemsInOutfit addObject:bottoms[randomNumber]];
+        
+        // get shoes at the end
+        NSArray *shoes = [self getAllItemsOfType:@"Shoes"];
+        randomNumber = arc4random() % shoes.count;
+        [self.itemsInOutfit addObject:shoes[randomNumber]];
+    }
+    else{
+        // item is a bottom piece
+        
+        // choose if there will be a jacket
+        randomNumber = arc4random() % 2;
+        // if yes, add jacket
+        if(randomNumber == 1){
+            NSArray *jackets = [self getAllItemsOfType:@"Jacket"];
+            randomNumber = arc4random() % jackets.count;
+            [self.itemsInOutfit addObject:jackets[randomNumber]];
+        }
+        
+        // continue to shirt
+        NSArray *shirts = [self getAllItemsOfType:@"Shirt"];
+        randomNumber = arc4random() % shirts.count;
+        [self.itemsInOutfit addObject:shirts[randomNumber]];
+        
+        //add the bottom
+        [self.itemsInOutfit addObject:itemGiven];
+        
+        // get shoes at the end
+        NSArray *shoes = [self getAllItemsOfType:@"Shoes"];
+        randomNumber = arc4random() % shoes.count;
+        [self.itemsInOutfit addObject:shoes[randomNumber]];
+    }
+}
 
 // gets the items for the outfit in a spesific season
 - (void)setItemsInOutfit{
+    self.group = dispatch_group_create();
     [self getRandomItemsInOutfit];
     [self getImagesFromItems:self.itemsInOutfit];
     [self makeOutift];
@@ -236,25 +413,6 @@
         });
     });
 }
-
-// make the outfit and save it
-/*- (IBAction)onCreateButtonTap:(id)sender {
-    self.outfitImageView.image = [self imageByCombiningImage:self.imagesFromItems];
-    self.bookmarkButton.hidden = NO;
-    int totalPrice = 0;
-    for (Item *currentItem in self.itemsInOutfit){
-        totalPrice += currentItem.price;
-    }
-    
-    self.outfitCreated = [Outfit postOutfit:self.outfitImageView.image withItems:self.itemsInOutfit withSeason:self.seasonLabel.text withPrice:totalPrice withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if(error){
-            NSLog(@"soemthing went wrong: %@", error.localizedDescription);
-        }
-        else{
-            NSLog(@"Saved outfit!");
-        }
-    }];
-}*/
 
 // favorite the outfit
 - (IBAction)onBookmarkButtonTap:(id)sender {
