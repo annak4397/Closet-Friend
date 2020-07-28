@@ -96,6 +96,22 @@
 
 // gets the items for the outfit in a spesific season
 - (void)setItemsInOutfit{
+    [self getRandomItemsInOutfit];
+    [self getImagesFromItems:self.itemsInOutfit];
+    [self makeOutift];
+}
+
+- (NSArray *) getAllItemsOfType: (NSString *) type{
+    NSMutableArray *itemsFound = [[NSMutableArray alloc] init];
+    for(Item *currentItem in self.allItems){
+        if([currentItem.type isEqualToString:type]){
+            [itemsFound addObject:currentItem];
+        }
+    }
+    return itemsFound;
+}
+
+- (void) getRandomItemsInOutfit{
     self.itemsInOutfit = [[NSMutableArray alloc] init];
     // do i choose a dress?
     int randomNumber = arc4random() % 2;
@@ -145,41 +161,6 @@
     NSArray *shoes = [self getAllItemsOfType:@"Shoes"];
     randomNumber = arc4random() % shoes.count;
     [self.itemsInOutfit addObject:shoes[randomNumber]];
-    [self getImagesFromItems:self.itemsInOutfit];
-    
-    //wait until all images are recieved
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        dispatch_group_wait(self.group, DISPATCH_TIME_FOREVER);
-        NSLog(@"got all the images");
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.outfitImageView.image = [self imageByCombiningImage:self.imagesFromItems];
-            self.bookmarkButton.hidden = NO;
-            int totalPrice = 0;
-            for (Item *currentItem in self.itemsInOutfit){
-                totalPrice += currentItem.price;
-            }
-            
-            self.outfitCreated = [Outfit postOutfit:self.outfitImageView.image withItems:self.itemsInOutfit withSeason:self.seasonLabel.text withPrice:totalPrice withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-                if(error){
-                    NSLog(@"soemthing went wrong: %@", error.localizedDescription);
-                }
-                else{
-                    NSLog(@"Saved outfit!");
-                }
-            }];
-        });
-    });
-}
-
-- (NSArray *) getAllItemsOfType: (NSString *) type{
-    NSMutableArray *itemsFound = [[NSMutableArray alloc] init];
-    for(Item *currentItem in self.allItems){
-        if([currentItem.type isEqualToString:type]){
-            [itemsFound addObject:currentItem];
-        }
-    }
-    return itemsFound;
 }
 
 // use this for multiple images
@@ -229,6 +210,31 @@
     UIImage *finalImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return finalImage;
+}
+
+-(void) makeOutift{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_group_wait(self.group, DISPATCH_TIME_FOREVER);
+        NSLog(@"got all the images");
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.outfitImageView.image = [self imageByCombiningImage:self.imagesFromItems];
+            self.bookmarkButton.hidden = NO;
+            int totalPrice = 0;
+            for (Item *currentItem in self.itemsInOutfit){
+                totalPrice += currentItem.price;
+            }
+            
+            self.outfitCreated = [Outfit postOutfit:self.outfitImageView.image withItems:self.itemsInOutfit withSeason:self.seasonLabel.text withPrice:totalPrice withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                if(error){
+                    NSLog(@"soemthing went wrong: %@", error.localizedDescription);
+                }
+                else{
+                    NSLog(@"Saved outfit!");
+                }
+            }];
+        });
+    });
 }
 
 // make the outfit and save it
