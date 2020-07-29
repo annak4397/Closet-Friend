@@ -12,6 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @interface NewOutfitViewController : UIViewController
 @property (weak, nonatomic) Item *itemPassed;
+@property (strong, nonatomic) NSMutableArray *itemsPassed;
 @end
 
 NS_ASSUME_NONNULL_END

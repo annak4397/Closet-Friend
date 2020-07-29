@@ -36,9 +36,13 @@
     self.seasons = @[@"Spring", @"Summer", @"Fall", @"Winter", @"Any season"];
 
     [self clearScreen];
+    self.outfitImageView.image = NULL;
     
     if(self.itemPassed != NULL){
         [self queryFromAnItem: self.itemPassed];
+    }
+    else if(self.itemsPassed.count != 0){
+        [self setItemsInOutfitFromArray:self.itemsPassed];
     }
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
@@ -51,9 +55,7 @@
 }
 -(void)clearScreen{
     self.seasonLabel.text = @"Select a season";
-    self.outfitImageView.image = NULL;
     self.bookmarkButton.hidden = YES;
-    //self.createButton.hidden = YES;
 }
 
 #pragma mark - Navigation
@@ -103,6 +105,13 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+}
+
+- (void) setItemsInOutfitFromArray: (NSMutableArray *) itemsGiven{
+    self.group = dispatch_group_create();
+    self.itemsInOutfit = itemsGiven;
+    [self getImagesFromItems:self.itemsInOutfit];
+    [self makeOutift];
 }
 
 - (void) setItemsInOutfitFrom: (Item *) itemGiven{
@@ -442,7 +451,6 @@
     }
 }
 - (IBAction)didTap:(UITapGestureRecognizer *)sender {
-    CGPoint location = [sender locationInView:self.view];
     NSLog(@"did double tap");
     [self onBookmarkButtonTap:nil];
 }

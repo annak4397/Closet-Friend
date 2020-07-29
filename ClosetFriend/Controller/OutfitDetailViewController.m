@@ -88,6 +88,7 @@
     
     FBSDKShareButton *shareButton = [[FBSDKShareButton alloc] init];
     shareButton.shareContent = content;
+    // since the share button doesn't show up in the storyboard I had to add the location myself based on the location of the price label. The + 210 and + 95 were the values that I found to work and place the button in the right place
     shareButton.center = CGPointMake(self.priceLabel.layer.position.x + 210, self.priceLabel.layer.position.y + 95);
     [self.view addSubview:shareButton];
 }

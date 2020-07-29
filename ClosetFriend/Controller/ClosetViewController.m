@@ -12,6 +12,7 @@
 #import "ItemDetailViewController.h"
 #import "FilterViewController.h"
 #import "NewItemViewController.h"
+#import "NewOutfitViewController.h"
 
 @interface ClosetViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, ClosetViewControllerDelegate, NewItemControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *itemCollectionView;
@@ -23,6 +24,10 @@
 @property (strong, nonatomic) NSArray *itemTypes;
 @property (strong, nonatomic) NSArray *seasonTypesSelected;
 @property (strong, nonatomic) NSArray *itemTypesSelected;
+@property (weak, nonatomic) IBOutlet UIButton *selectButton;
+- (IBAction)onSelectButtonTap:(id)sender;
+@property BOOL selectEnabled;
+@property (strong, nonatomic) NSMutableArray *selectedItems;
 
 @end
 
@@ -128,10 +133,61 @@
         NewItemViewController *newItemController = (NewItemViewController*)navigationController.topViewController;
         newItemController.delegate = self;
     }
+    else if([[segue identifier] isEqualToString:@"outfitCreationSegue"]) {
+        NewOutfitViewController *outfitController = [segue destinationViewController];
+        
+        outfitController.itemsPassed = [NSMutableArray arrayWithArray:self.selectedItems];
+    }
     
 }
 -(void) didAddNewItem{
     [self loadItems];
 }
 
+- (IBAction)onSelectButtonTap:(id)sender {
+    if(self.selectEnabled){
+        [self performSegueWithIdentifier:@"outfitCreationSegue" sender:nil];
+         
+        // Deselect all selected items
+        for(NSIndexPath *indexPath in self.itemCollectionView.indexPathsForSelectedItems) {
+            [self.itemCollectionView deselectItemAtIndexPath:indexPath animated:NO];
+            ClosetCollectionViewCell *cell = (ClosetCollectionViewCell *)[self.itemCollectionView cellForItemAtIndexPath:indexPath];
+            [cell updateSelection];
+        }
+        
+        // Remove all items from selectedRecipes array
+        [self.selectedItems removeAllObjects];
+        
+        // Change the sharing mode to NO
+        self.selectEnabled = NO;
+        self.itemCollectionView.allowsMultipleSelection = NO;
+        self.selectButton.selected = NO;
+    }
+    else{
+        self.selectedItems = [[NSMutableArray alloc] init];
+        self.selectButton.selected = YES;
+        self.itemCollectionView.allowsMultipleSelection = YES;
+        self.selectEnabled = YES;
+    }
+}
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if(self.selectEnabled){
+        ClosetCollectionViewCell *cell = (ClosetCollectionViewCell *)[self.itemCollectionView cellForItemAtIndexPath:indexPath];
+        [cell updateSelection];
+        NSLog(@"%@", self.itemsArray[indexPath.item]);
+        Item *selectedItem = self.itemsArray[indexPath.item];
+        [self.selectedItems addObject:selectedItem];
+    }
+    else{
+        [self performSegueWithIdentifier:@"itemDetailSegue" sender:[self.itemCollectionView cellForItemAtIndexPath:indexPath]];
+    }
+}
+-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if(self.selectEnabled){
+        ClosetCollectionViewCell *cell = (ClosetCollectionViewCell *)[self.itemCollectionView cellForItemAtIndexPath:indexPath];
+        [cell updateSelection];
+        Item *deselectedItem = self.itemsArray[indexPath.item];
+        [self.selectedItems removeObject:deselectedItem];
+    }
+}
 @end

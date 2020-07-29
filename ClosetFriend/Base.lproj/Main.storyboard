@@ -640,11 +640,16 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnM-cp-gYR">
+                                                    <rect key="frame" x="90" y="88" width="30" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="selected" image="checkmark.circle.fill" catalog="system"/>
+                                                </button>
                                             </subviews>
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="itemImage" destination="oVe-m7-UD4" id="wTU-HU-cNp"/>
-                                            <segue destination="JDE-d5-ifW" kind="show" identifier="itemDetailSegue" id="Gl6-Jt-ux2"/>
+                                            <outlet property="selectedButton" destination="FnM-cp-gYR" id="qT9-jW-axS"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -657,10 +662,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eb8-Lb-Dj1">
-                                <rect key="frame" x="298" y="95" width="104" height="30"/>
+                                <rect key="frame" x="286" y="95" width="122" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Select an outfit"/>
                                 <state key="selected" title="Create an outfit"/>
+                                <connections>
+                                    <action selector="onSelectButtonTap:" destination="5rv-rB-CXQ" eventType="touchUpInside" id="clA-Ag-vFK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -691,6 +699,9 @@
                     <connections>
                         <outlet property="closetLayoutViewFlow" destination="Ci6-uS-E4s" id="hCw-R4-vgT"/>
                         <outlet property="itemCollectionView" destination="ARL-Gv-AEV" id="0cR-sw-SwL"/>
+                        <outlet property="selectButton" destination="Eb8-Lb-Dj1" id="Ez0-BR-HD1"/>
+                        <segue destination="JDE-d5-ifW" kind="show" identifier="itemDetailSegue" id="vaA-Xu-Cgf"/>
+                        <segue destination="GlY-0q-BDU" kind="show" identifier="outfitCreationSegue" id="gIa-US-lz8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q7I-ZI-2ML" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1362,9 +1373,9 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="0wX-Hc-0I8"/>
-        <segue reference="Gl6-Jt-ux2"/>
+        <segue reference="vaA-Xu-Cgf"/>
         <segue reference="bkB-wj-Tri"/>
-        <segue reference="3aB-2E-MDU"/>
+        <segue reference="gIa-US-lz8"/>
         <segue reference="Ojf-cS-rBN"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -1372,6 +1383,7 @@
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
         <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="bookmark.fill" catalog="system" width="112" height="128"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
