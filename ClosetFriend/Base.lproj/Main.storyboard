@@ -377,14 +377,31 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your outfit:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Qd-eL-zFj">
+                                                <rect key="frame" x="20" y="60" width="118" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7f6-kg-FPo">
+                                                <rect key="frame" x="210.5" y="60.5" width="155" height="30"/>
+                                                <state key="normal" title="Add to Planned Outfits"/>
+                                                <connections>
+                                                    <action selector="onPlannedOutfitTap:" destination="GlY-0q-BDU" eventType="touchUpInside" id="DYc-ab-D1C"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
+                                            <constraint firstItem="3Qd-eL-zFj" firstAttribute="leading" secondItem="yIf-Yq-o19" secondAttribute="leading" constant="20" id="1iF-kJ-RHL"/>
+                                            <constraint firstItem="SuL-Wo-opE" firstAttribute="centerY" secondItem="7f6-kg-FPo" secondAttribute="centerY" id="28D-wz-DLM"/>
                                             <constraint firstItem="daX-yz-otm" firstAttribute="leading" secondItem="yIf-Yq-o19" secondAttribute="leading" constant="20" id="6gd-41-5lo"/>
+                                            <constraint firstItem="SuL-Wo-opE" firstAttribute="leading" secondItem="7f6-kg-FPo" secondAttribute="trailing" constant="8" id="8Yi-Pb-Cux"/>
                                             <constraint firstItem="daX-yz-otm" firstAttribute="top" secondItem="yIf-Yq-o19" secondAttribute="top" constant="20" id="JJQ-cx-ndc"/>
                                             <constraint firstItem="omH-Uk-Dev" firstAttribute="centerY" secondItem="QEN-Gi-xdb" secondAttribute="centerY" id="Jvb-Dq-LaW"/>
                                             <constraint firstAttribute="trailing" secondItem="SuL-Wo-opE" secondAttribute="trailing" constant="20" id="KZA-PS-9rp"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="omH-Uk-Dev" secondAttribute="trailing" constant="20" id="Lic-2G-HOW"/>
+                                            <constraint firstItem="q32-pV-skB" firstAttribute="top" secondItem="3Qd-eL-zFj" secondAttribute="bottom" constant="8.5" id="NsM-P1-Gja"/>
                                             <constraint firstItem="q32-pV-skB" firstAttribute="top" secondItem="SuL-Wo-opE" secondAttribute="bottom" constant="12" id="OnW-JE-osD"/>
                                             <constraint firstItem="omH-Uk-Dev" firstAttribute="leading" secondItem="QEN-Gi-xdb" secondAttribute="trailing" constant="8" id="UFl-kU-4oi"/>
                                             <constraint firstItem="q32-pV-skB" firstAttribute="leading" secondItem="yIf-Yq-o19" secondAttribute="leading" id="UiF-vq-Ro1"/>
@@ -421,7 +438,11 @@
                     <connections>
                         <outlet property="bookmarkButton" destination="SuL-Wo-opE" id="q1I-bb-J4Z"/>
                         <outlet property="outfitImageView" destination="q32-pV-skB" id="72N-Ro-vPr"/>
+                        <outlet property="plannedOutfitButton" destination="7f6-kg-FPo" id="R2n-qH-plO"/>
                         <outlet property="seasonLabel" destination="QEN-Gi-xdb" id="dTL-nE-ZEL"/>
+                        <outlet property="seasonTitleLabel" destination="daX-yz-otm" id="x8H-Gi-qvK"/>
+                        <outlet property="selectButton" destination="omH-Uk-Dev" id="M3B-ZT-rtm"/>
+                        <outlet property="youOutftiLabel" destination="3Qd-eL-zFj" id="kqZ-F0-hOr"/>
                         <segue destination="F5y-qI-DFs" kind="presentation" identifier="selectionScreenSegue" id="Ojf-cS-rBN"/>
                     </connections>
                 </viewController>

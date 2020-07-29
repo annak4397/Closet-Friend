@@ -21,10 +21,14 @@
 @property (strong, nonatomic) NSMutableArray *imagesFromItems;
 @property (weak, nonatomic) IBOutlet UIButton *bookmarkButton;
 - (IBAction)onBookmarkButtonTap:(id)sender;
-@property (weak, nonatomic) Outfit *generatedOutfit;
+@property (weak, nonatomic) IBOutlet UILabel *seasonTitleLabel;
 @property (strong, nonatomic) dispatch_group_t group;
+@property (weak, nonatomic) IBOutlet UIButton *selectButton;
 @property (strong, nonatomic) Outfit *outfitCreated;
 @property (strong, nonatomic) NSArray *allItems;
+@property (weak, nonatomic) IBOutlet UIButton *plannedOutfitButton;
+- (IBAction)onPlannedOutfitTap:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *youOutftiLabel;
 
 @end
 
@@ -33,16 +37,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.seasons = @[@"Spring", @"Summer", @"Fall", @"Winter", @"Any season"];
 
-    [self clearScreen];
-    self.outfitImageView.image = NULL;
-    
+    // set up for outfit from single item
     if(self.itemPassed != NULL){
+        self.outfitImageView.image = NULL;
+        self.bookmarkButton.hidden = YES;
+        self.seasonTitleLabel.text = @"";
+        self.seasonLabel.text = @"";
+        self.selectButton.hidden = YES;
+        self.youOutftiLabel.text = @"Your outfit";
+        self.plannedOutfitButton.hidden = YES;
         [self queryFromAnItem: self.itemPassed];
     }
+    // set up outfit from array of items
     else if(self.itemsPassed.count != 0){
+        self.outfitImageView.image = NULL;
+        self.bookmarkButton.hidden = YES;
+        self.seasonLabel.text = @"";
+        self.seasonTitleLabel.text = @"";
+        self.selectButton.hidden = YES;
+        self.youOutftiLabel.text = @"Your outfit";
+        self.plannedOutfitButton.hidden = YES;
         [self setItemsInOutfitFromArray:self.itemsPassed];
+    }
+    //set up for random outfit
+    else{
+        self.seasonLabel.text = @"Season:";
+        self.seasonLabel.text = @"Select a season";
+        self.seasons = @[@"Spring", @"Summer", @"Fall", @"Winter", @"Any season"];
+        self.youOutftiLabel.text = @"";
+        self.plannedOutfitButton.hidden = YES;
+        self.selectButton.hidden = NO;
+        self.outfitImageView.image = NULL;
+        self.bookmarkButton.hidden = YES;
     }
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
@@ -50,13 +77,13 @@
     [self.outfitImageView setUserInteractionEnabled:YES];
     [self.outfitImageView addGestureRecognizer:tapGestureRecognizer];
 }
--(void)viewDidAppear:(BOOL)animated{
+/*-(void)viewDidAppear:(BOOL)animated{
     [self clearScreen];
 }
 -(void)clearScreen{
-    self.seasonLabel.text = @"Select a season";
+    //self.seasonLabel.text = @"Select a season";
     self.bookmarkButton.hidden = YES;
-}
+}*/
 
 #pragma mark - Navigation
 
@@ -282,6 +309,7 @@
 // gets the items for the outfit in a spesific season
 - (void)setItemsInOutfit{
     self.group = dispatch_group_create();
+    self.youOutftiLabel.text = @"Your outfit:";
     [self getRandomItemsInOutfit];
     [self getImagesFromItems:self.itemsInOutfit];
     [self makeOutift];
@@ -406,6 +434,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             self.outfitImageView.image = [self imageByCombiningImage:self.imagesFromItems];
             self.bookmarkButton.hidden = NO;
+            self.plannedOutfitButton.hidden = NO;
             int totalPrice = 0;
             for (Item *currentItem in self.itemsInOutfit){
                 totalPrice += currentItem.price;
@@ -453,5 +482,7 @@
 - (IBAction)didTap:(UITapGestureRecognizer *)sender {
     NSLog(@"did double tap");
     [self onBookmarkButtonTap:nil];
+}
+- (IBAction)onPlannedOutfitTap:(id)sender {
 }
 @end
