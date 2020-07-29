@@ -390,6 +390,10 @@
                                                     <action selector="onPlannedOutfitTap:" destination="GlY-0q-BDU" eventType="touchUpInside" id="DYc-ab-D1C"/>
                                                 </connections>
                                             </button>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="meY-jv-WKt">
+                                                <rect key="frame" x="188.5" y="320" width="37" height="37"/>
+                                                <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -397,6 +401,7 @@
                                             <constraint firstItem="SuL-Wo-opE" firstAttribute="centerY" secondItem="7f6-kg-FPo" secondAttribute="centerY" id="28D-wz-DLM"/>
                                             <constraint firstItem="daX-yz-otm" firstAttribute="leading" secondItem="yIf-Yq-o19" secondAttribute="leading" constant="20" id="6gd-41-5lo"/>
                                             <constraint firstItem="SuL-Wo-opE" firstAttribute="leading" secondItem="7f6-kg-FPo" secondAttribute="trailing" constant="8" id="8Yi-Pb-Cux"/>
+                                            <constraint firstItem="meY-jv-WKt" firstAttribute="top" secondItem="7f6-kg-FPo" secondAttribute="bottom" constant="229.5" id="GgB-Y1-Xat"/>
                                             <constraint firstItem="daX-yz-otm" firstAttribute="top" secondItem="yIf-Yq-o19" secondAttribute="top" constant="20" id="JJQ-cx-ndc"/>
                                             <constraint firstItem="omH-Uk-Dev" firstAttribute="centerY" secondItem="QEN-Gi-xdb" secondAttribute="centerY" id="Jvb-Dq-LaW"/>
                                             <constraint firstAttribute="trailing" secondItem="SuL-Wo-opE" secondAttribute="trailing" constant="20" id="KZA-PS-9rp"/>
@@ -409,8 +414,10 @@
                                             <constraint firstAttribute="trailing" secondItem="q32-pV-skB" secondAttribute="trailing" id="fuh-Cw-4ko"/>
                                             <constraint firstItem="QEN-Gi-xdb" firstAttribute="leading" secondItem="daX-yz-otm" secondAttribute="trailing" constant="8" id="tV4-y0-PwQ"/>
                                             <constraint firstItem="q32-pV-skB" firstAttribute="top" secondItem="yIf-Yq-o19" secondAttribute="top" constant="98.5" id="taz-7w-cqN"/>
+                                            <constraint firstAttribute="trailing" secondItem="meY-jv-WKt" secondAttribute="trailing" constant="188.5" id="ugR-Nu-DUh"/>
                                             <constraint firstAttribute="height" constant="1000" id="wIS-Ie-Eta"/>
                                             <constraint firstItem="QEN-Gi-xdb" firstAttribute="centerY" secondItem="daX-yz-otm" secondAttribute="centerY" id="zto-J2-Ich"/>
+                                            <constraint firstItem="meY-jv-WKt" firstAttribute="leading" secondItem="yIf-Yq-o19" secondAttribute="leading" constant="188.5" id="zxb-h2-6Mz"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -436,6 +443,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Generate New Outfit" id="pZ2-cM-EIw"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="meY-jv-WKt" id="GF6-Ht-Up3"/>
                         <outlet property="bookmarkButton" destination="SuL-Wo-opE" id="q1I-bb-J4Z"/>
                         <outlet property="outfitImageView" destination="q32-pV-skB" id="72N-Ro-vPr"/>
                         <outlet property="plannedOutfitButton" destination="7f6-kg-FPo" id="R2n-qH-plO"/>

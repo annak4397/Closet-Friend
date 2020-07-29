@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *plannedOutfitButton;
 - (IBAction)onPlannedOutfitTap:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *youOutftiLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -47,6 +48,7 @@
         self.selectButton.hidden = YES;
         self.youOutftiLabel.text = @"Your outfit";
         self.plannedOutfitButton.hidden = YES;
+        [self.activityIndicator startAnimating];
         [self queryFromAnItem: self.itemPassed];
     }
     // set up outfit from array of items
@@ -58,6 +60,7 @@
         self.selectButton.hidden = YES;
         self.youOutftiLabel.text = @"Your outfit";
         self.plannedOutfitButton.hidden = YES;
+        [self.activityIndicator startAnimating];
         [self setItemsInOutfitFromArray:self.itemsPassed];
     }
     //set up for random outfit
@@ -103,6 +106,7 @@
     }
 }
 - (void)didSelectSeason{
+    [self.activityIndicator startAnimating];
     self.allItems = [[NSArray alloc] init];
     self.outfitImageView.image = NULL;
     self.bookmarkButton.hidden = YES;
@@ -435,6 +439,7 @@
             self.outfitImageView.image = [self imageByCombiningImage:self.imagesFromItems];
             self.bookmarkButton.hidden = NO;
             self.plannedOutfitButton.hidden = NO;
+            [self.activityIndicator stopAnimating];
             int totalPrice = 0;
             for (Item *currentItem in self.itemsInOutfit){
                 totalPrice += currentItem.price;
