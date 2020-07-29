@@ -13,6 +13,8 @@
 #import "FilterViewController.h"
 #import "NewItemViewController.h"
 #import "NewOutfitViewController.h"
+#import "SceneDelegate.h"
+#import "LoginViewController.h"
 
 @interface ClosetViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, ClosetViewControllerDelegate, NewItemControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *itemCollectionView;
@@ -28,6 +30,7 @@
 - (IBAction)onSelectButtonTap:(id)sender;
 @property BOOL selectEnabled;
 @property (strong, nonatomic) NSMutableArray *selectedItems;
+- (IBAction)onLogoutButtonTap:(id)sender;
 
 @end
 
@@ -189,5 +192,22 @@
         Item *deselectedItem = self.itemsArray[indexPath.item];
         [self.selectedItems removeObject:deselectedItem];
     }
+}
+
+- (IBAction)onLogoutButtonTap:(id)sender {
+    if([FBSDKAccessToken currentAccessToken]){
+        FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
+        [login logOut];
+    }
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        if(error){
+            NSLog(@"Some error occured during logout: %@", error.localizedDescription);
+        }
+    }];
+    SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+                   
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    myDelegate.window.rootViewController = loginViewController;
 }
 @end

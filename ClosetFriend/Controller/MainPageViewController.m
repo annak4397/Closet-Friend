@@ -29,8 +29,6 @@
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *outfitCollectionViewFlowLayout;
 @property (strong, nonatomic) NSArray *outfitsArray;
 
-- (IBAction)onLogoutButtonTap:(id)sender;
-
 @end
 
 @implementation MainPageViewController
@@ -112,23 +110,6 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
-}
-
-- (IBAction)onLogoutButtonTap:(id)sender {
-    if([FBSDKAccessToken currentAccessToken]){
-        FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
-        [login logOut];
-    }
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        if(error){
-            NSLog(@"Some error occured during logout: %@", error.localizedDescription);
-        }
-    }];
-    SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
-                   
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    myDelegate.window.rootViewController = loginViewController;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

@@ -616,18 +616,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="g6B-Th-77g"/>
                     </view>
-                    <navigationItem key="navigationItem" id="I7b-O9-atv">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="V0d-ad-gHY">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bNp-na-FbF">
-                                <rect key="frame" x="20" y="13" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="onLogoutButtonTap:" destination="v7d-XE-4YO" eventType="touchUpInside" id="nbf-7a-Xko"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="I7b-O9-atv"/>
                     <connections>
                         <outlet property="itemCollectionView" destination="b90-TB-KPO" id="ocP-vX-Nne"/>
                         <outlet property="itemsCollectionViewFlowLayout" destination="xTt-UA-rQt" id="KCS-me-5VD"/>
@@ -712,9 +701,22 @@
                         <viewLayoutGuide key="safeArea" id="yU9-Gy-SVj"/>
                     </view>
                     <navigationItem key="navigationItem" title="Your Closet" id="SWT-LK-Z3O">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="w5t-1e-Abf">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="erF-Xx-fNw">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="XgN-Yu-Rfe">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zhp-iW-n4p">
                                 <rect key="frame" x="20" y="13" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="onLogoutButtonTap:" destination="5rv-rB-CXQ" eventType="touchUpInside" id="Xtt-mb-Org"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <action selector="onLogoutButtonTap:" destination="5rv-rB-CXQ" id="7wT-VC-Crl"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="w5t-1e-Abf">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="erF-Xx-fNw">
+                                <rect key="frame" x="302" y="13" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Filter"/>
                                 <connections>
@@ -1400,7 +1402,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="0wX-Hc-0I8"/>
-        <segue reference="vaA-Xu-Cgf"/>
+        <segue reference="Mg5-IR-BE0"/>
         <segue reference="bkB-wj-Tri"/>
         <segue reference="gIa-US-lz8"/>
         <segue reference="Ojf-cS-rBN"/>
