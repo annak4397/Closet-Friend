@@ -481,6 +481,12 @@
 }
 - (IBAction)didTap:(UITapGestureRecognizer *)sender {
     NSLog(@"did double tap");
+    if(!self.bookmarkButton.selected){
+        self.heartImage.image = [UIImage imageNamed: @"651px-Love_Heart_symbol.svg"];
+    }
+    else{
+        self.heartImage.image = [UIImage imageNamed: @"1250px-Broken_heart.svg"];
+    }
     [UIView animateWithDuration:.4 animations:^{
         self.heartImage.alpha = 1;
     } completion:^(BOOL finished) {
