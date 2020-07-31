@@ -683,7 +683,7 @@
                                 <rect key="frame" x="286" y="95" width="122" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Select an outfit"/>
-                                <state key="selected" title="Create an outfit"/>
+                                <state key="selected" title="Cancel"/>
                                 <connections>
                                     <action selector="onSelectButtonTap:" destination="5rv-rB-CXQ" eventType="touchUpInside" id="clA-Ag-vFK"/>
                                 </connections>
@@ -692,8 +692,9 @@
                                 <rect key="frame" x="187" y="767" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="plus.circle.fill" catalog="system"/>
+                                <state key="selected" backgroundImage="tag.fill" catalog="system"/>
                                 <connections>
-                                    <segue destination="RHV-5q-ace" kind="presentation" identifier="newItemSegue" id="8td-pH-toc"/>
+                                    <action selector="onBottomButtonTap:" destination="5rv-rB-CXQ" eventType="touchUpInside" id="IXw-wk-nP0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -726,11 +727,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomButton" destination="Ihz-Ak-x09" id="jSu-qH-Le7"/>
                         <outlet property="closetLayoutViewFlow" destination="Ci6-uS-E4s" id="hCw-R4-vgT"/>
                         <outlet property="itemCollectionView" destination="ARL-Gv-AEV" id="0cR-sw-SwL"/>
                         <outlet property="selectButton" destination="Eb8-Lb-Dj1" id="Ez0-BR-HD1"/>
                         <segue destination="JDE-d5-ifW" kind="show" identifier="itemDetailSegue" id="vaA-Xu-Cgf"/>
                         <segue destination="GlY-0q-BDU" kind="show" identifier="outfitCreationSegue" id="gIa-US-lz8"/>
+                        <segue destination="RHV-5q-ace" kind="presentation" identifier="newItemSegue" id="yBG-K1-yii"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q7I-ZI-2ML" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1402,7 +1405,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="0wX-Hc-0I8"/>
-        <segue reference="Mg5-IR-BE0"/>
+        <segue reference="vaA-Xu-Cgf"/>
         <segue reference="bkB-wj-Tri"/>
         <segue reference="gIa-US-lz8"/>
         <segue reference="Ojf-cS-rBN"/>

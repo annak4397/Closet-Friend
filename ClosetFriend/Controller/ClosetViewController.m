@@ -31,6 +31,8 @@
 @property BOOL selectEnabled;
 @property (strong, nonatomic) NSMutableArray *selectedItems;
 - (IBAction)onLogoutButtonTap:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *bottomButton;
+- (IBAction)onBottomButtonTap:(id)sender;
 
 @end
 
@@ -41,7 +43,7 @@
     self.itemCollectionView.dataSource = self;
     self.itemCollectionView.delegate = self;
     // Do any additional setup after loading the view.
-    
+    self.bottomButton.selected = NO;
     CGFloat cellWidth = self.itemCollectionView.frame.size.width/3;
     CGFloat cellHeight = cellWidth;
     self.closetLayoutViewFlow.itemSize = CGSizeMake(cellWidth, cellHeight);
@@ -57,6 +59,9 @@
     self.itemTypesSelected = self.itemTypes;
     
     [self loadItems];
+}
+- (void)viewDidAppear:(BOOL)animated{
+    self.bottomButton.selected = NO;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -149,7 +154,7 @@
 
 - (IBAction)onSelectButtonTap:(id)sender {
     if(self.selectEnabled){
-        [self performSegueWithIdentifier:@"outfitCreationSegue" sender:nil];
+        self.bottomButton.selected = NO;
          
         // Deselect all selected items
         for(NSIndexPath *indexPath in self.itemCollectionView.indexPathsForSelectedItems) {
@@ -167,6 +172,7 @@
         self.selectButton.selected = NO;
     }
     else{
+        self.bottomButton.selected = YES;
         self.selectedItems = [[NSMutableArray alloc] init];
         self.selectButton.selected = YES;
         self.itemCollectionView.allowsMultipleSelection = YES;
@@ -209,5 +215,28 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     myDelegate.window.rootViewController = loginViewController;
+}
+- (IBAction)onBottomButtonTap:(id)sender {
+    if(!self.bottomButton.selected){
+        [self performSegueWithIdentifier:@"newItemSegue" sender:nil];
+    }
+    else{
+        [self performSegueWithIdentifier:@"outfitCreationSegue" sender:nil];
+         
+        // Deselect all selected items
+        for(NSIndexPath *indexPath in self.itemCollectionView.indexPathsForSelectedItems) {
+            [self.itemCollectionView deselectItemAtIndexPath:indexPath animated:NO];
+            ClosetCollectionViewCell *cell = (ClosetCollectionViewCell *)[self.itemCollectionView cellForItemAtIndexPath:indexPath];
+            [cell updateSelection];
+        }
+        
+        // Remove all items from selectedRecipes array
+        [self.selectedItems removeAllObjects];
+        
+        // Change the sharing mode to NO
+        self.selectEnabled = NO;
+        self.itemCollectionView.allowsMultipleSelection = NO;
+        self.selectButton.selected = NO;
+    }
 }
 @end
