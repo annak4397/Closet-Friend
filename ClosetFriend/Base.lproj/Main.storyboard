@@ -395,6 +395,10 @@
                                                 <rect key="frame" x="188.5" y="320" width="37" height="37"/>
                                                 <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </activityIndicatorView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="651px-Love_Heart_symbol.svg" translatesAutoresizingMaskIntoConstraints="NO" id="gC7-Xa-VRh">
+                                                <rect key="frame" x="87" y="274" width="240" height="128"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -446,6 +450,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="meY-jv-WKt" id="GF6-Ht-Up3"/>
                         <outlet property="bookmarkButton" destination="SuL-Wo-opE" id="q1I-bb-J4Z"/>
+                        <outlet property="heartImage" destination="gC7-Xa-VRh" id="e4Z-rg-zDX"/>
                         <outlet property="outfitImageView" destination="q32-pV-skB" id="72N-Ro-vPr"/>
                         <outlet property="plannedOutfitButton" destination="7f6-kg-FPo" id="R2n-qH-plO"/>
                         <outlet property="seasonLabel" destination="QEN-Gi-xdb" id="dTL-nE-ZEL"/>
@@ -1341,9 +1346,10 @@
         <segue reference="FfG-HI-Wu6"/>
         <segue reference="Kbg-B5-UF6"/>
         <segue reference="3aB-2E-MDU"/>
-        <segue reference="Ssh-VI-qya"/>
+        <segue reference="Ojf-cS-rBN"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="651px-Love_Heart_symbol.svg" width="651" height="600"/>
         <image name="Screen Shot 2020-07-23 at 4.42.18 PM" width="1942" height="1148"/>
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
         <image name="bookmark" catalog="system" width="112" height="128"/>

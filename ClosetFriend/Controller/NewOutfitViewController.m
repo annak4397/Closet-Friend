@@ -10,6 +10,7 @@
 #import "SelectorToolViewController.h"
 #import "Item.h"
 #import "Outfit.h"
+#import <UIKit/UIKit.h>
 @import Parse;
 
 @interface NewOutfitViewController ()<SelectViewControllerDelegate>
@@ -30,6 +31,7 @@
 - (IBAction)onPlannedOutfitTap:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *youOutftiLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIImageView *heartImage;
 
 @end
 
@@ -38,7 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    self.heartImage.alpha = 0;
     // set up for outfit from single item
     if(self.itemPassed != NULL){
         self.outfitImageView.image = NULL;
@@ -80,13 +82,6 @@
     [self.outfitImageView setUserInteractionEnabled:YES];
     [self.outfitImageView addGestureRecognizer:tapGestureRecognizer];
 }
-/*-(void)viewDidAppear:(BOOL)animated{
-    [self clearScreen];
-}
--(void)clearScreen{
-    //self.seasonLabel.text = @"Select a season";
-    self.bookmarkButton.hidden = YES;
-}*/
 
 #pragma mark - Navigation
 
@@ -486,6 +481,13 @@
 }
 - (IBAction)didTap:(UITapGestureRecognizer *)sender {
     NSLog(@"did double tap");
+    [UIView animateWithDuration:.4 animations:^{
+        self.heartImage.alpha = 1;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:.4 animations:^{
+            self.heartImage.alpha = 0;
+        }];
+    }];
     [self onBookmarkButtonTap:nil];
 }
 - (IBAction)onPlannedOutfitTap:(id)sender {
