@@ -386,6 +386,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7f6-kg-FPo">
                                                 <rect key="frame" x="210.5" y="60.5" width="155" height="30"/>
                                                 <state key="normal" title="Add to Planned Outfits"/>
+                                                <state key="selected" title="Remove from Planned Outfits"/>
                                                 <connections>
                                                     <action selector="onPlannedOutfitTap:" destination="GlY-0q-BDU" eventType="touchUpInside" id="DYc-ab-D1C"/>
                                                 </connections>
@@ -507,7 +508,7 @@
             </objects>
             <point key="canvasLocation" x="3292.753623188406" y="1492.6339285714284"/>
         </scene>
-        <!--Main Page View Controller-->
+        <!--Your Outfits-->
         <scene sceneID="H4R-xG-A4S">
             <objects>
                 <viewController storyboardIdentifier="MainPageController" id="v7d-XE-4YO" customClass="MainPageViewController" sceneMemberID="viewController">
@@ -515,29 +516,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello User!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdl-oM-XNm">
-                                <rect key="frame" x="20" y="96" width="143" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Planned Outfits:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQq-RP-LtM">
-                                <rect key="frame" x="20" y="140" width="162" height="21"/>
+                                <rect key="frame" x="20" y="86" width="162" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Favorite Outfits:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAP-rF-xJF">
-                                <rect key="frame" x="11" y="411" width="161" height="21"/>
+                                <rect key="frame" x="20" y="354" width="161" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b90-TB-KPO">
-                                <rect key="frame" x="0.0" y="169" width="414" height="210"/>
+                                <rect key="frame" x="0.0" y="120" width="414" height="210"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xTt-UA-rQt">
@@ -554,35 +548,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nZw-dn-IM0" customClass="PFImageView">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nZw-dn-IM0" customClass="PFImageView">
                                                     <rect key="frame" x="0.0" y="0.0" width="210" height="210"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <outlet property="itemImage" destination="nZw-dn-IM0" id="Kz8-ul-cEO"/>
-                                            <segue destination="JDE-d5-ifW" kind="show" identifier="itemDetailSegue" id="Mg5-IR-BE0"/>
+                                            <outlet property="outfitImage" destination="nZw-dn-IM0" id="HRr-Am-Ee6"/>
+                                            <segue destination="ZFY-OJ-Lwb" kind="show" identifier="plannedOutfitDetailSegue" id="Kbg-B5-UF6"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oYH-QQ-Eu9">
-                                <rect key="frame" x="339" y="406" width="64" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="see more"/>
-                                <connections>
-                                    <segue destination="SqV-Bq-n4m" kind="show" id="s01-qT-SJs"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Toc-bT-mlF">
-                                <rect key="frame" x="330" y="135" width="64" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="see more"/>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="g69-nt-kYH">
-                                <rect key="frame" x="0.0" y="440" width="414" height="210"/>
+                                <rect key="frame" x="0.0" y="383" width="414" height="459"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6Ix-A7-5gh">
@@ -600,7 +580,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tag" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="H9T-So-h36" customClass="PFImageView">
-                                                    <rect key="frame" x="3" y="0.0" width="210" height="210"/>
+                                                    <rect key="frame" x="3" y="0.0" width="125" height="129"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -616,12 +596,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="g6B-Th-77g"/>
                     </view>
-                    <navigationItem key="navigationItem" id="I7b-O9-atv"/>
+                    <navigationItem key="navigationItem" title="Your Outfits" id="I7b-O9-atv"/>
                     <connections>
-                        <outlet property="itemCollectionView" destination="b90-TB-KPO" id="ocP-vX-Nne"/>
-                        <outlet property="itemsCollectionViewFlowLayout" destination="xTt-UA-rQt" id="KCS-me-5VD"/>
                         <outlet property="outfitCollectionView" destination="g69-nt-kYH" id="zgD-Ok-oku"/>
                         <outlet property="outfitCollectionViewFlowLayout" destination="6Ix-A7-5gh" id="9i3-a0-pqV"/>
+                        <outlet property="plannedOutfitCollectionView" destination="b90-TB-KPO" id="QNm-8d-T4k"/>
+                        <outlet property="plannedOutfitCollectionViewFlowLayout" destination="xTt-UA-rQt" id="sMO-ww-5cD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Eg-aj-qr0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -646,6 +626,11 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <activityIndicatorView key="backgroundView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="NlP-p2-e8t">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="705"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </activityIndicatorView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="itemCell" reuseIdentifier="itemCell" id="ad5-DA-83f" customClass="ClosetCollectionViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -727,6 +712,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="NlP-p2-e8t" id="QiL-oa-rvn"/>
                         <outlet property="bottomButton" destination="Ihz-Ak-x09" id="jSu-qH-Le7"/>
                         <outlet property="closetLayoutViewFlow" destination="Ci6-uS-E4s" id="hCw-R4-vgT"/>
                         <outlet property="itemCollectionView" destination="ARL-Gv-AEV" id="0cR-sw-SwL"/>
@@ -1076,60 +1062,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5b0-L1-Jft" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5050.7246376811599" y="-607.36607142857144"/>
-        </scene>
-        <!--Favorite Outfits-->
-        <scene sceneID="rzk-eZ-cTJ">
-            <objects>
-                <viewController id="SqV-Bq-n4m" customClass="FavoriteOutfitViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="u1W-WA-GiV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wvk-2i-9eA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xfq-r4-Zut">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="outfitCell" reuseIdentifier="outfitCell" id="sX7-tJ-xOd" customClass="FavoriteOutfitCollectionViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="J20-uv-JHx">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tag" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MdB-jW-dr9" customClass="PFImageView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                            </subviews>
-                                        </collectionViewCellContentView>
-                                        <connections>
-                                            <outlet property="outfitImage" destination="MdB-jW-dr9" id="gnT-yt-Tax"/>
-                                            <segue destination="ZFY-OJ-Lwb" kind="show" identifier="outfitDetailSegue" id="QW3-b9-938"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="BYS-j5-Jd2"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Favorite Outfits" id="7LS-FJ-kjq"/>
-                    <connections>
-                        <outlet property="favoriteOutfitViewFlow" destination="xfq-r4-Zut" id="0dw-QZ-R8X"/>
-                        <outlet property="outfitCollectionView" destination="wvk-2i-9eA" id="kGI-9v-IJ1"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lcF-7h-Vdz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4172" y="-1325"/>
+            <point key="canvasLocation" x="4143" y="-1325"/>
         </scene>
         <!--Item Detail View Controller-->
         <scene sceneID="9X6-1Y-vgo">
@@ -1283,7 +1216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5a-yN-s1U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5052.1739130434789" y="-1320.5357142857142"/>
+            <point key="canvasLocation" x="5167" y="-632"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="EPs-DJ-U0j">
@@ -1404,11 +1337,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0wX-Hc-0I8"/>
-        <segue reference="vaA-Xu-Cgf"/>
-        <segue reference="bkB-wj-Tri"/>
-        <segue reference="gIa-US-lz8"/>
-        <segue reference="Ojf-cS-rBN"/>
+        <segue reference="xdd-Hb-4Gb"/>
+        <segue reference="FfG-HI-Wu6"/>
+        <segue reference="Kbg-B5-UF6"/>
+        <segue reference="3aB-2E-MDU"/>
+        <segue reference="Ssh-VI-qya"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Screen Shot 2020-07-23 at 4.42.18 PM" width="1942" height="1148"/>

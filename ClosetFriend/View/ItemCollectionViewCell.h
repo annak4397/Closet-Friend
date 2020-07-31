@@ -9,13 +9,13 @@
 @import Parse;
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
-#import "Item.h"
+#import "Outfit.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ItemCollectionViewCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet PFImageView *itemImage;
--(void)setCellItem:(Item *)itemPassed;
+@property (weak, nonatomic) IBOutlet PFImageView *outfitImage;
+-(void)setCellOutfit:(Outfit *)outfitPassed;
 @end
 
 NS_ASSUME_NONNULL_END

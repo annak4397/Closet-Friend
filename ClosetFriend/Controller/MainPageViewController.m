@@ -13,7 +13,7 @@
 #import "ItemCollectionViewCell.h"
 #import "Item.h"
 #import "OutfitCollectionViewCell.h"
-#import "Outfit.h";
+#import "Outfit.h"
 #import "ItemDetailViewController.h"
 #import "OutfitDetailViewController.h"
 #import "NewItemViewController.h"
@@ -21,9 +21,9 @@
 
 @interface MainPageViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UICollectionView *itemCollectionView;
-@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *itemsCollectionViewFlowLayout;
-@property (strong, nonatomic) NSArray *itemsArray;
+@property (weak, nonatomic) IBOutlet UICollectionView *plannedOutfitCollectionView;
+@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *plannedOutfitCollectionViewFlowLayout;
+@property (strong, nonatomic) NSArray *plannedOutfitsArray;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *outfitCollectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *outfitCollectionViewFlowLayout;
@@ -37,21 +37,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.itemCollectionView.dataSource = self;
-    self.itemCollectionView.delegate = self;
+    self.plannedOutfitCollectionView.dataSource = self;
+    self.plannedOutfitCollectionView.delegate = self;
     
     self.outfitCollectionView.dataSource = self;
     self.outfitCollectionView.delegate = self;
     
-    [self.itemsCollectionViewFlowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    [self.outfitCollectionViewFlowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    [self.plannedOutfitCollectionViewFlowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     
-    CGFloat cellHeight = self.itemCollectionView.frame.size.height;
+    CGFloat cellHeight = self.plannedOutfitCollectionView.frame.size.height;
     CGFloat cellWidth = cellHeight;
-    self.itemsCollectionViewFlowLayout.itemSize = CGSizeMake(cellWidth, cellHeight);
-    self.itemsCollectionViewFlowLayout.minimumLineSpacing = 0;
-    self.itemsCollectionViewFlowLayout.minimumInteritemSpacing = 0;
+    self.plannedOutfitCollectionViewFlowLayout.itemSize = CGSizeMake(cellWidth, cellHeight);
+    self.plannedOutfitCollectionViewFlowLayout.minimumLineSpacing = 0;
+    self.plannedOutfitCollectionViewFlowLayout.minimumInteritemSpacing = 0;
     
+    cellWidth = self.outfitCollectionView.frame.size.width/3;
+    cellHeight = cellWidth;
     self.outfitCollectionViewFlowLayout.itemSize = CGSizeMake(cellWidth, cellHeight);
     self.outfitCollectionViewFlowLayout.minimumLineSpacing = 0;
     self.outfitCollectionViewFlowLayout.minimumInteritemSpacing = 0;
@@ -66,31 +67,31 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if([[segue identifier] isEqualToString:@"itemDetailSegue"]) {
-        UICollectionViewCell *tappedCell = sender;
-        NSIndexPath *indexPath = [self.itemCollectionView indexPathForCell:tappedCell];
-        Item *tappedItem = self.itemsArray[indexPath.row];
-        ItemDetailViewController *detailController = [segue destinationViewController];
-        detailController.itemPassed = tappedItem;
+    UICollectionViewCell *tappedCell = sender;
+    NSIndexPath *indexPath;
+    Outfit *tappedOutfit;
+    if([tappedCell.reuseIdentifier isEqualToString:@"itemCell"]){
+        indexPath = [self.plannedOutfitCollectionView indexPathForCell:tappedCell];
+        tappedOutfit = self.plannedOutfitsArray[indexPath.row];
     }
-    else if([[segue identifier] isEqualToString:@"outfitDetailSegue"]) {
-        UICollectionViewCell *tappedCell = sender;
-        NSIndexPath *indexPath = [self.outfitCollectionView indexPathForCell:tappedCell];
-        Outfit *tappedOutfit = self.outfitsArray[indexPath.row];
-        OutfitDetailViewController *detailController = [segue destinationViewController];
-        detailController.passedOutfit = tappedOutfit;
+    else{
+        indexPath = [self.outfitCollectionView indexPathForCell:tappedCell];
+        tappedOutfit = self.outfitsArray[indexPath.row];
     }
+    OutfitDetailViewController *detailController = [segue destinationViewController];
+    detailController.passedOutfit = tappedOutfit;
 }
 
 - (void) loadData{
-    PFQuery *itemQuery = [PFQuery queryWithClassName:@"Item"];
-    [itemQuery orderByDescending:@"createdAt"];
-    itemQuery.limit = 10;
-    [itemQuery findObjectsInBackgroundWithBlock:^(NSArray *items, NSError *error) {
+    PFQuery *plannedOutfitQuery = [PFQuery queryWithClassName:@"Outfit"];
+    [plannedOutfitQuery orderByDescending:@"createdAt"];
+    [plannedOutfitQuery whereKey:@"planned" equalTo:@(1)];
+    [plannedOutfitQuery includeKey:@"items"];
+    [plannedOutfitQuery findObjectsInBackgroundWithBlock:^(NSArray *items, NSError *error) {
         if (items != nil) {
-            self.itemsArray = items;
+            self.plannedOutfitsArray = items;
             //[self.loadingActivity stopAnimating];
-            [self.itemCollectionView reloadData];
+            [self.plannedOutfitCollectionView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
@@ -98,7 +99,6 @@
     
     PFQuery *outfitQuery = [PFQuery queryWithClassName:@"Outfit"];
     [outfitQuery orderByDescending:@"createdAt"];
-    outfitQuery.limit = 10;
     [outfitQuery whereKey:@"liked" equalTo:@(1)];
     [outfitQuery includeKey:@"items"];
     [outfitQuery findObjectsInBackgroundWithBlock:^(NSArray *outfits, NSError *error) {
@@ -113,17 +113,17 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if(collectionView == self.itemCollectionView){
-        return self.itemsArray.count;
+    if(collectionView == self.plannedOutfitCollectionView){
+        return self.plannedOutfitsArray.count;
     }
     return self.outfitsArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if(collectionView == self.itemCollectionView){
+    if(collectionView == self.plannedOutfitCollectionView){
         ItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"itemCell" forIndexPath:indexPath];
-        Item *item = self.itemsArray[indexPath.row];
-        [cell setCellItem:item];
+        Outfit *outfit = self.plannedOutfitsArray[indexPath.row];
+        [cell setCellOutfit:outfit];
 
         return cell;
     }

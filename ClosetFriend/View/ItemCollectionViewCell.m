@@ -9,8 +9,8 @@
 #import "ItemCollectionViewCell.h"
 
 @implementation ItemCollectionViewCell
--(void)setCellItem:(Item *)itemPassed{
-    self.itemImage.file = itemPassed[@"image"];
-    [self.itemImage loadInBackground];
+-(void)setCellOutfit:(Outfit *)outfitPassed{
+    self.outfitImage.file = outfitPassed[@"image"];
+    [self.outfitImage loadInBackground];
 }
 @end

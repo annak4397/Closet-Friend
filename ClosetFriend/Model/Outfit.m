@@ -16,6 +16,7 @@
 @dynamic price;
 @dynamic season;
 @dynamic liked;
+@dynamic planned;
 @dynamic image;
 
 + (nonnull NSString *)parseClassName {

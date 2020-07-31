@@ -489,5 +489,29 @@
     [self onBookmarkButtonTap:nil];
 }
 - (IBAction)onPlannedOutfitTap:(id)sender {
+    if(self.plannedOutfitButton.selected == NO){
+        self.plannedOutfitButton.selected = YES;
+        self.outfitCreated.planned = YES;
+        [self.outfitCreated saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(succeeded){
+                NSLog(@"add to planned outfit");
+            }
+            else{
+                NSLog(@"error :%@", error.localizedDescription);
+            }
+        }];
+    }
+    else{
+        self.plannedOutfitButton.selected = NO;
+        self.outfitCreated.planned = NO;
+        [self.outfitCreated saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(succeeded){
+                NSLog(@"un added to planned outfit");
+            }
+            else{
+                NSLog(@"error :%@", error.localizedDescription);
+            }
+        }];
+    }
 }
 @end

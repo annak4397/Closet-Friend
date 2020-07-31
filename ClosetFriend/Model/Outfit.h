@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property int price;
 @property (nonatomic, strong) NSString *season;
 @property Boolean liked;
+@property Boolean planned;
 @property (nonatomic, strong) PFFileObject *image;
 
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion;

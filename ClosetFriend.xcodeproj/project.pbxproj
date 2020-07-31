@@ -25,9 +25,7 @@
 		D060142924BD0CAD009CC4BD /* ItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D060142824BD0CAD009CC4BD /* ItemCollectionViewCell.m */; };
 		D060142C24BD1861009CC4BD /* OutfitCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D060142B24BD1861009CC4BD /* OutfitCollectionViewCell.m */; };
 		D060142F24BD23A1009CC4BD /* ClosetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060142E24BD23A1009CC4BD /* ClosetViewController.m */; };
-		D060143224BD2555009CC4BD /* FavoriteOutfitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060143124BD2555009CC4BD /* FavoriteOutfitViewController.m */; };
 		D060143524BD2801009CC4BD /* ClosetCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D060143424BD2801009CC4BD /* ClosetCollectionViewCell.m */; };
-		D060143824BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D060143724BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.m */; };
 		D060143B24BE1359009CC4BD /* NewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060143A24BE1359009CC4BD /* NewItemViewController.m */; };
 		D060143E24BE1A40009CC4BD /* ItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060143D24BE1A40009CC4BD /* ItemDetailViewController.m */; };
 		D060144124BE2291009CC4BD /* OutfitDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D060144024BE2291009CC4BD /* OutfitDetailViewController.m */; };
@@ -94,12 +92,8 @@
 		D060142B24BD1861009CC4BD /* OutfitCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OutfitCollectionViewCell.m; sourceTree = "<group>"; };
 		D060142D24BD23A1009CC4BD /* ClosetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClosetViewController.h; sourceTree = "<group>"; };
 		D060142E24BD23A1009CC4BD /* ClosetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClosetViewController.m; sourceTree = "<group>"; };
-		D060143024BD2555009CC4BD /* FavoriteOutfitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoriteOutfitViewController.h; sourceTree = "<group>"; };
-		D060143124BD2555009CC4BD /* FavoriteOutfitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoriteOutfitViewController.m; sourceTree = "<group>"; };
 		D060143324BD2801009CC4BD /* ClosetCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClosetCollectionViewCell.h; sourceTree = "<group>"; };
 		D060143424BD2801009CC4BD /* ClosetCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClosetCollectionViewCell.m; sourceTree = "<group>"; };
-		D060143624BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoriteOutfitCollectionViewCell.h; sourceTree = "<group>"; };
-		D060143724BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoriteOutfitCollectionViewCell.m; sourceTree = "<group>"; };
 		D060143924BE1359009CC4BD /* NewItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewItemViewController.h; sourceTree = "<group>"; };
 		D060143A24BE1359009CC4BD /* NewItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewItemViewController.m; sourceTree = "<group>"; };
 		D060143C24BE1A40009CC4BD /* ItemDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemDetailViewController.h; sourceTree = "<group>"; };
@@ -246,8 +240,6 @@
 				D060142B24BD1861009CC4BD /* OutfitCollectionViewCell.m */,
 				D060143324BD2801009CC4BD /* ClosetCollectionViewCell.h */,
 				D060143424BD2801009CC4BD /* ClosetCollectionViewCell.m */,
-				D060143624BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.h */,
-				D060143724BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.m */,
 				D063608F24C258F400633E47 /* ItemInOutfitTableViewCell.h */,
 				D063609024C258F400633E47 /* ItemInOutfitTableViewCell.m */,
 			);
@@ -276,8 +268,6 @@
 				D060142524BD048C009CC4BD /* MainPageViewController.m */,
 				D060142D24BD23A1009CC4BD /* ClosetViewController.h */,
 				D060142E24BD23A1009CC4BD /* ClosetViewController.m */,
-				D060143024BD2555009CC4BD /* FavoriteOutfitViewController.h */,
-				D060143124BD2555009CC4BD /* FavoriteOutfitViewController.m */,
 				D060143924BE1359009CC4BD /* NewItemViewController.h */,
 				D060143A24BE1359009CC4BD /* NewItemViewController.m */,
 				D060143C24BE1A40009CC4BD /* ItemDetailViewController.h */,
@@ -538,7 +528,6 @@
 				D060144424BE511C009CC4BD /* SelectorToolViewController.m in Sources */,
 				D060142024BCF781009CC4BD /* Outfit.m in Sources */,
 				D060143524BD2801009CC4BD /* ClosetCollectionViewCell.m in Sources */,
-				D060143224BD2555009CC4BD /* FavoriteOutfitViewController.m in Sources */,
 				D063609424C651FB00633E47 /* Constants.m in Sources */,
 				D060144124BE2291009CC4BD /* OutfitDetailViewController.m in Sources */,
 				D060143E24BE1A40009CC4BD /* ItemDetailViewController.m in Sources */,
@@ -555,7 +544,6 @@
 				D063609A24CA629C00633E47 /* SignUpViewController.m in Sources */,
 				D060142C24BD1861009CC4BD /* OutfitCollectionViewCell.m in Sources */,
 				D06013E224BCC4BF009CC4BD /* SceneDelegate.m in Sources */,
-				D060143824BD285D009CC4BD /* FavoriteOutfitCollectionViewCell.m in Sources */,
 				D060144A24C0CE47009CC4BD /* NewOutfitViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

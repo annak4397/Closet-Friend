@@ -33,6 +33,7 @@
 - (IBAction)onLogoutButtonTap:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *bottomButton;
 - (IBAction)onBottomButtonTap:(id)sender;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -143,8 +144,9 @@
     }
     else if([[segue identifier] isEqualToString:@"outfitCreationSegue"]) {
         NewOutfitViewController *outfitController = [segue destinationViewController];
-        
         outfitController.itemsPassed = [NSMutableArray arrayWithArray:self.selectedItems];
+        [self.activityIndicator stopAnimating];
+        NSLog(@"loading ended");
     }
     
 }
@@ -221,6 +223,8 @@
         [self performSegueWithIdentifier:@"newItemSegue" sender:nil];
     }
     else{
+        NSLog(@"loading began");
+        [self.activityIndicator startAnimating];
         [self performSegueWithIdentifier:@"outfitCreationSegue" sender:nil];
          
         // Deselect all selected items
