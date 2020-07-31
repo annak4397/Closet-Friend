@@ -972,12 +972,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afs-yv-LSI">
-                                        <rect key="frame" x="295" y="26" width="18" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="bookmark" catalog="system"/>
-                                        <state key="selected" image="bookmark.fill" catalog="system"/>
-                                    </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="147" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1du-fh-WFh">
                                         <rect key="frame" x="0.0" y="437" width="414" height="258"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1048,6 +1042,24 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X7z-h0-3gO">
+                                        <rect key="frame" x="87" y="265" width="158" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Add to Plan"/>
+                                        <state key="selected" title="Remove from Plan"/>
+                                        <connections>
+                                            <action selector="onPlanButtonTap:" destination="ZFY-OJ-Lwb" eventType="touchUpInside" id="BEM-BS-PKc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afs-yv-LSI">
+                                        <rect key="frame" x="279" y="270" width="21" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="heart" catalog="system"/>
+                                        <state key="selected" image="heart.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="onLikeButtonTap:" destination="ZFY-OJ-Lwb" eventType="touchUpInside" id="jTP-py-QF9"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="VCc-Ou-5eE"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="y6e-R6-JrU"/>
@@ -1061,13 +1073,14 @@
                         <outlet property="itemsTableView" destination="1du-fh-WFh" id="JCv-1p-0f6"/>
                         <outlet property="likedButton" destination="afs-yv-LSI" id="y2i-xO-Dy3"/>
                         <outlet property="outfitImage" destination="pFY-jw-q0x" id="ZIK-DQ-dlD"/>
+                        <outlet property="planButton" destination="X7z-h0-3gO" id="pq8-vF-1JW"/>
                         <outlet property="priceLabel" destination="Lfg-wU-ZsX" id="2DC-jT-ATF"/>
                         <outlet property="seasonLabel" destination="UNM-Qm-Fw2" id="ZAL-jK-IZi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5b0-L1-Jft" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4143" y="-1325"/>
+            <point key="canvasLocation" x="4142.0289855072469" y="-1325.2232142857142"/>
         </scene>
         <!--Item Detail View Controller-->
         <scene sceneID="9X6-1Y-vgo">
@@ -1352,8 +1365,6 @@
         <image name="651px-Love_Heart_symbol.svg" width="651" height="600"/>
         <image name="Screen Shot 2020-07-23 at 4.42.18 PM" width="1942" height="1148"/>
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
-        <image name="bookmark" catalog="system" width="112" height="128"/>
-        <image name="bookmark.fill" catalog="system" width="112" height="128"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>

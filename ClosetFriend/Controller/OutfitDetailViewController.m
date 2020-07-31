@@ -21,6 +21,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *seasonLabel;
 @property (weak, nonatomic) IBOutlet UITableView *itemsTableView;
 @property (weak, nonatomic) NSArray *items;
+@property (weak, nonatomic) IBOutlet UIButton *planButton;
+- (IBAction)onPlanButtonTap:(id)sender;
+- (IBAction)onLikeButtonTap:(id)sender;
+
 
 @end
 
@@ -41,6 +45,15 @@
     self.seasonLabel.text = self.passedOutfit.season;
     if(self.passedOutfit.liked == YES){
         self.likedButton.selected = YES;
+    }
+    else{
+        self.likedButton.selected = NO;
+    }
+    if(self.passedOutfit.planned == YES){
+        self.planButton.selected = YES;
+    }
+    else{
+        self.planButton.selected = NO;
     }
     self.items = self.passedOutfit.items;
     [self.itemsTableView reloadData];
@@ -91,5 +104,58 @@
     // since the share button doesn't show up in the storyboard I had to add the location myself based on the location of the price label. The + 210 and + 95 were the values that I found to work and place the button in the right place
     shareButton.center = CGPointMake(self.priceLabel.layer.position.x + 210, self.priceLabel.layer.position.y + 95);
     [self.view addSubview:shareButton];
+}
+- (IBAction)onLikeButtonTap:(id)sender {
+    if(self.likedButton.selected == NO){
+        self.likedButton.selected = YES;
+        self.passedOutfit.liked = YES;
+        [self.passedOutfit saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(succeeded){
+                NSLog(@"favorite outfit");
+            }
+            else{
+                NSLog(@"error :%@", error.localizedDescription);
+            }
+        }];
+    }
+    else{
+        self.likedButton.selected = NO;
+        self.passedOutfit.liked = NO;
+        [self.passedOutfit saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(succeeded){
+                NSLog(@"un favorite outfit");
+            }
+            else{
+                NSLog(@"error :%@", error.localizedDescription);
+            }
+        }];
+    }
+}
+
+- (IBAction)onPlanButtonTap:(id)sender {
+    if(self.planButton.selected == NO){
+        self.planButton.selected = YES;
+        self.passedOutfit.planned = YES;
+        [self.passedOutfit saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(succeeded){
+                NSLog(@"add to planned outfit");
+            }
+            else{
+                NSLog(@"error :%@", error.localizedDescription);
+            }
+        }];
+    }
+    else{
+        self.planButton.selected = NO;
+        self.passedOutfit.planned = NO;
+        [self.passedOutfit saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(succeeded){
+                NSLog(@"un added to planned outfit");
+            }
+            else{
+                NSLog(@"error :%@", error.localizedDescription);
+            }
+        }];
+    }
 }
 @end
