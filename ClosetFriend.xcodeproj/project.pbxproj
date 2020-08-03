@@ -36,6 +36,8 @@
 		D063609424C651FB00633E47 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = D063609324C651FB00633E47 /* Constants.m */; };
 		D063609724C78DA200633E47 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D063609624C78DA200633E47 /* FilterViewController.m */; };
 		D063609A24CA629C00633E47 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D063609924CA629C00633E47 /* SignUpViewController.m */; };
+		D085928D24D8BFD600D5572D /* WeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D085928C24D8BFD600D5572D /* WeatherViewController.m */; };
+		D085929024D8BFF400D5572D /* WeatherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D085928F24D8BFF400D5572D /* WeatherTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +116,10 @@
 		D063609624C78DA200633E47 /* FilterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		D063609824CA629C00633E47 /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		D063609924CA629C00633E47 /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		D085928B24D8BFD600D5572D /* WeatherViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherViewController.h; sourceTree = "<group>"; };
+		D085928C24D8BFD600D5572D /* WeatherViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherViewController.m; sourceTree = "<group>"; };
+		D085928E24D8BFF400D5572D /* WeatherTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherTableViewCell.h; sourceTree = "<group>"; };
+		D085928F24D8BFF400D5572D /* WeatherTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherTableViewCell.m; sourceTree = "<group>"; };
 		DB04265B03E9DEC9CB3E285B /* Pods-ClosetFriendTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosetFriendTests.release.xcconfig"; path = "Target Support Files/Pods-ClosetFriendTests/Pods-ClosetFriendTests.release.xcconfig"; sourceTree = "<group>"; };
 		E34E5E33F02557EFEFF13867 /* Pods_ClosetFriend.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ClosetFriend.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F60D1B5868E2701851E36305 /* Pods-ClosetFriend-ClosetFriendUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ClosetFriend-ClosetFriendUITests.release.xcconfig"; path = "Target Support Files/Pods-ClosetFriend-ClosetFriendUITests/Pods-ClosetFriend-ClosetFriendUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -242,6 +248,8 @@
 				D060143424BD2801009CC4BD /* ClosetCollectionViewCell.m */,
 				D063608F24C258F400633E47 /* ItemInOutfitTableViewCell.h */,
 				D063609024C258F400633E47 /* ItemInOutfitTableViewCell.m */,
+				D085928E24D8BFF400D5572D /* WeatherTableViewCell.h */,
+				D085928F24D8BFF400D5572D /* WeatherTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -282,6 +290,8 @@
 				D060144924C0CE47009CC4BD /* NewOutfitViewController.m */,
 				D063609524C78DA200633E47 /* FilterViewController.h */,
 				D063609624C78DA200633E47 /* FilterViewController.m */,
+				D085928B24D8BFD600D5572D /* WeatherViewController.h */,
+				D085928C24D8BFD600D5572D /* WeatherViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -553,11 +563,13 @@
 				D060143B24BE1359009CC4BD /* NewItemViewController.m in Sources */,
 				D060142924BD0CAD009CC4BD /* ItemCollectionViewCell.m in Sources */,
 				D060141A24BCD456009CC4BD /* Item.m in Sources */,
+				D085929024D8BFF400D5572D /* WeatherTableViewCell.m in Sources */,
 				D060144724BFABA3009CC4BD /* ProfileViewController.m in Sources */,
 				D06013DF24BCC4BF009CC4BD /* AppDelegate.m in Sources */,
 				D060142324BCFC04009CC4BD /* LoginViewController.m in Sources */,
 				D063609724C78DA200633E47 /* FilterViewController.m in Sources */,
 				D060142624BD048C009CC4BD /* MainPageViewController.m in Sources */,
+				D085928D24D8BFD600D5572D /* WeatherViewController.m in Sources */,
 				D063609124C258F400633E47 /* ItemInOutfitTableViewCell.m in Sources */,
 				D06013F024BCC4BF009CC4BD /* main.m in Sources */,
 				D063609A24CA629C00633E47 /* SignUpViewController.m in Sources */,

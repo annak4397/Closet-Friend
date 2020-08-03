@@ -289,7 +289,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ezf-Bz-f5Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3292.753623188406" y="85.714285714285708"/>
+            <point key="canvasLocation" x="3297" y="-632"/>
         </scene>
         <!--Selector Tool View Controller-->
         <scene sceneID="uOj-iH-bNF">
@@ -331,9 +331,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6T1-cd-dtW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4028.985507246377" y="85.714285714285708"/>
+            <point key="canvasLocation" x="4188" y="-632"/>
         </scene>
-        <!--Generate New Outfit-->
+        <!--Outfit Generator-->
         <scene sceneID="vPd-cV-d3j">
             <objects>
                 <viewController id="GlY-0q-BDU" customClass="NewOutfitViewController" sceneMemberID="viewController">
@@ -446,7 +446,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2ZO-oL-nEv"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Generate New Outfit" id="pZ2-cM-EIw"/>
+                    <navigationItem key="navigationItem" title="Outfit Generator" id="pZ2-cM-EIw"/>
                     <connections>
                         <outlet property="activityIndicator" destination="meY-jv-WKt" id="GF6-Ht-Up3"/>
                         <outlet property="bookmarkButton" destination="SuL-Wo-opE" id="q1I-bb-J4Z"/>
@@ -462,24 +462,118 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TiD-o1-sbb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3297.1014492753625" y="813.61607142857144"/>
+            <point key="canvasLocation" x="3296" y="86"/>
+        </scene>
+        <!--Weather for the Week-->
+        <scene sceneID="Fkr-zR-UeJ">
+            <objects>
+                <viewController id="qHY-Ym-qWv" customClass="WeatherViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="298" sectionHeaderHeight="28" sectionFooterHeight="28" id="BSa-41-O7w">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeatherCell" rowHeight="298" id="v7j-b7-Nid" customClass="WeatherTableViewCell">
+                                <rect key="frame" x="0.0" y="28" width="414" height="298"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v7j-b7-Nid" id="bei-Ii-uML">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="298"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="udK-hZ-nVh">
+                                            <rect key="frame" x="143" y="11" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkr-Hj-dHv">
+                                            <rect key="frame" x="143" y="147" width="128" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Low Temp" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEd-iL-7xX">
+                                            <rect key="frame" x="96" y="234" width="107" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Feels Like" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olP-po-oOO">
+                                            <rect key="frame" x="143" y="205" width="128" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Weather" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKU-FD-XgK">
+                                            <rect key="frame" x="112" y="176" width="190" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="High Temp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9z6-nO-ezZ">
+                                            <rect key="frame" x="211" y="234" width="116" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Humidity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sbh-aY-eSD">
+                                            <rect key="frame" x="102" y="266" width="211" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="Date" destination="vkr-Hj-dHv" id="Itm-T9-fJk"/>
+                                    <outlet property="TempFeelsLike" destination="olP-po-oOO" id="MnG-th-29R"/>
+                                    <outlet property="WeatherIcon" destination="udK-hZ-nVh" id="9eZ-JI-kGH"/>
+                                    <outlet property="WeatherType" destination="pKU-FD-XgK" id="6Dt-2d-PYj"/>
+                                    <outlet property="highTemp" destination="9z6-nO-ezZ" id="0hy-MC-3Fm"/>
+                                    <outlet property="humidityPercent" destination="Sbh-aY-eSD" id="aam-0b-tz9"/>
+                                    <outlet property="lowTemp" destination="cEd-iL-7xX" id="uzB-rf-7Lz"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Weather for the Week" id="yAd-cI-47y">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="iRe-zM-Ubu">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0TE-pB-FXu">
+                                <rect key="frame" x="302" y="13" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="°C"/>
+                                <state key="selected" title="°F"/>
+                                <connections>
+                                    <action selector="onDegreeButtonTap:" destination="qHY-Ym-qWv" eventType="touchUpInside" id="2EK-bp-ya7"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="degreeButton" destination="0TE-pB-FXu" id="rtl-uX-qHA"/>
+                        <outlet property="tableView" destination="BSa-41-O7w" id="gtw-tI-wz5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oKO-Q4-Cfw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3295.652173913044" y="1498.6607142857142"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="O0k-i3-SBd">
             <objects>
                 <viewController id="v2u-Od-qbv" customClass="ProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k8S-5H-YeG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fnw-hy-Xaf">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NMI-VC-P1P" customClass="PFImageView">
-                                        <rect key="frame" x="87" y="8.5" width="240" height="240"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kp4-tx-mQM">
                                         <rect key="frame" x="160" y="257" width="95" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -495,6 +589,10 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NMI-VC-P1P" customClass="PFImageView">
+                                        <rect key="frame" x="87" y="8.5" width="240" height="240"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="9uu-OS-ayF"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="Bvy-Su-j6q"/>
@@ -511,7 +609,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3f9-tb-5de" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3292.753623188406" y="1492.6339285714284"/>
+            <point key="canvasLocation" x="393" y="1444"/>
         </scene>
         <!--Your Outfits-->
         <scene sceneID="H4R-xG-A4S">
@@ -611,7 +709,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Eg-aj-qr0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3292.753623188406" y="-1324.5535714285713"/>
+            <point key="canvasLocation" x="3349" y="806"/>
         </scene>
         <!--Your Closet-->
         <scene sceneID="z7P-c0-mMu">
@@ -729,7 +827,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q7I-ZI-2ML" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3292.753623188406" y="-632.14285714285711"/>
+            <point key="canvasLocation" x="3297" y="-1325"/>
         </scene>
         <!--Filter View Controller-->
         <scene sceneID="GIK-1f-PHQ">
@@ -919,7 +1017,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ah-UP-vy5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4143.4782608695659" y="-632.14285714285711"/>
+            <point key="canvasLocation" x="4191" y="-1325"/>
         </scene>
         <!--Outfit Detail View Controller-->
         <scene sceneID="zmC-r2-4wV">
@@ -1080,7 +1178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5b0-L1-Jft" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4142.0289855072469" y="-1325.2232142857142"/>
+            <point key="canvasLocation" x="4307" y="806"/>
         </scene>
         <!--Item Detail View Controller-->
         <scene sceneID="9X6-1Y-vgo">
@@ -1234,7 +1332,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5a-yN-s1U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5167" y="-632"/>
+            <point key="canvasLocation" x="5119" y="-1325"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="EPs-DJ-U0j">
@@ -1248,20 +1346,20 @@
                     </tabBar>
                     <connections>
                         <segue destination="V5q-Cg-4Ro" kind="relationship" relationship="viewControllers" id="FA6-So-gmX"/>
-                        <segue destination="gqh-xs-UMc" kind="relationship" relationship="viewControllers" id="Q4W-eC-S6U"/>
                         <segue destination="dz2-l5-qmm" kind="relationship" relationship="viewControllers" id="T8N-Ha-T6x"/>
-                        <segue destination="UWX-wG-vKR" kind="relationship" relationship="viewControllers" id="a9k-TN-hZv"/>
+                        <segue destination="gqh-xs-UMc" kind="relationship" relationship="viewControllers" id="Q4W-eC-S6U"/>
+                        <segue destination="XYR-rv-Vqz" kind="relationship" relationship="viewControllers" id="ysd-Q1-LxM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7D-3Z-bWR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="961" y="86"/>
+            <point key="canvasLocation" x="1068" y="-61"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Your Outfits-->
         <scene sceneID="6qn-a8-G5P">
             <objects>
                 <navigationController storyboardIdentifier="mainPageNavigator" automaticallyAdjustsScrollViewInsets="NO" id="gqh-xs-UMc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="house.fill" catalog="system" id="U2c-y8-jiJ"/>
+                    <tabBarItem key="tabBarItem" title="Your Outfits" image="heart.fill" catalog="system" id="U2c-y8-jiJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="An6-NN-Quy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -1274,13 +1372,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8IZ-bV-IM9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2382.608695652174" y="-1324.5535714285713"/>
+            <point key="canvasLocation" x="2383" y="806"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Your Closet-->
         <scene sceneID="bmG-tZ-RgN">
             <objects>
                 <navigationController storyboardIdentifier="closetNavController" automaticallyAdjustsScrollViewInsets="NO" id="V5q-Cg-4Ro" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="square.grid.2x2.fill" catalog="system" id="hfN-Uw-4s8"/>
+                    <tabBarItem key="tabBarItem" title="Your Closet" image="square.grid.2x2.fill" catalog="system" id="hfN-Uw-4s8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1aL-ba-gRj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -1293,7 +1391,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wWf-I4-FxG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2382.608695652174" y="-632.14285714285711"/>
+            <point key="canvasLocation" x="2383" y="-1325"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6yN-SM-Jxn">
@@ -1313,13 +1411,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zfh-UZ-DTC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2382.608695652174" y="85.714285714285708"/>
+            <point key="canvasLocation" x="2383" y="-632"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Outfit Generator-->
         <scene sceneID="U0M-Lc-UES">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dz2-l5-qmm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="tag.fill" catalog="system" id="4Ie-IK-xUN"/>
+                    <tabBarItem key="tabBarItem" title="Outfit Generator" image="tag.fill" catalog="system" id="4Ie-IK-xUN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RSG-6G-gf0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -1332,16 +1430,16 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UgB-ig-cZY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2386.9565217391305" y="813.61607142857144"/>
+            <point key="canvasLocation" x="2383" y="86"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="toV-I8-fIb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UWX-wG-vKR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="person.fill" catalog="system" id="Cyw-P9-WHU"/>
+                    <tabBarItem key="tabBarItem" title="" image="thermometer.sun" catalog="system" id="Cyw-P9-WHU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="H7N-0o-c5y">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1351,14 +1449,33 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B6m-4U-G2i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2382.608695652174" y="1492.6339285714284"/>
+            <point key="canvasLocation" x="-506" y="1444"/>
+        </scene>
+        <!--Weather-->
+        <scene sceneID="ozC-jr-1zA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XYR-rv-Vqz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Weather" image="thermometer.sun" catalog="system" id="eDb-ns-9Pa"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MKs-qc-Pqy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qHY-Ym-qWv" kind="relationship" relationship="rootViewController" id="beD-C7-TRD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oXB-s5-C8h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2383" y="1499"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="xdd-Hb-4Gb"/>
-        <segue reference="FfG-HI-Wu6"/>
+        <segue reference="vaA-Xu-Cgf"/>
         <segue reference="Kbg-B5-UF6"/>
-        <segue reference="3aB-2E-MDU"/>
+        <segue reference="gIa-US-lz8"/>
         <segue reference="Ojf-cS-rBN"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -1368,15 +1485,14 @@
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
-        <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
-        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="square.grid.2x2.fill" catalog="system" width="128" height="114"/>
         <image name="tag" catalog="system" width="128" height="116"/>
         <image name="tag.fill" catalog="system" width="128" height="116"/>
+        <image name="thermometer.sun" catalog="system" width="108" height="128"/>
     </resources>
 </document>
