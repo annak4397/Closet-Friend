@@ -74,6 +74,19 @@
     [self.outfitImageView setUserInteractionEnabled:YES];
     [self.outfitImageView addGestureRecognizer:tapGestureRecognizer];
 }
+-(void)viewDidAppear:(BOOL)animated{
+    if(self.itemPassed == NULL && self.itemsPassed.count == 0){
+        self.heartImage.alpha = 0;
+        self.outfitImageView.image = NULL;
+        self.bookmarkButton.hidden = YES;
+        self.plannedOutfitButton.hidden = YES;
+        self.seasonLabel.text = @"Season:";
+        self.seasonLabel.text = @"Select a season";
+        self.seasons = @[@"Spring", @"Summer", @"Fall", @"Winter", @"Any season"];
+        self.yourOutftiLabel.text = @"";
+        self.selectButton.hidden = NO;
+    }
+}
 
 #pragma mark - Navigation
 

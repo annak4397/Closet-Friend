@@ -90,8 +90,8 @@
             filePath = "ClosetFriend/Controller/NewOutfitViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "405"
-            endingLineNumber = "405"
+            startingLineNumber = "418"
+            endingLineNumber = "418"
             landmarkName = "-imageByCombiningImage:"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,8 +186,8 @@
             filePath = "ClosetFriend/Controller/NewOutfitViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "457"
-            endingLineNumber = "457"
+            startingLineNumber = "470"
+            endingLineNumber = "470"
             landmarkName = "-onBookmarkButtonTap:"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,8 +218,8 @@
             filePath = "ClosetFriend/Controller/NewOutfitViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "-didSelectSeason"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,8 +234,8 @@
             filePath = "ClosetFriend/Controller/NewOutfitViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "420"
-            endingLineNumber = "420"
+            startingLineNumber = "433"
+            endingLineNumber = "433"
             landmarkName = "-makeOutift"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,8 +250,8 @@
             filePath = "ClosetFriend/Controller/NewOutfitViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "419"
-            endingLineNumber = "419"
+            startingLineNumber = "432"
+            endingLineNumber = "432"
             landmarkName = "NewOutfitViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -266,8 +266,8 @@
             filePath = "ClosetFriend/Controller/NewOutfitViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "-didSelectSeason"
             landmarkType = "7">
             <Locations>
@@ -378,8 +378,8 @@
             filePath = "ClosetFriend/Controller/NewOutfitViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "NewOutfitViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -394,8 +394,8 @@
             filePath = "ClosetFriend/Controller/NewOutfitViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "434"
-            endingLineNumber = "434"
+            startingLineNumber = "447"
+            endingLineNumber = "447"
             landmarkName = "-makeOutift"
             landmarkType = "7">
          </BreakpointContent>
@@ -458,8 +458,8 @@
             filePath = "ClosetFriend/Controller/NewOutfitViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "393"
-            endingLineNumber = "393"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
             landmarkName = "-imageByCombiningImage:"
             landmarkType = "7">
          </BreakpointContent>
