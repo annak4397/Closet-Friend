@@ -378,21 +378,21 @@
 
 // use this for multiple images
 -(void)getImagesFromItems:(NSArray *)items{
-    self.imagesFromItems = [[NSMutableArray alloc] init];
+    // populates the imagesFromItems array and then replaces it with the image to keep the right order
+    self.imagesFromItems = [NSMutableArray arrayWithCapacity:items.count];
     for(Item* item in items){
+        [self.imagesFromItems addObject:item];
         dispatch_group_enter(self.group);
         [item[@"image"] getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
             if(data){
-                NSLog(@"%@", item.type);
                 UIImage *image = [UIImage imageWithData:data];
-                [self.imagesFromItems insertObject:image atIndex:self.imagesFromItems.count];
+                [self.imagesFromItems replaceObjectAtIndex:[items indexOfObject:item] withObject:image];
                 dispatch_group_leave(self.group);
             }
             if(error){
                 NSLog(@"there was an error %@", error.localizedDescription);
             }
         }];
-        [NSThread sleepForTimeInterval:.5f];
     }
 }
 
