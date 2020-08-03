@@ -456,7 +456,7 @@
                         <outlet property="seasonLabel" destination="QEN-Gi-xdb" id="dTL-nE-ZEL"/>
                         <outlet property="seasonTitleLabel" destination="daX-yz-otm" id="x8H-Gi-qvK"/>
                         <outlet property="selectButton" destination="omH-Uk-Dev" id="M3B-ZT-rtm"/>
-                        <outlet property="youOutftiLabel" destination="3Qd-eL-zFj" id="kqZ-F0-hOr"/>
+                        <outlet property="yourOutftiLabel" destination="3Qd-eL-zFj" id="B7V-oO-h0u"/>
                         <segue destination="F5y-qI-DFs" kind="presentation" identifier="selectionScreenSegue" id="Ojf-cS-rBN"/>
                     </connections>
                 </viewController>

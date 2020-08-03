@@ -9,5 +9,5 @@
 #import "Constants.h"
 
 @implementation Constants
-
+double const TIME_FOR_ANIMATION = .4;
 @end

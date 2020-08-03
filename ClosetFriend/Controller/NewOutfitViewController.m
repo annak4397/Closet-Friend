@@ -11,6 +11,7 @@
 #import "Item.h"
 #import "Outfit.h"
 #import <UIKit/UIKit.h>
+#import "Constants.h"
 @import Parse;
 
 @interface NewOutfitViewController ()<SelectViewControllerDelegate>
@@ -29,7 +30,7 @@
 @property (strong, nonatomic) NSArray *allItems;
 @property (weak, nonatomic) IBOutlet UIButton *plannedOutfitButton;
 - (IBAction)onPlannedOutfitTap:(id)sender;
-@property (weak, nonatomic) IBOutlet UILabel *youOutftiLabel;
+@property (weak, nonatomic) IBOutlet UILabel *yourOutftiLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIImageView *heartImage;
 
@@ -41,40 +42,31 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.heartImage.alpha = 0;
-    // set up for outfit from single item
-    if(self.itemPassed != NULL){
-        self.outfitImageView.image = NULL;
-        self.bookmarkButton.hidden = YES;
+    self.outfitImageView.image = NULL;
+    self.bookmarkButton.hidden = YES;
+    self.plannedOutfitButton.hidden = YES;
+    
+    // set up for outfit from single item or from array of items
+    if(self.itemPassed != NULL || self.itemsPassed.count != 0){
         self.seasonTitleLabel.text = @"";
         self.seasonLabel.text = @"";
         self.selectButton.hidden = YES;
-        self.youOutftiLabel.text = @"Your outfit";
-        self.plannedOutfitButton.hidden = YES;
+        self.yourOutftiLabel.text = @"Your outfit";
         [self.activityIndicator startAnimating];
-        [self queryFromAnItem: self.itemPassed];
-    }
-    // set up outfit from array of items
-    else if(self.itemsPassed.count != 0){
-        self.outfitImageView.image = NULL;
-        self.bookmarkButton.hidden = YES;
-        self.seasonLabel.text = @"";
-        self.seasonTitleLabel.text = @"";
-        self.selectButton.hidden = YES;
-        self.youOutftiLabel.text = @"Your outfit";
-        self.plannedOutfitButton.hidden = YES;
-        [self.activityIndicator startAnimating];
-        [self setItemsInOutfitFromArray:self.itemsPassed];
+        if(self.itemPassed != NULL){
+            [self queryFromAnItem: self.itemPassed];
+        }
+        else{
+            [self setItemsInOutfitFromArray:self.itemsPassed];
+        }
     }
     //set up for random outfit
     else{
         self.seasonLabel.text = @"Season:";
         self.seasonLabel.text = @"Select a season";
         self.seasons = @[@"Spring", @"Summer", @"Fall", @"Winter", @"Any season"];
-        self.youOutftiLabel.text = @"";
-        self.plannedOutfitButton.hidden = YES;
+        self.yourOutftiLabel.text = @"";
         self.selectButton.hidden = NO;
-        self.outfitImageView.image = NULL;
-        self.bookmarkButton.hidden = YES;
     }
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
@@ -308,7 +300,7 @@
 // gets the items for the outfit in a spesific season
 - (void)setItemsInOutfit{
     self.group = dispatch_group_create();
-    self.youOutftiLabel.text = @"Your outfit:";
+    self.yourOutftiLabel.text = @"Your outfit:";
     [self getRandomItemsInOutfit];
     [self getImagesFromItems:self.itemsInOutfit];
     [self makeOutift];
@@ -487,10 +479,10 @@
     else{
         self.heartImage.image = [UIImage imageNamed: @"1250px-Broken_heart.svg"];
     }
-    [UIView animateWithDuration:.4 animations:^{
+    [UIView animateWithDuration: TIME_FOR_ANIMATION animations:^{
         self.heartImage.alpha = 1;
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:.4 animations:^{
+        [UIView animateWithDuration:TIME_FOR_ANIMATION animations:^{
             self.heartImage.alpha = 0;
         }];
     }];
