@@ -1,4 +1,11 @@
 PODS:
+  - AerisWeather (3.2.6):
+    - AerisWeather/Data (= 3.2.6)
+  - AerisWeather/Core (3.2.6)
+  - AerisWeather/CoreUI (3.2.6):
+    - AerisWeather/Core
+  - AerisWeather/Data (3.2.6):
+    - AerisWeather/CoreUI
   - Bolts/Tasks (1.9.1)
   - FacebookCore (0.9.0):
     - FBSDKCoreKit (~> 5.0)
@@ -32,6 +39,7 @@ PODS:
     - Parse/Core
 
 DEPENDENCIES:
+  - AerisWeather
   - FacebookShare
   - Parse
   - Parse/FacebookUtils
@@ -39,6 +47,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AerisWeather
     - Bolts
     - FacebookCore
     - FacebookShare
@@ -48,6 +57,7 @@ SPEC REPOS:
     - Parse
 
 SPEC CHECKSUMS:
+  AerisWeather: 84de9ca541eaf2d2c903415e710a752faa5f1d2d
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookShare: 85968ad1b1606c4944fb154924e425fd29184ea5
@@ -56,6 +66,6 @@ SPEC CHECKSUMS:
   FBSDKShareKit: 259737eab3cc807087374553abdf588b3096ba55
   Parse: 79bdda34fdb7eb2a707a43a951c8aae236cb3e34
 
-PODFILE CHECKSUM: 915f996fd855f62d1afb2402d3b0e959874e38d1
+PODFILE CHECKSUM: cc69f65688d6102337d41cb0ef03efe52ba826d0
 
 COCOAPODS: 1.9.3

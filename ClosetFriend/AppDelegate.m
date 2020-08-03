@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "Item.h"
 #import <Parse/PFFacebookUtils.h>
+@import AerisWeatherKit;
 
 @interface AppDelegate ()
 
@@ -17,10 +18,6 @@
 
 @implementation AppDelegate
 
-/*
- - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {     // Override point for customization after application launch.     ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {                  configuration.applicationId = @"travelr";         configuration.server = @"https://ana-travelr.herokuapp.com/parse";     }];          [Parse initializeWithConfiguration:config];          [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];               return YES; }  - (BOOL)application:(UIApplication*)app openURL:(NSURL*)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {     return [[FBSDKApplicationDelegate sharedInstance] application:app openURL:url options:options]; }  - (void)applicationDidBecomeActive:(UIApplication *)application {     [FBSDKAppEvents activateApp]; }
-
- */
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
@@ -31,11 +28,16 @@
     
     [Parse initializeWithConfiguration:config];
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
+    
+    [AerisWeather startWithApiKey:@"FTWBhs4BJyEOkjC3mu6vu" secret:@"xV8snhCtBG5GAIhj4xFa5UoeHqvJjTbJGSyLT8PK"];
+    
     return YES;
 }
-- (BOOL)application:(UIApplication*)app openURL:(NSURL*)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {     return [[FBSDKApplicationDelegate sharedInstance] application:app openURL:url options:options];
+- (BOOL)application:(UIApplication*)app openURL:(NSURL*)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    return [[FBSDKApplicationDelegate sharedInstance] application:app openURL:url options:options];
 }
-- (void)applicationDidBecomeActive:(UIApplication *)application {     [FBSDKAppEvents activateApp];
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [FBSDKAppEvents activateApp];
 }
 
 #pragma mark - UISceneSession lifecycle

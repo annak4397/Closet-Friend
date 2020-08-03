@@ -1,4 +1,10 @@
 ${PODS_ROOT}/Target Support Files/Pods-ClosetFriend/Pods-ClosetFriend-frameworks.sh
+${PODS_ROOT}/AerisWeather/iOS/AerisCore.framework
+${PODS_ROOT}/AerisWeather/iOS/AerisCore.framework.dSYM
+${PODS_ROOT}/AerisWeather/iOS/AerisCoreUI.framework
+${PODS_ROOT}/AerisWeather/iOS/AerisCoreUI.framework.dSYM
+${PODS_ROOT}/AerisWeather/iOS/AerisWeatherKit.framework
+${PODS_ROOT}/AerisWeather/iOS/AerisWeatherKit.framework.dSYM
 ${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework
 ${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework
 ${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework

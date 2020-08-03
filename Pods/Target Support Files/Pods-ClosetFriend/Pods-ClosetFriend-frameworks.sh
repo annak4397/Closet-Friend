@@ -197,6 +197,12 @@ if [ -r "${ARTIFACT_LIST_FILE}" ]; then
 fi
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${PODS_ROOT}/AerisWeather/iOS/AerisCore.framework"
+  install_dsym "${PODS_ROOT}/AerisWeather/iOS/AerisCore.framework.dSYM"
+  install_framework "${PODS_ROOT}/AerisWeather/iOS/AerisCoreUI.framework"
+  install_dsym "${PODS_ROOT}/AerisWeather/iOS/AerisCoreUI.framework.dSYM"
+  install_framework "${PODS_ROOT}/AerisWeather/iOS/AerisWeatherKit.framework"
+  install_dsym "${PODS_ROOT}/AerisWeather/iOS/AerisWeatherKit.framework.dSYM"
   install_framework "${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework"
@@ -206,6 +212,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Parse/Parse.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${PODS_ROOT}/AerisWeather/iOS/AerisCore.framework"
+  install_dsym "${PODS_ROOT}/AerisWeather/iOS/AerisCore.framework.dSYM"
+  install_framework "${PODS_ROOT}/AerisWeather/iOS/AerisCoreUI.framework"
+  install_dsym "${PODS_ROOT}/AerisWeather/iOS/AerisCoreUI.framework.dSYM"
+  install_framework "${PODS_ROOT}/AerisWeather/iOS/AerisWeatherKit.framework"
+  install_dsym "${PODS_ROOT}/AerisWeather/iOS/AerisWeatherKit.framework.dSYM"
   install_framework "${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework"

@@ -10,6 +10,7 @@ target 'ClosetFriend' do
   pod 'Parse/UI'
   pod 'Parse/FacebookUtils'
   pod 'FacebookShare'
+  pod 'AerisWeather'
 
   target 'ClosetFriendTests' do
     inherit! :search_paths
