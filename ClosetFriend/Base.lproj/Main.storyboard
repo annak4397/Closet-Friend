@@ -1343,6 +1343,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.51401775133648442" green="0.40536947472265283" blue="0.59391900452072544" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
                         <segue destination="V5q-Cg-4Ro" kind="relationship" relationship="viewControllers" id="FA6-So-gmX"/>
@@ -1476,7 +1477,7 @@
         <segue reference="vaA-Xu-Cgf"/>
         <segue reference="Kbg-B5-UF6"/>
         <segue reference="gIa-US-lz8"/>
-        <segue reference="Ojf-cS-rBN"/>
+        <segue reference="Ssh-VI-qya"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="651px-Love_Heart_symbol.svg" width="651" height="600"/>
