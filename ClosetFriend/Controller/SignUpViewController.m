@@ -8,6 +8,7 @@
 
 #import "SignUpViewController.h"
 @import Parse;
+@import SCLAlertView_Objective_C;
 
 @interface SignUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -24,7 +25,6 @@
 }
 
 - (IBAction)onSignUpButtonTap:(id)sender {
-    [self performSegueWithIdentifier:@"signUpSegue" sender:nil];
     PFUser *newUser = [PFUser user];
        
        // set user properties
@@ -34,6 +34,8 @@
        // call sign up function on the object
        [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
            if (error != nil) {
+               SCLAlertView *alert = [[SCLAlertView alloc] init];
+               [alert showError:self title:@"Sign Up Error" subTitle: error.localizedDescription closeButtonTitle:@"Try again." duration:0.0f];
                NSLog(@"Error: %@", error.localizedDescription);
            } else {
                NSLog(@"User registered successfully");

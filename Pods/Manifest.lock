@@ -37,6 +37,7 @@ PODS:
     - Parse/Core
   - Parse/UI (1.18.0):
     - Parse/Core
+  - SCLAlertView-Objective-C (1.1.6)
 
 DEPENDENCIES:
   - AerisWeather
@@ -44,6 +45,7 @@ DEPENDENCIES:
   - Parse
   - Parse/FacebookUtils
   - Parse/UI
+  - SCLAlertView-Objective-C
 
 SPEC REPOS:
   trunk:
@@ -55,6 +57,7 @@ SPEC REPOS:
     - FBSDKLoginKit
     - FBSDKShareKit
     - Parse
+    - SCLAlertView-Objective-C
 
 SPEC CHECKSUMS:
   AerisWeather: 84de9ca541eaf2d2c903415e710a752faa5f1d2d
@@ -65,7 +68,8 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: f1ea8026a58b52d30c9f2e6a58ca7d813619fb83
   FBSDKShareKit: 259737eab3cc807087374553abdf588b3096ba55
   Parse: 79bdda34fdb7eb2a707a43a951c8aae236cb3e34
+  SCLAlertView-Objective-C: 2bb9be204bffaf24762a0e33fe6ca9645819b3b7
 
-PODFILE CHECKSUM: cc69f65688d6102337d41cb0ef03efe52ba826d0
+PODFILE CHECKSUM: f77e3f590fbe8fee8f005a5a9fbeb899b92df787
 
 COCOAPODS: 1.9.3

@@ -12,6 +12,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "SceneDelegate.h"
+@import SCLAlertView_Objective_C;
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -66,6 +67,8 @@
     
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
+            SCLAlertView *alert = [[SCLAlertView alloc] init];
+            [alert showError:self title:@"Login Error" subTitle: error.localizedDescription closeButtonTitle:@"Try again." duration:0.0f]; 
             NSLog(@"User log in failed: %@", error.localizedDescription);
         } else {
             NSLog(@"User logged in successfully");

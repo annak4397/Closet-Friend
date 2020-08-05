@@ -11,6 +11,7 @@ target 'ClosetFriend' do
   pod 'Parse/FacebookUtils'
   pod 'FacebookShare'
   pod 'AerisWeather'
+  pod 'SCLAlertView-Objective-C'
 
   target 'ClosetFriendTests' do
     inherit! :search_paths

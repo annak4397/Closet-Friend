@@ -13,6 +13,7 @@
 #import "Item.h"
 #import <QuartzCore/QuartzCore.h>
 @import Parse;
+@import SCLAlertView_Objective_C;
 
 @interface NewItemViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *descriptionTextView;
@@ -84,37 +85,27 @@
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Choose"
-               message:@"How would you like to add a photo?"
-        preferredStyle:(UIAlertControllerStyleAlert)];
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         
-        // create a camera action
-        UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Camera"
-                                                            style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * _Nonnull action) {
-                                                                 imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-                                                                [self presentViewController:imagePickerVC animated:YES completion:nil];
-                                                          }];
-        [alert addAction:cameraAction];
+        SCLAlertView *alert = [[SCLAlertView alloc] init];
 
-        // create a photo libray action
-        UIAlertAction *photoLibraryAction = [UIAlertAction actionWithTitle:@"Photo Library"
-                                                           style:UIAlertActionStyleDefault
-                                                         handler:^(UIAlertAction * _Nonnull action) {
-                                                                 imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-                                                                [self presentViewController:imagePickerVC animated:YES completion:nil];
-                                                         }];
-        [alert addAction:photoLibraryAction];
-        
-        [self presentViewController:alert animated:YES completion:^{}];
+        [alert addButton:@"Camera" actionBlock:^{
+            imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+            [self presentViewController:imagePickerVC animated:YES completion:nil];
+        }];
+
+        [alert addButton:@"Photo Library" actionBlock:^(void) {
+            imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            [self presentViewController:imagePickerVC animated:YES completion:nil];
+        }];
+        [alert showQuestion:self title:@"Add Photo" subTitle:@"How would you like to add a photo?" closeButtonTitle:nil duration:0.0f];
     }
     else {
         NSLog(@"Camera 🚫 available so we will use photo library instead");
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         [self presentViewController:imagePickerVC animated:YES completion:nil];
     }
-}
+    }
 
 - (IBAction)onSaveButtonTap:(id)sender {
     //add saving functionlity

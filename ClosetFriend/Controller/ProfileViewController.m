@@ -30,27 +30,6 @@
     [self.profileImageView loadInBackground];
     self.usernameLabel.text = PFUser.currentUser[@"username"];
     
-    AWFPlace *place = [AWFPlace placeWithCity:@"seattle" state:@"wa" country:@"us"];
-    AWFWeatherRequestOptions *options = [AWFWeatherRequestOptions new];
-    options.limit = 7;
-
-    [[AWFForecasts sharedService] getForPlace:place options:options completion:^(AWFWeatherEndpointResult * _Nullable result) {
-        if (result.error) {
-            NSLog(@"Data failed to load! - %@", result.error.localizedDescription);
-            return;
-        }
-
-        if ([result.results count] > 0) {
-            AWFForecast *forecast = (AWFForecast *)[result.results firstObject];
-            AWFForecastPeriod *period = forecast.periods[0];
-            self.image.image = [UIImage imageNamed: forecast.periods[0].icon]; //forecast.periods[0].icon;
-            //[self.image loadInBackground];
-            NSLog(@"%@", forecast.periods[0].icon);
-            [forecast.periods enumerateObjectsUsingBlock:^(AWFForecastPeriod *period, NSUInteger idx, BOOL * _Nonnull stop) {
-                NSLog(@"The forecast for %@ is %@ with a high temperature of %.0f", period.timestamp, period.weather, period.maxTempF);
-            }];
-        }
-    }];
 }
 
 /*
