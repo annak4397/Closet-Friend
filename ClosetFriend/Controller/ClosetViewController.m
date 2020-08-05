@@ -34,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *bottomButton;
 - (IBAction)onBottomButtonTap:(id)sender;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) UIColor *darkPurple;
 
 @end
 
@@ -179,6 +180,7 @@
         self.selectEnabled = NO;
         self.itemCollectionView.allowsMultipleSelection = NO;
         self.selectButton.selected = NO;
+        self.selectButton.backgroundColor = self.darkPurple;
     }
     else{
         self.bottomButton.selected = YES;
@@ -186,6 +188,8 @@
         self.selectButton.selected = YES;
         self.itemCollectionView.allowsMultipleSelection = YES;
         self.selectEnabled = YES;
+        self.darkPurple = self.selectButton.backgroundColor;
+        self.selectButton.backgroundColor = [UIColor whiteColor];
     }
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -267,6 +271,7 @@
         self.selectEnabled = NO;
         self.itemCollectionView.allowsMultipleSelection = NO;
         self.selectButton.selected = NO;
+        self.selectButton.backgroundColor = self.darkPurple;
     }
 }
 @end

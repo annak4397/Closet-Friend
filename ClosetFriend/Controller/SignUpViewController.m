@@ -13,6 +13,7 @@
 @interface SignUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+- (IBAction)onGoBackButtonTap:(id)sender;
 
 - (IBAction)onSignUpButtonTap:(id)sender;
 @end
@@ -42,6 +43,10 @@
                [self performSegueWithIdentifier:@"signUpSegue" sender:nil];
            }
        }];
+}
+
+- (IBAction)onGoBackButtonTap:(id)sender {
+    [self performSegueWithIdentifier:@"backToLogin" sender:nil];
 }
 /*
 #pragma mark - Navigation
