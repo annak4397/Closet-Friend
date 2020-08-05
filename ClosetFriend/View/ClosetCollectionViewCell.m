@@ -10,11 +10,11 @@
 
 @implementation ClosetCollectionViewCell
 -(void)setCellItem:(Item *)itemPassed{
-    self.selectedButton.selected = self.selectedButton.selected;
+    self.selectedButton.selected = itemPassed.isSelected;
     self.itemImage.file = itemPassed[@"image"];
     [self.itemImage loadInBackground];
 }
--(void)updateSelection{
-    self.selectedButton.selected = !self.selectedButton.selected;
+-(void)updateSelection: (BOOL) selected{
+    self.selectedButton.selected = selected;
 }
 @end

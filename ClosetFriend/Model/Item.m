@@ -21,6 +21,7 @@
 @dynamic price;
 @dynamic numberOfTimesWorn;
 @dynamic pricePerWear;
+@dynamic isSelected;
 
 + (nonnull NSString *)parseClassName {
     return @"Item";
@@ -50,6 +51,7 @@
     newItem.price = price;
     newItem.numberOfTimesWorn = 0;
     newItem.pricePerWear = price;
+    newItem.isSelected = NO;
     
     [newItem saveInBackgroundWithBlock: completion];
 }

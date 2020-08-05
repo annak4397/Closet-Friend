@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet PFImageView *itemImage;
 @property (weak, nonatomic) IBOutlet UIButton *selectedButton;
 -(void)setCellItem:(Item *)itemPassed;
--(void)updateSelection;
+-(void)updateSelection: (BOOL) selected;
 @end
 
 NS_ASSUME_NONNULL_END

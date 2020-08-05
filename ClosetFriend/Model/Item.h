@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property int price;
 @property int numberOfTimesWorn;
 @property int pricePerWear;
+@property BOOL isSelected;
 
 + (void) postItem: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 + (void) postItemWithImage: ( UIImage * _Nullable )image withDescription: (NSString *)description withSeason: (NSString *)season withSize: (NSString *)size withType: (NSString *)type withPrice: (int)price withCompletion: (PFBooleanResultBlock _Nullable)completion;

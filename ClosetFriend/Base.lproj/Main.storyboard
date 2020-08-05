@@ -995,7 +995,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="euv-b3-5CS"/>
                     </view>
                     <navigationItem key="navigationItem" id="0XV-Pw-N5t"/>
@@ -1017,7 +1017,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ah-UP-vy5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4191" y="-1325"/>
+            <point key="canvasLocation" x="4188.4057971014499" y="-1325.2232142857142"/>
         </scene>
         <!--Outfit Detail View Controller-->
         <scene sceneID="zmC-r2-4wV">
@@ -1477,7 +1477,7 @@
         <segue reference="vaA-Xu-Cgf"/>
         <segue reference="Kbg-B5-UF6"/>
         <segue reference="gIa-US-lz8"/>
-        <segue reference="Ojf-cS-rBN"/>
+        <segue reference="Ssh-VI-qya"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="651px-Love_Heart_symbol.svg" width="651" height="600"/>

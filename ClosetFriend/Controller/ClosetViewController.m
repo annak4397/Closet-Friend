@@ -162,7 +162,14 @@
         for(NSIndexPath *indexPath in self.itemCollectionView.indexPathsForSelectedItems) {
             [self.itemCollectionView deselectItemAtIndexPath:indexPath animated:NO];
             ClosetCollectionViewCell *cell = (ClosetCollectionViewCell *)[self.itemCollectionView cellForItemAtIndexPath:indexPath];
-            [cell updateSelection];
+            [cell updateSelection: NO];
+            Item *delelectingItem = self.itemsArray[indexPath.item];
+            delelectingItem.isSelected = NO;
+            [delelectingItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if(error == nil){
+                    NSLog(@"Updated slection value");
+                }
+            }];
         }
         
         // Remove all items from selectedRecipes array
@@ -184,9 +191,14 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if(self.selectEnabled){
         ClosetCollectionViewCell *cell = (ClosetCollectionViewCell *)[self.itemCollectionView cellForItemAtIndexPath:indexPath];
-        [cell updateSelection];
-        NSLog(@"%@", self.itemsArray[indexPath.item]);
+        [cell updateSelection: YES];
         Item *selectedItem = self.itemsArray[indexPath.item];
+        selectedItem.isSelected = YES;
+        [selectedItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error == nil){
+                NSLog(@"Updated slection value");
+            }
+        }];
         [self.selectedItems addObject:selectedItem];
     }
     else{
@@ -196,7 +208,14 @@
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
     if(self.selectEnabled){
         ClosetCollectionViewCell *cell = (ClosetCollectionViewCell *)[self.itemCollectionView cellForItemAtIndexPath:indexPath];
-        [cell updateSelection];
+        Item *delelectingItem = self.itemsArray[indexPath.item];
+        delelectingItem.isSelected = NO;
+        [delelectingItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if(error == nil){
+                NSLog(@"Updated slection value");
+            }
+        }];
+        [cell updateSelection: NO];
         Item *deselectedItem = self.itemsArray[indexPath.item];
         [self.selectedItems removeObject:deselectedItem];
     }
@@ -231,7 +250,14 @@
         for(NSIndexPath *indexPath in self.itemCollectionView.indexPathsForSelectedItems) {
             [self.itemCollectionView deselectItemAtIndexPath:indexPath animated:NO];
             ClosetCollectionViewCell *cell = (ClosetCollectionViewCell *)[self.itemCollectionView cellForItemAtIndexPath:indexPath];
-            [cell updateSelection];
+            [cell updateSelection: NO];
+            Item *delelectingItem = self.itemsArray[indexPath.item];
+            delelectingItem.isSelected = NO;
+            [delelectingItem saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if(error == nil){
+                    NSLog(@"Updated slection value");
+                }
+            }];
         }
         
         // Remove all items from selectedRecipes array
