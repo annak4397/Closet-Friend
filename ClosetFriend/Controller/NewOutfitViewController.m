@@ -161,152 +161,42 @@
         randomNumber = arc4random() % 2;
         // yes dress
         if(randomNumber == 1){
-            NSArray *dresses = [self getAllItemsOfType:@"Dress"];
-            randomNumber = arc4random() % dresses.count;
-            [self.itemsInOutfit addObject:dresses[randomNumber]];
+            [self getDress];
         }
         // no choose an outfit with a shirt
         else{
-            // choose if there will be a jacket
-            randomNumber = arc4random() % 2;
-            // if yes, add jacket
-            if(randomNumber == 1){
-                NSArray *jackets = [self getAllItemsOfType:@"Jacket"];
-                randomNumber = arc4random() % jackets.count;
-                [self.itemsInOutfit addObject:jackets[randomNumber]];
-            }
-            
-            // continue to shirt
-            NSArray *shirts = [self getAllItemsOfType:@"Shirt"];
-            randomNumber = arc4random() % shirts.count;
-            [self.itemsInOutfit addObject:shirts[randomNumber]];
-            
-            // choose bottom type
-            randomNumber = (arc4random() % 3);
-            NSString *typeOfBottom;
-            switch (randomNumber) {
-                case 0:
-                    typeOfBottom = @"Skirt";
-                    break;
-                case 1:
-                    typeOfBottom = @"Pants";
-                    break;
-                case 2:
-                    typeOfBottom = @"Shorts";
-                    break;
-            }
-            
-            // choose bottoms
-            NSArray *bottoms = [self getAllItemsOfType:typeOfBottom];
-            randomNumber = arc4random() % bottoms.count;
-            [self.itemsInOutfit addObject:bottoms[randomNumber]];
+            [self maybeGetJacket];
+            [self getShirt];
+            [self getBottom];
         }
         [self.itemsInOutfit addObject:itemGiven];
     }
     else if([itemGiven.type isEqualToString:@"Dress"]){
         //just add item and shoes
         [self.itemsInOutfit addObject:itemGiven];
-        
-        NSArray *shoes = [self getAllItemsOfType:@"Shoes"];
-        randomNumber = arc4random() % shoes.count;
-        [self.itemsInOutfit addObject:shoes[randomNumber]];
+        [self getShoes];
     }
     else if([itemGiven.type isEqualToString:@"Jacket"]){
         //add jacket
         [self.itemsInOutfit addObject:itemGiven];
-        
-        // continue to shirt
-        NSArray *shirts = [self getAllItemsOfType:@"Shirt"];
-        randomNumber = arc4random() % shirts.count;
-        [self.itemsInOutfit addObject:shirts[randomNumber]];
-        
-        // choose bottom type
-        randomNumber = (arc4random() % 3);
-        NSString *typeOfBottom;
-        switch (randomNumber) {
-            case 0:
-                typeOfBottom = @"Skirt";
-                break;
-            case 1:
-                typeOfBottom = @"Pants";
-                break;
-            case 2:
-                typeOfBottom = @"Shorts";
-                break;
-        }
-        
-        // choose bottoms
-        NSArray *bottoms = [self getAllItemsOfType:typeOfBottom];
-        randomNumber = arc4random() % bottoms.count;
-        [self.itemsInOutfit addObject:bottoms[randomNumber]];
-        
-        // get shoes at the end
-        NSArray *shoes = [self getAllItemsOfType:@"Shoes"];
-        randomNumber = arc4random() % shoes.count;
-        [self.itemsInOutfit addObject:shoes[randomNumber]];
+        [self getShirt];
+        [self getBottom];
+        [self getShoes];
     }
     else if([itemGiven.type isEqualToString:@"Shirt"]){
-        // choose if there will be a jacket
-        randomNumber = arc4random() % 2;
-        // if yes, add jacket
-        if(randomNumber == 1){
-            NSArray *jackets = [self getAllItemsOfType:@"Jacket"];
-            randomNumber = arc4random() % jackets.count;
-            [self.itemsInOutfit addObject:jackets[randomNumber]];
-        }
-        
+        [self maybeGetJacket];
         //add the shirt
         [self.itemsInOutfit addObject:itemGiven];
-        
-        // choose bottom type
-        randomNumber = (arc4random() % 3);
-        NSString *typeOfBottom;
-        switch (randomNumber) {
-            case 0:
-                typeOfBottom = @"Skirt";
-                break;
-            case 1:
-                typeOfBottom = @"Pants";
-                break;
-            case 2:
-                typeOfBottom = @"Shorts";
-                break;
-        }
-        
-        // choose bottoms
-        NSArray *bottoms = [self getAllItemsOfType:typeOfBottom];
-        randomNumber = arc4random() % bottoms.count;
-        [self.itemsInOutfit addObject:bottoms[randomNumber]];
-        
-        // get shoes at the end
-        NSArray *shoes = [self getAllItemsOfType:@"Shoes"];
-        randomNumber = arc4random() % shoes.count;
-        [self.itemsInOutfit addObject:shoes[randomNumber]];
+        [self getBottom];
+        [self getShoes];
     }
     else{
         // item is a bottom piece
-        
-        // choose if there will be a jacket
-        randomNumber = arc4random() % 2;
-        // if yes, add jacket
-        if(randomNumber == 1){
-            NSArray *jackets = [self getAllItemsOfType:@"Jacket"];
-            randomNumber = arc4random() % jackets.count;
-            [self.itemsInOutfit addObject:jackets[randomNumber]];
-        }
-        
-        // continue to shirt
-        NSArray *shirts = [self getAllItemsOfType:@"Shirt"];
-        randomNumber = arc4random() % shirts.count;
-        [self.itemsInOutfit addObject:shirts[randomNumber]];
-        
+        [self maybeGetJacket];
+        [self getShirt];
         //add the bottom
         [self.itemsInOutfit addObject:itemGiven];
-        
-        // get shoes at the end
-        NSArray *shoes = [self getAllItemsOfType:@"Shoes"];
-        randomNumber = arc4random() % shoes.count;
-        [self.itemsInOutfit addObject:shoes[randomNumber]];
+        [self getShoes];
     }
 }
 
@@ -335,49 +225,65 @@
     int randomNumber = arc4random() % 2;
     // yes dress
     if(randomNumber == 1){
-        NSArray *dresses = [self getAllItemsOfType:@"Dress"];
-        randomNumber = arc4random() % dresses.count;
-        [self.itemsInOutfit addObject:dresses[randomNumber]];
+        [self getDress];
     }
     // no choose an outfit with a shirt
     else{
-        // choose if there will be a jacket
-        randomNumber = arc4random() % 2;
-        // if yes, add jacket
-        if(randomNumber == 1){
-            NSArray *jackets = [self getAllItemsOfType:@"Jacket"];
-            randomNumber = arc4random() % jackets.count;
-            [self.itemsInOutfit addObject:jackets[randomNumber]];
-        }
-        
-        // continue to shirt
-        NSArray *shirts = [self getAllItemsOfType:@"Shirt"];
-        randomNumber = arc4random() % shirts.count;
-        [self.itemsInOutfit addObject:shirts[randomNumber]];
-        
-        // choose bottom type
-        randomNumber = (arc4random() % 3);
-        NSString *typeOfBottom;
-        switch (randomNumber) {
-            case 0:
-                typeOfBottom = @"Skirt";
-                break;
-            case 1:
-                typeOfBottom = @"Pants";
-                break;
-            case 2:
-                typeOfBottom = @"Shorts";
-                break;
-        }
-        
-        // choose bottoms
-        NSArray *bottoms = [self getAllItemsOfType:typeOfBottom];
-        randomNumber = arc4random() % bottoms.count;
-        [self.itemsInOutfit addObject:bottoms[randomNumber]];
+        [self maybeGetJacket];
+        [self getShirt];
+        [self getBottom];
     }
-    // get shoes at the end
+    [self getShoes];
+}
+
+-(void) getDress{
+    NSArray *dresses = [self getAllItemsOfType:@"Dress"];
+    int randomNumber = arc4random() % dresses.count;
+    [self.itemsInOutfit addObject:dresses[randomNumber]];
+}
+
+-(void) maybeGetJacket{
+    // choose if there will be a jacket
+    int randomNumber = arc4random() % 2;
+    // if yes, add jacket
+    if(randomNumber == 1){
+        NSArray *jackets = [self getAllItemsOfType:@"Jacket"];
+        randomNumber = arc4random() % jackets.count;
+        [self.itemsInOutfit addObject:jackets[randomNumber]];
+    }
+}
+
+-(void) getShirt{
+    NSArray *shirts = [self getAllItemsOfType:@"Shirt"];
+    int randomNumber = arc4random() % shirts.count;
+    [self.itemsInOutfit addObject:shirts[randomNumber]];
+}
+
+-(void) getBottom{
+    // choose bottom type
+    int randomNumber = (arc4random() % 3);
+    NSString *typeOfBottom;
+    switch (randomNumber) {
+        case 0:
+            typeOfBottom = @"Skirt";
+            break;
+        case 1:
+            typeOfBottom = @"Pants";
+            break;
+        case 2:
+            typeOfBottom = @"Shorts";
+            break;
+    }
+    
+    // choose bottoms
+    NSArray *bottoms = [self getAllItemsOfType:typeOfBottom];
+    randomNumber = arc4random() % bottoms.count;
+    [self.itemsInOutfit addObject:bottoms[randomNumber]];
+}
+
+-(void) getShoes{
     NSArray *shoes = [self getAllItemsOfType:@"Shoes"];
-    randomNumber = arc4random() % shoes.count;
+    int randomNumber = arc4random() % shoes.count;
     [self.itemsInOutfit addObject:shoes[randomNumber]];
 }
 
