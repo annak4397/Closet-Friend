@@ -14,8 +14,8 @@
             filePath = "ClosetFriend/Controller/ClosetViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,8 +122,8 @@
             filePath = "ClosetFriend/Controller/ClosetViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,8 +138,8 @@
             filePath = "ClosetFriend/Controller/ClosetViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "-filterCloset:withSeasons:withTypes:"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,8 +154,8 @@
             filePath = "ClosetFriend/Controller/ClosetViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "-loadItems"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,8 +298,8 @@
             filePath = "ClosetFriend/Controller/ClosetViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,8 +314,8 @@
             filePath = "ClosetFriend/Controller/ClosetViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "7">
          </BreakpointContent>

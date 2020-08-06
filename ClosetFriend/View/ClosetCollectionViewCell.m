@@ -11,10 +11,22 @@
 @implementation ClosetCollectionViewCell
 -(void)setCellItem:(Item *)itemPassed{
     self.selectedButton.selected = itemPassed.isSelected;
+    if(itemPassed.isSelected){
+        self.whiteView.alpha = .5;
+    }
+    else{
+        self.whiteView.alpha = 0;
+    }
     self.itemImage.file = itemPassed[@"image"];
     [self.itemImage loadInBackground];
 }
 -(void)updateSelection: (BOOL) selected{
     self.selectedButton.selected = selected;
+    if(selected){
+        self.whiteView.alpha = .5;
+    }
+    else{
+        self.whiteView.alpha = 0;
+    }
 }
 @end

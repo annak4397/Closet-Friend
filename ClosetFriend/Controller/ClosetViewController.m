@@ -15,6 +15,7 @@
 #import "NewOutfitViewController.h"
 #import "SceneDelegate.h"
 #import "LoginViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ClosetViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, ClosetViewControllerDelegate, NewItemControllerDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *itemCollectionView;
@@ -59,6 +60,13 @@
     self.sortClosetBy = self.sortTypes[0];
     self.seasonTypesSelected = self.seasonTypes;
     self.itemTypesSelected = self.itemTypes;
+    
+    self.bottomButton.imageView.layer.cornerRadius = 7.0f;
+    self.bottomButton.layer.shadowRadius = 3.0f;
+    self.bottomButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.bottomButton.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    self.bottomButton.layer.shadowOpacity = 0.5f;
+    self.bottomButton.layer.masksToBounds = NO;
     
     [self loadItems];
 }

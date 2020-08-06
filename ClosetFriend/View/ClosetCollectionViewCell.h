@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ClosetCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet PFImageView *itemImage;
+@property (weak, nonatomic) IBOutlet UIView *whiteView;
 @property (weak, nonatomic) IBOutlet UIButton *selectedButton;
 -(void)setCellItem:(Item *)itemPassed;
 -(void)updateSelection: (BOOL) selected;

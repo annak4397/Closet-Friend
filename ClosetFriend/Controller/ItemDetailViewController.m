@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *seasonLabel;
 - (IBAction)onPlusButtonTap:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIView *whiteView;
+
 @end
 
 @implementation ItemDetailViewController

@@ -26,9 +26,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *seasonLabel;
 - (IBAction)onSaveButtonTap:(id)sender;
 - (IBAction)onAddPhotoButtonTap:(id)sender;
-- (IBAction)beginEditingSelectionFields:(id)sender;
 - (IBAction)onCancelButtonTap:(id)sender;
 - (IBAction)onSelectButtonTap:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *detailFieldsView;
 
 @property (strong, nonatomic) NSArray *itemTypes;
 @property (strong, nonatomic) NSArray *seasons;
