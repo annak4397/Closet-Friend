@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *yourOutftiLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIImageView *heartImage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageTopConstraint;
 
 @end
 
@@ -51,8 +52,9 @@
         self.seasonTitleLabel.text = @"";
         self.seasonLabel.text = @"";
         self.selectButton.hidden = YES;
-        self.yourOutftiLabel.text = @"Your outfit";
+        self.yourOutftiLabel.text = @"Your outfit:";
         [self.activityIndicator startAnimating];
+        self.imageTopConstraint.constant = 50;
         if(self.itemPassed != NULL){
             [self queryFromAnItem: self.itemPassed];
         }
@@ -62,6 +64,7 @@
     }
     //set up for random outfit
     else{
+        self.imageTopConstraint.constant = 98.5;
         self.seasonLabel.text = @"Season:";
         self.seasonLabel.text = @"Select a season";
         self.seasons = @[@"Spring", @"Summer", @"Fall", @"Winter", @"Any season"];
@@ -110,7 +113,6 @@
     self.allItems = [[NSArray alloc] init];
     self.outfitImageView.image = NULL;
     self.bookmarkButton.hidden = YES;
-    //self.createButton.hidden = YES;
     // get all the items for that season
     PFQuery *itemQuery = [PFQuery queryWithClassName:@"Item"];
     if(![self.seasonLabel.text isEqualToString:@"Any season"]){

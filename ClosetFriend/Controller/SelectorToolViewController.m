@@ -69,6 +69,7 @@
         [self.label setTextColor:[UIColor blackColor]];
         self.label.text = self.selectedItem;
         if(self.delegate != nil){
+            self.label.textColor = [UIColor whiteColor];
             [self.delegate didSelectSeason];
         }
     }];

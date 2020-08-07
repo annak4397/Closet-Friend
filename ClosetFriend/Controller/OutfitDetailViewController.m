@@ -16,9 +16,7 @@
 
 @interface OutfitDetailViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet PFImageView *outfitImage;
-@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UIButton *likedButton;
-@property (weak, nonatomic) IBOutlet UILabel *seasonLabel;
 @property (weak, nonatomic) IBOutlet UITableView *itemsTableView;
 @property (weak, nonatomic) NSArray *items;
 @property (weak, nonatomic) IBOutlet UIButton *planButton;
@@ -41,8 +39,6 @@
 - (void)loadScreen{
     self.outfitImage.file = self.passedOutfit.image;
     [self.outfitImage loadInBackground];
-    self.priceLabel.text = [NSString stringWithFormat:@"%d", self.passedOutfit.price];
-    self.seasonLabel.text = self.passedOutfit.season;
     if(self.passedOutfit.liked == YES){
         self.likedButton.selected = YES;
     }
@@ -101,8 +97,8 @@
     
     FBSDKShareButton *shareButton = [[FBSDKShareButton alloc] init];
     shareButton.shareContent = content;
-    // since the share button doesn't show up in the storyboard I had to add the location myself based on the location of the price label. The + 210 and + 95 were the values that I found to work and place the button in the right place
-    shareButton.center = CGPointMake(self.priceLabel.layer.position.x + 210, self.priceLabel.layer.position.y + 95);
+    // since the share button doesn't show up in the storyboard I had to add the location myself based on the location of the price label. The + 60 and + 88 were the values that I found to work and place the button in the right place
+    shareButton.center = CGPointMake(self.likedButton.center.x + 60, self.likedButton.center.y +88);
     [self.view addSubview:shareButton];
 }
 - (IBAction)onLikeButtonTap:(id)sender {

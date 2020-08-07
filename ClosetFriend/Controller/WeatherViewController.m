@@ -25,6 +25,7 @@
     // Do any additional setup after loading the view.
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    [self.degreeButton setTitle:@"°C" forState:UIControlStateNormal];
     
     [self loadWeatherData];
 }
