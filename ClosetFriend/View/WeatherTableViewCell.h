@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *humidityPercent;
 @property (strong, nonatomic) AWFForecastPeriod *period;
 
-- (void) createWeatherCell: (BOOL) celsius withPeriod: (AWFForecastPeriod *) period;
+- (void) createWeatherCell: (BOOL) celsius withPeriod: (AWFForecastPeriod *) period withDay: (NSString *) dayOfTheWeek;
 @end
 
 NS_ASSUME_NONNULL_END

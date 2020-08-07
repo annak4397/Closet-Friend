@@ -22,12 +22,12 @@
     // Configure the view for the selected state
 }
 
-- (void) createWeatherCell: (BOOL) celsius withPeriod: (AWFForecastPeriod *) period {
+- (void) createWeatherCell: (BOOL) celsius withPeriod: (AWFForecastPeriod *) period withDay:(nonnull NSString *)dayOfTheWeek{
     self.period = period;
     self.WeatherIcon.image = [UIImage imageNamed:period.icon];
     self.WeatherType.text = period.weather;
     self.humidityPercent.text = [@"Humidity: %" stringByAppendingFormat:[NSString stringWithFormat:@"%.0f", period.humidity]];
-    //self.Date.text = period.
+    self.Date.text = dayOfTheWeek;
     self.lowTemp.textColor = [UIColor blueColor];
     self.highTemp.textColor = [UIColor redColor];
     if(celsius){

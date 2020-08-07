@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *degreeButton;
 - (IBAction)onDegreeButtonTap:(id)sender;
 @property BOOL isCelsius;
+@property (strong , nonatomic) NSMutableArray *daysOfTheWeek;
 
 @end
 
@@ -28,6 +29,35 @@
     self.tableView.dataSource = self;
     self.isCelsius = true;
     
+    NSDate *day = [[NSDate alloc] init];
+    int weekStart = (int)day.awf_weekday;
+    self.daysOfTheWeek = [[NSMutableArray alloc] init];
+    for(int i = weekStart; i < weekStart + 8; i++){
+        switch (i % 8) {
+            case 1:
+                [self.daysOfTheWeek addObject:@"Sunday"];
+                break;
+            case 2:
+                [self.daysOfTheWeek addObject:@"Monday"];
+                break;
+            case 3:
+                [self.daysOfTheWeek addObject:@"Tuesday"];
+                break;
+            case 4:
+                [self.daysOfTheWeek addObject:@"Wednesday"];
+                break;
+            case 5:
+                [self.daysOfTheWeek addObject:@"Thursday"];
+                break;
+            case 6:
+                [self.daysOfTheWeek addObject:@"Friday"];
+                break;
+            case 7:
+                [self.daysOfTheWeek addObject:@"Saturday"];
+                break;
+        }
+    }
+    
     [self loadWeatherData];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -37,7 +67,7 @@
     
     WeatherTableViewCell *weatherCell = [tableView dequeueReusableCellWithIdentifier:@"WeatherCell" forIndexPath:indexPath];
     AWFForecastPeriod *period = self.forcast.periods[indexPath.row];
-    [weatherCell createWeatherCell:self.isCelsius withPeriod:period];
+    [weatherCell createWeatherCell:self.isCelsius withPeriod:period withDay: self.daysOfTheWeek[indexPath.row]];
 
     return weatherCell;
 }
