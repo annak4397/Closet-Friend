@@ -15,6 +15,7 @@
 @property (strong, nonatomic) AWFForecast *forcast;
 @property (weak, nonatomic) IBOutlet UIButton *degreeButton;
 - (IBAction)onDegreeButtonTap:(id)sender;
+@property BOOL isCelsius;
 
 @end
 
@@ -25,7 +26,7 @@
     // Do any additional setup after loading the view.
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.degreeButton setTitle:@"°C" forState:UIControlStateNormal];
+    self.isCelsius = true;
     
     [self loadWeatherData];
 }
@@ -36,8 +37,7 @@
     
     WeatherTableViewCell *weatherCell = [tableView dequeueReusableCellWithIdentifier:@"WeatherCell" forIndexPath:indexPath];
     AWFForecastPeriod *period = self.forcast.periods[indexPath.row];
-    BOOL isCelsiusChoosen = !self.degreeButton.selected;
-    [weatherCell createWeatherCell:isCelsiusChoosen withPeriod:period];
+    [weatherCell createWeatherCell:self.isCelsius withPeriod:period];
 
     return weatherCell;
 }
@@ -69,7 +69,7 @@
 */
 
 - (IBAction)onDegreeButtonTap:(id)sender {
-    self.degreeButton.selected = !self.degreeButton.selected;
+    self.isCelsius = !self.isCelsius;
     [self.tableView reloadData];
 }
 @end
