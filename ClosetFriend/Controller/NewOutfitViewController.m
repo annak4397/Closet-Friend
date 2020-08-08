@@ -34,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UIImageView *heartImage;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageTopConstraint;
+@property (weak, nonatomic) IBOutlet UIView *textViewDisplay;
 
 @end
 
@@ -55,6 +56,7 @@
         self.yourOutftiLabel.text = @"Your outfit:";
         [self.activityIndicator startAnimating];
         self.imageTopConstraint.constant = 50;
+        self.textViewDisplay.alpha = 0;
         if(self.itemPassed != NULL){
             [self queryFromAnItem: self.itemPassed];
         }
@@ -68,6 +70,7 @@
         self.seasonLabel.text = @"Season:";
         self.seasonLabel.text = @"Select a season";
         self.seasons = @[@"Spring", @"Summer", @"Fall", @"Winter", @"Any season"];
+        self.textViewDisplay.alpha = .75;
         self.yourOutftiLabel.text = @"";
         self.selectButton.hidden = NO;
     }
@@ -86,6 +89,7 @@
         self.seasonLabel.text = @"Season:";
         self.seasonLabel.text = @"Select a season";
         self.seasons = @[@"Spring", @"Summer", @"Fall", @"Winter", @"Any season"];
+        self.textViewDisplay.alpha = .75;
         self.yourOutftiLabel.text = @"";
         self.selectButton.hidden = NO;
     }
@@ -110,6 +114,7 @@
 }
 - (void)didSelectSeason{
     [self.activityIndicator startAnimating];
+    self.textViewDisplay.alpha = 0;
     self.allItems = [[NSArray alloc] init];
     self.outfitImageView.image = NULL;
     self.bookmarkButton.hidden = YES;

@@ -542,6 +542,25 @@
                                                 <rect key="frame" x="87" y="274" width="240" height="128"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
+                                            <view alpha="0.75" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbq-yz-1es">
+                                                <rect key="frame" x="58" y="159" width="307" height="175"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No season selected. Please select a season to generate a random outfit." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TyC-Vq-Rlw">
+                                                        <rect key="frame" x="33" y="26" width="241" height="123"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.29990433820000001" green="0.2365133573" blue="0.34652283029999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
@@ -600,6 +619,7 @@
                         <outlet property="seasonLabel" destination="QEN-Gi-xdb" id="dTL-nE-ZEL"/>
                         <outlet property="seasonTitleLabel" destination="daX-yz-otm" id="x8H-Gi-qvK"/>
                         <outlet property="selectButton" destination="omH-Uk-Dev" id="M3B-ZT-rtm"/>
+                        <outlet property="textViewDisplay" destination="rbq-yz-1es" id="v3O-eF-u2H"/>
                         <outlet property="yourOutftiLabel" destination="3Qd-eL-zFj" id="B7V-oO-h0u"/>
                         <segue destination="F5y-qI-DFs" kind="presentation" identifier="selectionScreenSegue" id="Ojf-cS-rBN"/>
                     </connections>
@@ -712,7 +732,7 @@
                     <navigationItem key="navigationItem" title="Weather for the Week" id="yAd-cI-47y">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="iRe-zM-Ubu">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0TE-pB-FXu">
-                                <rect key="frame" x="364" y="13" width="30" height="30"/>
+                                <rect key="frame" x="357" y="13" width="37" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.29990433820000001" green="0.2365133573" blue="0.34652283029999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="°C/°F">
