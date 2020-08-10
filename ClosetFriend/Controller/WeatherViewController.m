@@ -9,6 +9,7 @@
 #import "WeatherViewController.h"
 #import "WeatherTableViewCell.h"
 @import AerisWeatherKit;
+@import SCLAlertView_Objective_C;
 
 @interface WeatherViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -17,6 +18,9 @@
 - (IBAction)onDegreeButtonTap:(id)sender;
 @property BOOL isCelsius;
 @property (strong , nonatomic) NSMutableArray *daysOfTheWeek;
+@property (weak, nonatomic) UITextField *cityField;
+@property (weak, nonatomic) UITextField *stateField;
+- (IBAction)onLocationButtonTap:(id)sender;
 
 @end
 
@@ -72,7 +76,16 @@
     return weatherCell;
 }
 - (void) loadWeatherData{
-    AWFPlace *place = [AWFPlace placeWithCity:@"seattle" state:@"wa" country:@"us"];
+    AWFPlace *place;
+    if(self.cityField == nil || self.stateField == nil){
+        place = [AWFPlace placeWithCity:@"seattle" state:@"wa" country:@"us"];
+    }
+    else{
+        NSString *city = [self.cityField.text lowercaseString];
+        NSString *state = [self.stateField.text lowercaseString];
+        place = [AWFPlace placeWithCity:city state:state country:@"us"];
+    }
+    
     AWFWeatherRequestOptions *options = [AWFWeatherRequestOptions new];
     options.limit = 7;
 
@@ -101,5 +114,18 @@
 - (IBAction)onDegreeButtonTap:(id)sender {
     self.isCelsius = !self.isCelsius;
     [self.tableView reloadData];
+}
+- (IBAction)onLocationButtonTap:(id)sender {
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+
+    self.cityField = [alert addTextField:@"Enter City"];
+    self.stateField = [alert addTextField:@"Enter State"];
+    
+    [alert addButton:@"Enter" actionBlock:^(void) {
+        NSLog(@"Text value: %@ %@", self.cityField.text, self.stateField.text);
+        [self loadWeatherData];
+    }];
+
+    [alert showEdit:self title:@"Enter Location" subTitle:@"Enter the City,State to get the weather location." closeButtonTitle:nil duration:0.0f];
 }
 @end
